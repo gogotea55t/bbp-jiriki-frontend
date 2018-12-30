@@ -14,14 +14,19 @@
       <td>{{ song.contributor }}</td>
       <td>{{ song.instrument }}</td>
     </tr>
+    <SongCol
+      v-for="song in songs"
+      v-bind="song"
+      :key="song.id"/>
   </table>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-// import SongCol from '../components/SongCol.vue'
+import SongCol from '../components/SongCol.vue'
 
 export default Vue.extend({
+  components: { SongCol },
   data: function() {
     return {
       songs: [
