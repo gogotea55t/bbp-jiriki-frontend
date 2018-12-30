@@ -1,6 +1,6 @@
 <template>
   <tr>
-    <td>{{ jirikiRank }}</td>
+    <JirikiRank :jiriki-rank="jirikiRank"/>
     <td>{{ songName }}</td>
     <td>{{ contributor }}</td>
     <td>{{ instrument }}</td>
@@ -9,9 +9,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import JirikiRank from './JirikiRank.vue'
 
 export default Vue.extend({
   name: 'SongCol',
+  components: { JirikiRank },
   props: {
     id: {
       type: String,
