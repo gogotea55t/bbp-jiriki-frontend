@@ -6,14 +6,6 @@
       <th>投稿者名</th>
       <th>楽器名</th>
     </tr>
-    <tr
-      v-for="song in songs"
-      :key="song.id">
-      <td>{{ song.jirikiRank }}</td>
-      <td>{{ song.songName }}</td>
-      <td>{{ song.contributor }}</td>
-      <td>{{ song.instrument }}</td>
-    </tr>
     <SongCol
       v-for="song in songs"
       v-bind="song"
