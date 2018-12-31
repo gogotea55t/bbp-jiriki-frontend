@@ -15,7 +15,7 @@ export default Vue.extend({
   name: 'SongCol',
   components: { JirikiRank },
   props: {
-    id: {
+    songId: {
       type: String,
       default: null
     },
