@@ -1,4 +1,6 @@
 const pkg = require('./package')
+const environment = process.env.NODE_ENV || 'development';
+const envSet = require(`./env.${environment}.js`)
 
 module.exports = {
   mode: 'spa',
@@ -28,6 +30,8 @@ module.exports = {
   */
   css: [
   ],
+
+  env: envSet,
 
   /*
   ** Plugins to load before mounting the App
