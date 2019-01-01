@@ -28,6 +28,7 @@
 import Vue from 'vue'
 import SongCol from '../../components/SongCol.vue'
 import ScoreStyle from '../../components/ScoreStyle.vue'
+import axios from 'axios'
 export default Vue.extend({
   components: { SongCol, ScoreStyle },
   data: function() {
@@ -62,6 +63,33 @@ export default Vue.extend({
           score: 64
         }
       ]
+    }
+  },
+  // 書き方はここをパクった→https://github.com/nuxt/nuxt.js/issues/978
+  async asyncData(context) {
+    let id = context.params.id
+
+    let songResponse = await axios
+      .get(process.env.apiBaseUrl + '/songs/' + id)
+      .then(response => {
+        return response.data
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+    let scoreResponse = await axios
+      .get(process.env.apiBaseUrl + '/songs/' + id + '/scores')
+      .then(response => {
+        return response.data
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+    return {
+      song: songResponse,
+      scores: scoreResponse
     }
   }
 })
