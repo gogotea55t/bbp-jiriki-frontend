@@ -13,6 +13,7 @@
         :key="song.songId"/>
     </table>
     <img
+      id="songlist-loader"
       src="~/static/loading.gif"
       alt="now loading...">
   </div>
@@ -44,10 +45,14 @@ export default Vue.extend({
           if (response.data.length > 0) {
             for (let d of response.data) {
               this.songs.push(d)
+              // 諸々済んだら再びスクロールを検知するイベントリスナーを追加
+              window.addEventListener('scroll', this.handleScroll)
             }
             this.page += 1
           } else {
-            console.log(response.data)
+            // 空のデータしか返ってこなかった場合、ローディング画像を消す
+            let loader = document.getElementById('songlist-loader')
+            loader.parentNode.removeChild(loader)
           }
         })
         .catch(error => {
@@ -55,7 +60,17 @@ export default Vue.extend({
         })
     },
     handleScroll() {
-      console.log(this)
+      let scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop
+      let loaderPosition = document.getElementById('songlist-loader').offsetTop
+      let clientHeight =
+        document.documentElement.clientHeight || document.body.clientHeight
+      let scrollBottom = clientHeight + scrollTop
+      if (scrollBottom > loaderPosition) {
+        // 多重に通信されると困るので条件を満たした時点でイベントリスナーを一度消す
+        window.removeEventListener('scroll', this.handleScroll)
+        this.getMore()
+      }
     }
   },
   asyncData(context) {
