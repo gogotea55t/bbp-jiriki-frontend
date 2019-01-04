@@ -59,6 +59,7 @@ export default Vue.extend({
           console.log(error)
         })
     },
+    // ローディング画像のところまでスクロールが行くと次のデータを読み込むようにする
     handleScroll() {
       let scrollTop =
         document.documentElement.scrollTop || document.body.scrollTop
