@@ -1,7 +1,7 @@
 <template>
-  <section class="section columns">
-    <div class="column is-one-quarter">
-      <div class="control select">
+  <section class="section">
+    <div class="field has-addons">
+      <div class="select control">
         <select
           id="search-attr"
           name="search-attr">
@@ -14,13 +14,12 @@
             value="instrument">楽器</option>
         </select>
       </div>
-    </div>
-    <div class="column is-half">
-      <div class="control">
+      <div class="control is-full-width">
         <input
           v-model="query"
           class="input"
-          type="text">
+          type="text"
+          placeholder="みてみて☆こっちっち">
       </div>
     </div>
   </section>
