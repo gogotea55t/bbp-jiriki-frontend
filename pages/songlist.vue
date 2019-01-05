@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="container">
+    <search-window/>
     <table class="table">
       <tr>
         <th>地力</th>
@@ -22,10 +23,11 @@
 <script lang="ts">
 import Vue from 'vue'
 import SongCol from '../components/SongCol.vue'
+import SearchWindow from '../components/SearchWindow.vue'
 import axios from 'axios'
 
 export default Vue.extend({
-  components: { SongCol },
+  components: { SongCol, SearchWindow },
   data: function() {
     console.log(process.env.apiBaseUrl)
     return {
