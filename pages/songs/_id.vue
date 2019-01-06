@@ -1,13 +1,17 @@
 <template>
   <div class="container">
     <table class="table">
-      <tr>
-        <th>地力</th>
-        <th>楽曲名</th>
-        <th>投稿者名</th>
-        <th>楽器名</th>
-      </tr>
-      <SongCol v-bind="song"/>
+      <thead>
+        <tr>
+          <th>地力</th>
+          <th>楽曲名</th>
+          <th>投稿者名</th>
+          <th>楽器名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <SongCol v-bind="song"/>
+      </tbody>
     </table>
     <table class="table">
       <tr>

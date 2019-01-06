@@ -1,17 +1,21 @@
 <template>
   <div class="container">
     <search-window/>
-    <table class="table">
-      <tr>
-        <th>地力</th>
-        <th>楽曲名</th>
-        <th>投稿者名</th>
-        <th>楽器名</th>
-      </tr>
-      <SongCol
-        v-for="song in songs"
-        v-bind="song"
-        :key="song.songId"/>
+    <table class="table is-stripe is-hoverable">
+      <thead>
+        <tr>
+          <th>地力</th>
+          <th>楽曲名</th>
+          <th>投稿者名</th>
+          <th>楽器名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <SongCol
+          v-for="song in songs"
+          v-bind="song"
+          :key="song.songId"/>
+      </tbody>
     </table>
     <img
       id="songlist-loader"
@@ -29,7 +33,6 @@ import axios from 'axios'
 export default Vue.extend({
   components: { SongCol, SearchWindow },
   data: function() {
-    console.log(process.env.apiBaseUrl)
     return {
       songs: [],
       page: 1
@@ -40,7 +43,6 @@ export default Vue.extend({
   },
   methods: {
     getMore: function() {
-      console.log('呼ばれてはいる')
       let more = axios
         .get(process.env.apiBaseUrl + '/songs?page=' + this.page)
         .then(response => {
