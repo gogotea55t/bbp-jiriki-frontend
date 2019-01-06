@@ -139,6 +139,15 @@ export default Vue.extend({
           fn: true
         }
         break
+      case '求90':
+        this.classObj = {
+          unaccomplished: true
+        }
+        break
+      default:
+        this.classObj = {
+          'default-jiriki': true
+        }
     }
   }
 })
@@ -197,5 +206,9 @@ export default Vue.extend({
 
 .unaccomplished {
   background-color: orange;
+}
+
+.default-jiriki {
+  background-color: white;
 }
 </style>

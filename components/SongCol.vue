@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr @click="jumpToInfoPage">
     <JirikiRank :jiriki-rank="jirikiRank"/>
     <td>{{ songName }}</td>
     <td>{{ contributor }}</td>
@@ -38,6 +38,17 @@ export default Vue.extend({
   },
   data: function() {
     return {}
+  },
+  methods: {
+    jumpToInfoPage: function() {
+      window.location = '/songs/' + this.songId
+    }
   }
 })
 </script>
+
+<style>
+tbody tr {
+  cursor: pointer;
+}
+</style>
