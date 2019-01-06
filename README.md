@@ -42,7 +42,7 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 * Google Sheets APIからバックエンドのサーバーが1日に1回データを取りに行ってDB(PostgreSQLかMySQLにする)に反映
 * バックエンドのサーバはREST APIっぽい返答をする
 * フロントエンドが描画
-* 参照系の処理が入ってもこの構図は変えないが、スプレッドシートは状況次第では廃止する。
+* 更新系の処理が入ってもこの構図は変えないが、スプレッドシートは状況次第では廃止する。
     * スプレッドシートにはスプレッドシートのいいところもあるのでできれば残したい
 
 ## 今後の展望
@@ -65,7 +65,7 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 【終了条件】
 
 * Twitterのアカウントでログインできる
-* 認証の基盤についてはAuth0がいいんじゃないかなーと目論見中
+* 認証の基盤については[Auth0](https://auth0.com/jp/)がいいんじゃないかなーと目論見中
 * ログインすると自分のユーザー画面に飛ぶようにする
 * 地力表でのプレイヤーとTwitterのアカウントの紐づけができるようにする
 * 権限管理はこの段階では特にしない
