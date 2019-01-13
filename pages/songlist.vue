@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <search-window/>
+    <search-window
+      @search-emit="search"/>
     <table class="table is-stripe is-hoverable">
       <thead>
         <tr>
@@ -35,7 +36,8 @@ export default Vue.extend({
   data: function() {
     return {
       songs: [],
-      page: 1
+      page: 1,
+      query: '/songs?'
     }
   },
   mounted: function() {
@@ -44,7 +46,7 @@ export default Vue.extend({
   methods: {
     getMore: function() {
       let more = axios
-        .get(process.env.apiBaseUrl + '/songs?page=' + this.page)
+        .get(process.env.apiBaseUrl + this.query + '&page=' + this.page)
         .then(response => {
           if (response.data.length > 0) {
             for (let d of response.data) {
@@ -56,7 +58,7 @@ export default Vue.extend({
           } else {
             // 空のデータしか返ってこなかった場合、ローディング画像を消す
             let loader = document.getElementById('songlist-loader')
-            loader.parentNode.removeChild(loader)
+            loader.style.display = 'none'
           }
         })
         .catch(error => {
@@ -76,10 +78,36 @@ export default Vue.extend({
         window.removeEventListener('scroll', this.handleScroll)
         this.getMore()
       }
+    },
+    enableLoading() {
+      let loader = document.getElementById('songlist-loader')
+      if (loader.style.display === 'none') {
+        loader.style.display = 'block'
+        window.addEventListener('scroll', this.handleScroll)
+      }
+    },
+    disableLoading() {
+      let loader = document.getElementById('songlist-loader')
+      loader.style.display = 'none'
+      window.removeEventListener('scroll', this.handleScroll)
+    },
+    search(searchQuery) {
+      this.enableLoading()
+      this.query = '/songs?' + searchQuery
+      this.songs = []
+      let searchResult = axios
+        .get(process.env.apiBaseUrl + this.query)
+        .then(response => {
+          this.page = 1
+          this.songs = response.data
+          if (response.data.length < 20) {
+            this.disableLoading()
+          }
+        })
     }
   },
   asyncData(context) {
-    let url = process.env.apiBaseUrl + '/songs/'
+    let url = process.env.apiBaseUrl + '/songs'
     let songs = []
     return axios
       .get(url)
