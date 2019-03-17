@@ -1,6 +1,6 @@
 <template>
   <tr @click="jumpToInfoPage">
-    <JirikiRank :jiriki-rank="jirikiRank"/>
+    <JirikiRank :jiriki-rank="jirikiRank" />
     <td>{{ songName }}</td>
     <td>{{ contributor }}</td>
     <td>{{ instrument }}</td>

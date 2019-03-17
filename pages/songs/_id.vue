@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <SongCol v-bind="song"/>
+        <SongCol v-bind="song" />
       </tbody>
     </table>
     <table class="table">
@@ -18,11 +18,9 @@
         <th>プレイヤー</th>
         <th>得点</th>
       </tr>
-      <tr
-        v-for="score in scores"
-        :key="score.id">
+      <tr v-for="score in scores" :key="score.id">
         <td>{{ score.userName }}</td>
-        <ScoreStyle :score="score.score"/>
+        <ScoreStyle :score="score.score" />
       </tr>
     </table>
   </div>

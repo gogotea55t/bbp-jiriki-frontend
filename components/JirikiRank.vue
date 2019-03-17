@@ -1,5 +1,7 @@
 <template>
-  <td :class="classObj">{{ jirikiRank }}</td>
+  <td :class="classObj">
+    {{ jirikiRank }}
+  </td>
 </template>
 
 <script lang="ts">
