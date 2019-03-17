@@ -1,5 +1,7 @@
 <template>
-  <td :class="classObject">{{ score }}</td>
+  <td :class="classObject">
+    {{ score }}
+  </td>
 </template>
 
 <script lang="ts">

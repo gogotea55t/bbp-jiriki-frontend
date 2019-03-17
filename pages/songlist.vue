@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-    <search-window
-      @search-emit="search"/>
+    <search-window @search-emit="search" />
     <table class="table is-stripe is-hoverable">
       <thead>
         <tr>
@@ -12,16 +11,10 @@
         </tr>
       </thead>
       <tbody>
-        <SongCol
-          v-for="song in songs"
-          v-bind="song"
-          :key="song.songId"/>
+        <SongCol v-for="song in songs" :key="song.songId" v-bind="song" />
       </tbody>
     </table>
-    <img
-      id="songlist-loader"
-      src="~/static/loading.gif"
-      alt="now loading...">
+    <img id="songlist-loader" src="~/static/loading.gif" alt="now loading..." />
   </div>
 </template>
 
@@ -39,6 +32,20 @@ export default Vue.extend({
       page: 1,
       query: '/songs?'
     }
+  },
+  asyncData(context) {
+    let url = process.env.apiBaseUrl + '/songs'
+    let songs = []
+    return axios
+      .get(url)
+      .then(response => {
+        return {
+          songs: response.data
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
   },
   mounted: function() {
     window.addEventListener('scroll', this.handleScroll)
@@ -105,20 +112,6 @@ export default Vue.extend({
           }
         })
     }
-  },
-  asyncData(context) {
-    let url = process.env.apiBaseUrl + '/songs'
-    let songs = []
-    return axios
-      .get(url)
-      .then(response => {
-        return {
-          songs: response.data
-        }
-      })
-      .catch(error => {
-        console.log(error)
-      })
   }
 })
 </script>
