@@ -15,12 +15,12 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@nuxt/typescript": "^2.4.5",
+    "@nuxt/typescript": "^2.5.1",
     "@nuxtjs/axios": "^5.4.1",
     "@nuxtjs/bulma": "^1.2.3",
     "@types/node": "^11.11.3",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.4.5",
+    "nuxt": "^2.5.0",
     "ts-loader": "^5.3.3",
     "typescript": "^3.3.3333"
   },
