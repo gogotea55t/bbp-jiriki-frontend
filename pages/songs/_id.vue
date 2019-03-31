@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <SongCol v-bind="song" />
+        <SongCol :song="song" />
       </tbody>
     </table>
     <table class="table">
@@ -30,48 +30,22 @@
 import Vue from 'vue'
 import SongCol from '../../components/SongCol.vue'
 import ScoreStyle from '../../components/ScoreStyle.vue'
+import Songs from '../../components/Songs'
 import axios from 'axios'
 export default Vue.extend({
   components: { SongCol, ScoreStyle },
   data: function() {
     return {
       id: this.$route.params.id,
-      song: {
-        songId: this.$route.params.id,
-        jirikiRank: '地力Ｓ＋',
-        songName: 'カミサマネジマキ',
-        contributor: 'ミラ',
-        instrument: 'ロックオルガン'
-      },
-      scores: [
-        {
-          id: '001',
-          userName: '妖怪Ａ',
-          score: 100
-        },
-        {
-          id: '002',
-          userName: '妖怪Ｂ',
-          score: 98
-        },
-        {
-          id: '003',
-          userName: 'やや妖怪',
-          score: 82
-        },
-        {
-          id: '004',
-          userName: 'ふつうの人',
-          score: 64
-        }
-      ]
+      song: new Songs(this.$route.params.id, '', '', '', ''),
+      scores: []
     }
   },
   // 書き方はここをパクった→https://github.com/nuxt/nuxt.js/issues/978
   async asyncData(context) {
     let id = context.params.id
 
-    let songResponse = await axios
+    let songResponse: Songs = await axios
       .get(process.env.apiBaseUrl + '/songs/' + id)
       .then(response => {
         return response.data
@@ -93,6 +67,9 @@ export default Vue.extend({
       song: songResponse,
       scores: scoreResponse
     }
+  },
+  mounted() {
+    console.log(this.song)
   }
 })
 </script>
