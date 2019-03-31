@@ -6,6 +6,108 @@
 
 <script lang="ts">
 import Vue from 'vue'
+
+export class JirikiRankStyleClassObject {
+  red: boolean = false
+  white: boolean = false
+  splus: boolean = false
+  sn: boolean = false
+  aplus: boolean = false
+  an: boolean = false
+  bplus: boolean = false
+  bn: boolean = false
+  cn: boolean = false
+  dn: boolean = false
+  en: boolean = false
+  fn: boolean = false
+  unaccomplished: boolean = false
+
+  constructor(jirikiRank: string) {
+    switch (jirikiRank) {
+      case '地力Ｓ＋':
+        ;(this.red = true), (this.splus = true)
+        break
+      case '個人差Ｓ＋':
+        ;(this.red = true), (this.splus = true)
+        break
+      case '地力Ｓ':
+        ;(this.white = true), (this.sn = true)
+        break
+      case '個人差Ｓ':
+        ;(this.white = true), (this.sn = true)
+        break
+      case '地力Ａ＋':
+        ;(this.white = true), (this.aplus = true)
+        break
+      case '個人差Ａ＋':
+        ;(this.white = true), (this.aplus = true)
+
+        break
+      case '地力Ａ':
+        ;(this.white = true), (this.an = true)
+
+        break
+      case '個人差Ａ':
+        ;(this.white = true), (this.an = true)
+
+        break
+      case '地力Ｂ＋':
+        ;(this.white = true), (this.bplus = true)
+
+        break
+      case '個人差Ｂ＋':
+        ;(this.white = true), (this.bplus = true)
+
+        break
+      case '地力Ｂ':
+        ;(this.white = true), (this.bn = true)
+
+        break
+      case '個人差Ｂ':
+        ;(this.white = true), (this.bn = true)
+
+        break
+      case '地力Ｃ':
+        ;(this.white = false), (this.cn = true)
+
+        break
+      case '個人差Ｃ':
+        ;(this.white = false), (this.cn = true)
+
+        break
+      case '地力Ｄ':
+        ;(this.white = false), (this.dn = true)
+
+        break
+      case '個人差Ｄ':
+        ;(this.white = false), (this.dn = true)
+
+        break
+      case '地力Ｅ':
+        ;(this.white = false), (this.en = true)
+
+        break
+      case '個人差Ｅ':
+        ;(this.white = false), (this.en = true)
+
+        break
+      case '地力Ｆ':
+        ;(this.white = false), (this.fn = true)
+
+        break
+      case '個人差Ｆ':
+        ;(this.white = false), (this.fn = true)
+
+        break
+      case '求90':
+        this.unaccomplished = true
+
+        break
+      default:
+    }
+  }
+}
+
 export default Vue.extend({
   name: 'JirikiRank',
   props: {
@@ -16,141 +118,11 @@ export default Vue.extend({
   },
   data: function() {
     return {
-      classObj: null
+      classObj: new JirikiRankStyleClassObject('地力Ｓ＋')
     }
   },
   mounted() {
-    switch (this.jirikiRank) {
-      case '地力Ｓ＋':
-        this.classObj = {
-          red: true,
-          splus: true
-        }
-        break
-      case '個人差Ｓ＋':
-        this.classObj = {
-          red: true,
-          splus: true
-        }
-        break
-      case '地力Ｓ':
-        this.classObj = {
-          white: true,
-          sn: true
-        }
-        break
-      case '個人差Ｓ':
-        this.classObj = {
-          white: true,
-          sn: true
-        }
-        break
-      case '地力Ａ＋':
-        this.classObj = {
-          white: true,
-          aplus: true
-        }
-        break
-      case '個人差Ａ＋':
-        this.classObj = {
-          white: true,
-          aplus: true
-        }
-        break
-      case '地力Ａ':
-        this.classObj = {
-          white: true,
-          an: true
-        }
-        break
-      case '個人差Ａ':
-        this.classObj = {
-          white: true,
-          an: true
-        }
-        break
-      case '地力Ｂ＋':
-        this.classObj = {
-          white: true,
-          bplus: true
-        }
-        break
-      case '個人差Ｂ＋':
-        this.classObj = {
-          white: true,
-          bplus: true
-        }
-        break
-      case '地力Ｂ':
-        this.classObj = {
-          white: true,
-          bn: true
-        }
-        break
-      case '個人差Ｂ':
-        this.classObj = {
-          white: true,
-          bn: true
-        }
-        break
-      case '地力Ｃ':
-        this.classObj = {
-          white: false,
-          cn: true
-        }
-        break
-      case '個人差Ｃ':
-        this.classObj = {
-          white: false,
-          cn: true
-        }
-        break
-      case '地力Ｄ':
-        this.classObj = {
-          white: false,
-          dn: true
-        }
-        break
-      case '個人差Ｄ':
-        this.classObj = {
-          white: false,
-          dn: true
-        }
-        break
-      case '地力Ｅ':
-        this.classObj = {
-          white: false,
-          en: true
-        }
-        break
-      case '個人差Ｅ':
-        this.classObj = {
-          white: false,
-          en: true
-        }
-        break
-      case '地力Ｆ':
-        this.classObj = {
-          white: false,
-          fn: true
-        }
-        break
-      case '個人差Ｆ':
-        this.classObj = {
-          white: false,
-          fn: true
-        }
-        break
-      case '求90':
-        this.classObj = {
-          unaccomplished: true
-        }
-        break
-      default:
-        this.classObj = {
-          'default-jiriki': true
-        }
-    }
+    this.classObj = new JirikiRankStyleClassObject(this.jirikiRank)
   }
 })
 </script>

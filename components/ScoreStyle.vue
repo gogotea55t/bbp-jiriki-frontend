@@ -6,6 +6,33 @@
 
 <script lang="ts">
 import Vue from 'vue'
+
+export class ScoreStyleClassObject {
+  masakaHonkija: boolean
+  chutoHampa: boolean
+  masakaKonoteido: boolean
+  manzokuSitenai: boolean
+  chousiniNorunja: boolean
+  constructor(score: Number) {
+    this.masakaHonkija = false
+    this.chutoHampa = false
+    this.masakaKonoteido = false
+    this.manzokuSitenai = false
+    this.chousiniNorunja = false
+    if (0 <= score && score < 50) {
+      this.masakaHonkija = true
+    } else if (50 <= score && score < 80) {
+      this.chutoHampa = true
+    } else if (score >= 80 && score < 90) {
+      this.masakaKonoteido = true
+    } else if (score >= 90 && score < 100) {
+      this.manzokuSitenai = true
+    } else if (score == 100) {
+      this.chousiniNorunja = true
+    }
+  }
+}
+
 export default Vue.extend({
   name: 'ScoreStyle',
   props: {
@@ -16,54 +43,33 @@ export default Vue.extend({
   },
   data: function() {
     return {
-      classObject: null
+      classObject: new ScoreStyleClassObject(0)
     }
   },
-  mounted() {
-    let sc = this.score
-    if (0 <= sc && sc < 50) {
-      this.classObject = {
-        'masaka-honkija': true
-      }
-    } else if (50 <= sc && sc < 80) {
-      this.classObject = {
-        'chuto-hampa': true
-      }
-    } else if (sc >= 80 && sc < 90) {
-      this.classObject = {
-        'masaka-konoteido': true
-      }
-    } else if (sc >= 90 && sc < 100) {
-      this.classObject = {
-        'manzoku-sitenai': true
-      }
-    } else if (sc == 100) {
-      this.classObject = {
-        'chousini-norunja': true
-      }
-    }
+  mounted: function() {
+    this.classObject = new ScoreStyleClassObject(this.score)
   }
 })
 </script>
 
 <style>
-.masaka-honkija {
+.masakaHonkija {
   background-color: #efefef;
 }
 
-.chuto-hampa {
+.chutoHampa {
   background-color: #a4c2ea;
 }
 
-.masaka-konoteido {
+.masakaKonoteido {
   background-color: #ea9999;
 }
 
-.manzoku-sitenai {
+.manzokuSitenai {
   background-color: #cccccc;
 }
 
-.chousini-norunja {
+.chousiniNorunja {
   background-color: gold;
 }
 </style>
