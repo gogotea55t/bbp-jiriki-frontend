@@ -11,7 +11,7 @@
     "esModuleInterop": true,
     "allowJs": true,
     "sourceMap": true,
-    "strict": true,
+    "strict": false,
     "noImplicitAny": false,
     "noEmit": true,
     "paths": {
@@ -24,7 +24,8 @@
       "~/plugins/*": ["./plugins/*"],
       "~/static/*": ["./static/*"],
       "~/store": ["./.nuxt/store"],
-      "~/router": ["./.nuxt/router"]
+      "~/router": ["./.nuxt/router"],
+      "@/*": ["./*"]
     }
   },
   "include": [
