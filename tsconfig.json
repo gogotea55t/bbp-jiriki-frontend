@@ -1,19 +1,13 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "types": [
-      "@types/node",
-      "@nuxt/vue-app"
-    ],
+    "types": ["@types/node", "@nuxt/vue-app", "@types/jest"],
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "lib": [
-      "esnext",
-      "esnext.asynciterable",
-      "dom"
-    ],
+    "lib": ["esnext", "esnext.asynciterable", "dom"],
     "esModuleInterop": true,
     "allowJs": true,
     "sourceMap": true,
@@ -21,12 +15,26 @@
     "noImplicitAny": false,
     "noEmit": true,
     "paths": {
-      "~/*": [
-        "./*"
-      ],
-      "@/*": [
-        "./*"
-      ]
+      "~/*": ["./*"],
+      "~/assets/*": ["./assets/*"],
+      "~/components/*": ["./components/*"],
+      "~/middleware/*": ["./middleware/*"],
+      "~/modules/*": ["./modules/*"],
+      "~/pages/*": ["./pages/*"],
+      "~/plugins/*": ["./plugins/*"],
+      "~/static/*": ["./static/*"],
+      "~/store": ["./.nuxt/store"],
+      "~/router": ["./.nuxt/router"]
     }
-  }
+  },
+  "include": [
+    "./*",
+    "./assets/**/*",
+    "./components/**/*",
+    "./middleware/**/*",
+    "./modules/**/*",
+    "./pages/**/*",
+    "./plugins/**/*",
+    "./static/**/*"
+  ]
 }

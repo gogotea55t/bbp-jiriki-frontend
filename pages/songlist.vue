@@ -134,9 +134,11 @@ export default Vue.extend({
       this.enableLoading()
       this.query = '/songs?' + searchQuery
       this.songs = []
+      console.log(this.query)
       let searchResult = await axios
         .get(process.env.apiBaseUrl + this.query)
         .then(response => {
+          console.log(response)
           this.page = 1
           this.songs = response.data.map(s => {
             return new Songs(
