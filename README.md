@@ -1,5 +1,7 @@
 # bbp-jiriki-frontend
 
+![](https://travis-ci.com/gogotea55t/bbp-jiriki-frontend.svg?branch=master)
+
 > Frontend project for jiriki API.
 
 ## Build Setup
