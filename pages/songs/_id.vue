@@ -67,9 +67,6 @@ export default Vue.extend({
       song: songResponse,
       scores: scoreResponse
     }
-  },
-  mounted() {
-    console.log(this.song)
   }
 })
 </script>
