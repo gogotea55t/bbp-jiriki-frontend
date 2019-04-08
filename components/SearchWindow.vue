@@ -16,6 +16,7 @@
       </div>
       <div class="control is-full-width">
         <input
+          id="query-word"
           v-model="query"
           class="input"
           type="text"
@@ -24,7 +25,7 @@
         />
       </div>
       <div class="control">
-        <button class="button" @click="search">
+        <button id="search-btn" class="button" @click="search">
           検索
         </button>
       </div>

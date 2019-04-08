@@ -23,7 +23,7 @@ export default Vue.extend({
   },
   methods: {
     jumpToInfoPage: function() {
-      window.location.href = '/songs/' + this.song.songId
+      window.location.href = '/songs/' + this.$props.song.songId
     }
   }
 })

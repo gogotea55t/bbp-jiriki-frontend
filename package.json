@@ -12,17 +12,27 @@
     "start:prod": "cross-env NODE_ENV=\"production\" nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "test": "jest",
     "precommit": "npm run lint"
   },
   "dependencies": {
     "@nuxt/typescript": "^2.5.1",
     "@nuxtjs/axios": "^5.4.1",
     "@nuxtjs/bulma": "^1.2.3",
+    "@types/jest": "^24.0.11",
     "@types/node": "^11.11.3",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "axios-mock-adapter": "^1.16.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^24.5.0",
     "cross-env": "^5.2.0",
+    "jest": "^24.5.0",
+    "jest-serializer-vue": "^2.0.2",
     "nuxt": "^2.5.0",
+    "ts-jest": "^24.0.1",
     "ts-loader": "^5.3.3",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.3333",
+    "vue-jest": "^3.0.4"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
@@ -33,5 +43,35 @@
     "eslint-plugin-vue": "^5.2.2",
     "nodemon": "^1.18.10",
     "prettier": "^1.16.4"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts",
+      "vue",
+      "tsx"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/$1",
+      "^/(.*)$": "<rootDir>/$1"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.ts$": "ts-jest",
+      "^.+\\.tsx$": "ts-jest"
+    },
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "./assets/**/*.{js,vue,ts}",
+      "./components/**/*.{js,vue,ts}",
+      "./middleware/**/*.{js,vue,ts}",
+      "./modules/**/*.{js,vue,ts}",
+      "./pages/**/*.{js,vue,ts}",
+      "./plugins/**/*.{js,vue,ts}",
+      "./static/**/*.{js,vue,ts}"
+    ]
   }
 }
