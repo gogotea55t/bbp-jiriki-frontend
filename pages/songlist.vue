@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <search-window @search-emit="search" />
     <table class="table is-stripe is-hoverable">
       <thead>
