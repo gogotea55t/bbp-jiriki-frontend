@@ -14,7 +14,7 @@
           </option>
         </select>
       </div>
-      <div class="control is-full-width">
+      <div class="control is-expanded">
         <input
           id="query-word"
           v-model="query"
