@@ -1,5 +1,5 @@
 <template>
-  <select>
+  <select v-model="playerId" @change="selectChanged">
     <option
       v-for="player in players"
       :key="player.userId"
@@ -18,7 +18,8 @@ export default Vue.extend({
   name: 'PlayerSelector',
   data: function() {
     return {
-      players: new Array<Players>()
+      players: new Array<Players>(),
+      playerId: 'u001'
     }
   },
   async created() {
@@ -27,6 +28,11 @@ export default Vue.extend({
         return new Players(s.userId, s.userName)
       })
     })
+  },
+  methods: {
+    selectChanged() {
+      this.$emit('player-selected', this.playerId)
+    }
   }
 })
 </script>
