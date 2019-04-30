@@ -28,13 +28,15 @@ export default Vue.extend({
       this.page = 1
       this.playerId = playerId
       this.query = '/players/' + this.playerId + '/scores'
-      this.$refs.songTable.loadSongsByQuery(this.query)
+      let songsTable: any = this.$refs.songTable
+      songsTable.loadSongsByQuery(this.query)
       this.enableLoading()
     },
     async getMore() {
       this.page = this.page + 1
       this.query = '/players/' + this.playerId + '/scores?page=' + this.page
-      let numberOfSongsAdded = await this.$refs.songTable.loadMore(this.query)
+      let songsTable: any = this.$refs.songTable
+      let numberOfSongsAdded: number = await songsTable.loadMore(this.query)
       console.log(numberOfSongsAdded)
       if (numberOfSongsAdded < 20) {
         this.disableLoading()
@@ -44,7 +46,6 @@ export default Vue.extend({
     },
     // ローディング画像のところまでスクロールが行くと次のデータを読み込むようにする
     handleScroll() {
-      console.log('aaaa')
       let scrollTop =
         document.documentElement.scrollTop || document.body.scrollTop
       let loaderImage = document.getElementById('songlist-loader')
