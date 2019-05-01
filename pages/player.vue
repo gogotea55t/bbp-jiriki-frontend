@@ -37,7 +37,6 @@ export default Vue.extend({
       this.query = '/players/' + this.playerId + '/scores?page=' + this.page
       let songsTable: any = this.$refs.songTable
       let numberOfSongsAdded: number = await songsTable.loadMore(this.query)
-      console.log(numberOfSongsAdded)
       if (numberOfSongsAdded < 20) {
         this.disableLoading()
       } else {
