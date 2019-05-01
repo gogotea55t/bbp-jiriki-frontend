@@ -37,18 +37,45 @@ export default Vue.extend({
     }
   },
   async created() {
-    await axios.get(process.env.apiBaseUrl + this.query).then(response => {
-      this.songs = response.data.map(s => {
-        new SongsWithScore(
-          s.songId,
-          s.jirikiRank,
-          s.songName,
-          s.contributor,
-          s.instrument,
-          s.score
-        )
+    await this.loadSongsByQuery(this.query)
+  },
+  methods: {
+    async loadSongsByQuery(query: String) {
+      // 表示を切り替える前に配列を初期化する。一度中身を消さないとcssのクラスが残ってしまう。
+      this.songs = new Array<SongsWithScore>()
+      await axios.get(process.env.apiBaseUrl + query).then(response => {
+        this.songs = response.data.map(s => {
+          return new SongsWithScore(
+            s.songId,
+            s.jirikiRank,
+            s.songName,
+            s.contributor,
+            s.instrument,
+            s.score
+          )
+        })
       })
-    })
+    },
+    async loadMore(query: String) {
+      let count: number = 0
+      await axios.get(process.env.apiBaseUrl + query).then(response => {
+        response.data.forEach(s => {
+          count++
+          this.songs.push(
+            new SongsWithScore(
+              s.songId,
+              s.jirikiRank,
+              s.songName,
+              s.contributor,
+              s.instrument,
+              s.score
+            )
+          )
+        })
+      })
+
+      return count
+    }
   }
 })
 </script>
