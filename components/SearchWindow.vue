@@ -2,7 +2,15 @@
   <section class="section">
     <div class="field has-addons">
       <div class="select control">
-        <select id="search-attr" v-model="queryKey" name="search-attr">
+        <select
+          id="search-attr"
+          v-model="queryKey"
+          name="search-attr"
+          @change="queryKeySelectChanged"
+        >
+          <option value="jiriki">
+            地力
+          </option>
           <option value="name" selected>
             楽曲名
           </option>
@@ -14,7 +22,7 @@
           </option>
         </select>
       </div>
-      <div class="control is-expanded">
+      <div v-if="!isJirikiRankSelected" class="control is-expanded">
         <input
           id="query-word"
           v-model="query"
@@ -24,6 +32,10 @@
           @keyup.enter="search"
         />
       </div>
+      <JirikiSelector
+        v-if="isJirikiRankSelected"
+        @jiriki-rank-changed="jirikiRankSelectChanged"
+      ></JirikiSelector>
       <div class="control">
         <button id="search-btn" class="button" @click="search">
           検索
@@ -35,18 +47,27 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import JirikiSelector from './JirikiSelector.vue'
 export default Vue.extend({
   name: 'SearchWindow',
+  components: { JirikiSelector },
   data: function() {
     return {
+      isJirikiRankSelected: false,
       queryKey: 'name',
-      query: null
+      query: ''
     }
   },
   methods: {
     search: function() {
       let searchQuery = this.queryKey + '=' + this.query
       this.$emit('search-emit', searchQuery)
+    },
+    queryKeySelectChanged: function() {
+      this.isJirikiRankSelected = this.queryKey === 'jiriki'
+    },
+    jirikiRankSelectChanged: function(selectChanged: string) {
+      this.query = selectChanged
     }
   }
 })
