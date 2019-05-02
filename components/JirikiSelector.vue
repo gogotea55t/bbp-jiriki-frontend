@@ -50,11 +50,6 @@ export default Vue.extend({
       ],
       jirikiRankSelected: '未決定'
     }
-  },
-  methods: {
-    selectChanged() {
-      this.$emit('jiriki-rank-changed', this.jirikiRankSelected)
-    }
   }
 })
 </script>
