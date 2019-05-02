@@ -1,7 +1,7 @@
 # bbp-jiriki-frontend
 
 ![](https://travis-ci.com/gogotea55t/bbp-jiriki-frontend.svg?branch=master)
-
+[![Coverage Status](https://coveralls.io/repos/github/gogotea55t/bbp-jiriki-frontend/badge.svg?branch=52-code-coverage)](https://coveralls.io/github/gogotea55t/bbp-jiriki-frontend?branch=52-code-coverage)
 > Frontend project for jiriki API.
 
 ## Build Setup
