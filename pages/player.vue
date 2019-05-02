@@ -17,7 +17,7 @@ export default Vue.extend({
   components: { PlayerSelector, SearchWindow, SongsTableWithScore },
   data() {
     return {
-      query: '/players/u001/scores',
+      query: '/players/u001/scores?page=',
       playerId: 'u001',
       page: 0
     }
@@ -57,7 +57,7 @@ export default Vue.extend({
     searchSongs(queryString: string) {
       this.page = 0
       this.query =
-        '/players' + this.playerId + '/scores?' + queryString + '&page='
+        '/players/' + this.playerId + '/scores?' + queryString + '&page='
       let songsTable: any = this.$refs.songTable
       songsTable.loadSongsByQuery(this.query + this.page)
       this.enableLoading()

@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <div class="field has-addons">
-      <div class="select control">
+      <div class="select control has-icons-left">
         <select
           id="search-attr"
           v-model="queryKey"
