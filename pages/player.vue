@@ -22,6 +22,26 @@ export default Vue.extend({
       page: 0
     }
   },
+  head() {
+    return {
+      title: '得点一覧 - 大合奏！バンドブラザーズ☆10地力表',
+      meta: [
+        { name: 'twitter:card', content: 'summary' },
+        {
+          name: 'twitter:title',
+          content: '得点一覧 - 大合奏！バンドブラザーズ☆10地力表'
+        },
+        {
+          name: 'twitter:description',
+          content: 'プレイヤーごとの得点一覧です。'
+        },
+        {
+          name: 'description',
+          content: 'プレイヤーごとの得点一覧です。'
+        }
+      ]
+    }
+  },
   mounted() {
     window.addEventListener('scroll', this.handleScroll)
   },
@@ -37,7 +57,7 @@ export default Vue.extend({
     searchSongs(queryString: string) {
       this.page = 0
       this.query =
-        '/players/' + this.playerId + '/scores?' + queryString + '&page='
+        '/players' + this.playerId + '/scores?' + queryString + '&page='
       let songsTable: any = this.$refs.songTable
       songsTable.loadSongsByQuery(this.query + this.page)
       this.enableLoading()
