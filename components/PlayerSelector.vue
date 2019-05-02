@@ -1,21 +1,33 @@
 <template>
-  <select v-model="playerId" @change="selectChanged">
-    <option
-      v-for="player in players"
-      :key="player.userId"
-      :value="player.userId"
-    >
-      {{ player.userName }}
-    </option>
-  </select>
+  <div class="control has-icons-left">
+    <div class="select is-fullwidth">
+      <select v-model="playerId" @change="selectChanged">
+        <option
+          v-for="player in players"
+          :key="player.userId"
+          :value="player.userId"
+        >
+          {{ player.userName }}
+        </option>
+      </select>
+    </div>
+    <span class="icon is-left">
+      <font-awesome-icon icon="user"></font-awesome-icon>
+    </span>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import Players from './Players'
 import axios from 'axios'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+library.add(faUser)
 export default Vue.extend({
   name: 'PlayerSelector',
+  components: { FontAwesomeIcon },
   data: function() {
     return {
       players: new Array<Players>(),
