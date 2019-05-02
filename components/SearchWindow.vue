@@ -34,7 +34,7 @@
       </div>
       <JirikiSelector
         v-if="isJirikiRankSelected"
-        @jiriki-rank-changed="jirikiRankSelectChanged"
+        ref="jirikiSelector"
       ></JirikiSelector>
       <div class="control">
         <button id="search-btn" class="button" @click="search">
@@ -61,13 +61,14 @@ export default Vue.extend({
   methods: {
     search: function() {
       let searchQuery = this.queryKey + '=' + this.query
+      if (this.isJirikiRankSelected) {
+        let jirikiSel: any = this.$refs.jirikiSelector
+        searchQuery = this.queryKey + '=' + jirikiSel.$data.jirikiRankSelected
+      }
       this.$emit('search-emit', searchQuery)
     },
     queryKeySelectChanged: function() {
       this.isJirikiRankSelected = this.queryKey === 'jiriki'
-    },
-    jirikiRankSelectChanged: function(selectChanged: string) {
-      this.query = selectChanged
     }
   }
 })
