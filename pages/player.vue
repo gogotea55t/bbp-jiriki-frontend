@@ -1,6 +1,7 @@
 <template>
   <div>
     <PlayerSelector @player-selected="searchByPlayer"></PlayerSelector>
+    <SearchWindow @search-emit="searchSongs"></SearchWindow>
     <SongsTableWithScore ref="songTable" :query="query"></SongsTableWithScore>
     <img id="songlist-loader" src="~/static/loading.gif" alt="now loading..." />
   </div>
@@ -9,10 +10,11 @@
 <script lang="ts">
 import Vue from 'vue'
 import PlayerSelector from '../components/PlayerSelector.vue'
+import SearchWindow from '../components/SearchWindow.vue'
 import SongsTableWithScore from '../components/SongsTableWithScore.vue'
 export default Vue.extend({
   name: 'Player',
-  components: { PlayerSelector, SongsTableWithScore },
+  components: { PlayerSelector, SearchWindow, SongsTableWithScore },
   data() {
     return {
       query: '/players/u001/scores',
@@ -25,18 +27,27 @@ export default Vue.extend({
   },
   methods: {
     searchByPlayer(playerId) {
-      this.page = 1
+      this.page = 0
       this.playerId = playerId
-      this.query = '/players/' + this.playerId + '/scores'
+      this.query = '/players/' + this.playerId + '/scores?page='
       let songsTable: any = this.$refs.songTable
-      songsTable.loadSongsByQuery(this.query)
+      songsTable.loadSongsByQuery(this.query + this.page)
+      this.enableLoading()
+    },
+    searchSongs(queryString: string) {
+      this.page = 0
+      this.query =
+        '/players/' + this.playerId + '/scores?' + queryString + '&page='
+      let songsTable: any = this.$refs.songTable
+      songsTable.loadSongsByQuery(this.query + this.page)
       this.enableLoading()
     },
     async getMore() {
       this.page = this.page + 1
-      this.query = '/players/' + this.playerId + '/scores?page=' + this.page
       let songsTable: any = this.$refs.songTable
-      let numberOfSongsAdded: number = await songsTable.loadMore(this.query)
+      let numberOfSongsAdded: number = await songsTable.loadMore(
+        this.query + this.page
+      )
       if (numberOfSongsAdded < 20) {
         this.disableLoading()
       } else {
