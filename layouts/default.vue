@@ -3,8 +3,8 @@
     <nav class="navbar is-white topNav">
       <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item" href="../">
-            Bulma
+          <a class="navbar-item" href="index.html">
+            大合奏！バンドブラザーズ☆10 地力表
           </a>
           <div class="navbar-burger burger" data-target="topNav">
             <span></span>
@@ -14,8 +14,22 @@
         </div>
         <div id="topNav" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="cover.html">Home</a>
-            <a class="navbar-item" href="/songlist">楽曲一覧</a>
+            <a class="navbar-item" href="/songlist">
+              <font-awesome-icon icon="music"></font-awesome-icon> 楽曲から探す
+            </a>
+            <a class="navbar-item" href="/player">
+              <font-awesome-icon icon="users"></font-awesome-icon>
+              プレイヤーから探す
+            </a>
+            <a
+              class="navbar-item"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://docs.google.com/spreadsheets/d/1YBCP7kBrhCha5v8RRklTwXs0rbS437EG1yLNdwFm634/edit#gid=0"
+            >
+              <font-awesome-icon icon="table"></font-awesome-icon>
+              スプレッドシートへ
+            </a>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
@@ -87,6 +101,26 @@
     </footer>
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+  faHome,
+  faMusic,
+  faUsers,
+  faTable
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faHome)
+library.add(faMusic)
+library.add(faUsers)
+library.add(faTable)
+export default Vue.extend({
+  components: { FontAwesomeIcon }
+})
+</script>
 
 <style>
 html {
