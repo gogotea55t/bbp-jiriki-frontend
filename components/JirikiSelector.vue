@@ -1,11 +1,7 @@
 <template>
   <div class="control is-expanded">
     <div class="select is-fullwidth">
-      <select
-        id="jiriki-selector"
-        v-model="jirikiRankSelected"
-        @change="selectChanged"
-      >
+      <select id="jiriki-selector" v-model="jirikiRankSelected">
         <option
           v-for="jirikiRank of jirikiRanks"
           :key="jirikiRank"
