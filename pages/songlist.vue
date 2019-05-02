@@ -34,6 +34,23 @@ export default Vue.extend({
       query: '/songs?'
     }
   },
+  head() {
+    return {
+      title: '楽曲一覧 - 大合奏！バンドブラザーズ☆10地力表',
+      meta: [
+        { name: 'twitter:card', content: 'summary' },
+        {
+          name: 'twitter:title',
+          content: '得点一覧 - 大合奏！バンドブラザーズ☆10地力表'
+        },
+        {
+          name: 'twitter:description',
+          content: '登録されている楽曲の一覧です。'
+        },
+        { name: 'description', content: '登録されている楽曲の一覧です。' }
+      ]
+    }
+  },
   async asyncData(context) {
     let url = process.env.apiBaseUrl + '/songs'
     let songsResponse: Array<Songs> = await axios

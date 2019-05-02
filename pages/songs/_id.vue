@@ -41,6 +41,29 @@ export default Vue.extend({
       scores: []
     }
   },
+  head() {
+    const songsIdentifier =
+      this.$data.song.songName +
+      ' / ' +
+      this.$data.song.contributor +
+      ' (' +
+      this.$data.song.instrument +
+      ')'
+    return {
+      title: songsIdentifier + ' - 大合奏！バンドブラザーズ☆10地力表',
+      meta: [
+        { name: 'twitter:card', content: 'summary' },
+        {
+          name: 'twitter:title',
+          content: songsIdentifier + ' - 大合奏！バンドブラザーズ☆10地力表'
+        },
+        {
+          name: 'twitter:description',
+          content: songsIdentifier + 'の得点一覧です。'
+        }
+      ]
+    }
+  },
   // 書き方はここをパクった→https://github.com/nuxt/nuxt.js/issues/978
   async asyncData(context) {
     let id = context.params.id
