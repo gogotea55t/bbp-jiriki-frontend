@@ -64,10 +64,8 @@ export default Vue.extend({
       ]
     }
   },
-  // 書き方はここをパクった→https://github.com/nuxt/nuxt.js/issues/978
-  async asyncData(context) {
-    let id = context.params.id
-
+  async created() {
+    let id = this.$route.params.id
     let songResponse: Songs = await axios
       .get(process.env.apiBaseUrl + '/songs/' + id)
       .then(response => {
@@ -85,11 +83,8 @@ export default Vue.extend({
       .catch(error => {
         console.log(error)
       })
-
-    return {
-      song: songResponse,
-      scores: scoreResponse
-    }
+    this.song = songResponse
+    this.scores = scoreResponse
   }
 })
 </script>
