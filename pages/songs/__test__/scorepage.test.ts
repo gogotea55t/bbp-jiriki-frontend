@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import * as ScorePage from '../_id.vue'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
@@ -27,7 +27,7 @@ mock.onGet(apiBaseUrl + '/songs/200').reply(200, sampleSong)
 mock.onGet(apiBaseUrl + '/songs/200/scores').reply(200, sampleScores)
 describe(ScorePage.default, () => {
   it('サーバーからデータを取得できる', done => {
-    const wrapper = mount(ScorePage.default, {
+    const wrapper = shallowMount(ScorePage.default, {
       mocks: {
         $route: {
           params: {
