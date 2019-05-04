@@ -70,7 +70,6 @@ export default Vue.extend({
       .get(process.env.apiBaseUrl + '/songs/' + id)
       .then(response => {
         let s: any = response.data
-        console.log(s)
         return new Songs(
           s.songId,
           s.jirikiRank,
