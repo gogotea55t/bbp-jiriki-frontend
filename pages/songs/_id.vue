@@ -69,10 +69,19 @@ export default Vue.extend({
     let songResponse: Songs = await axios
       .get(process.env.apiBaseUrl + '/songs/' + id)
       .then(response => {
-        return response.data
+        let s: any = response.data
+        console.log(s)
+        return new Songs(
+          s.songId,
+          s.jirikiRank,
+          s.songName,
+          s.contributor,
+          s.instrument
+        )
       })
       .catch(error => {
         console.log(error)
+        throw error
       })
 
     let scoreResponse = await axios
