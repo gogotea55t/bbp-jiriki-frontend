@@ -2,7 +2,6 @@ import { shallowMount } from '@vue/test-utils'
 import * as PlayerSelector from '../PlayerSelector.vue'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
-import Vue from 'vue'
 
 //global.Promise = jest.requireActual('Promise')
 jest.setTimeout(20000)
