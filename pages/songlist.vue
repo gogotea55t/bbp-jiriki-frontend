@@ -100,7 +100,6 @@ export default Vue.extend({
       this.query = '/songs?' + searchQuery + '&page='
       this.page = 0
       let songTable: any = this.$refs.songTable
-      console.log(this.$refs)
       let numberOfSongsAdded: number = songTable.loadSongsByQuery(
         this.query + this.page
       )
