@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr @click="jumpToInfoPage">
     <JirikiRank :jiriki-rank="song.jirikiRank"></JirikiRank>
     <td>{{ song.songName }}</td>
     <td>{{ song.contributor }}</td>
@@ -20,6 +20,11 @@ export default Vue.extend({
     song: {
       type: SongsWithScore,
       default: new SongsWithScore('', '', '', '', '', 0)
+    }
+  },
+  methods: {
+    jumpToInfoPage: function() {
+      window.location.href = '/songs/' + this.$props.song.songId
     }
   }
 })
