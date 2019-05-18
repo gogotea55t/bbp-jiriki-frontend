@@ -35,11 +35,13 @@ export default Vue.extend({
     }
   },
   async created() {
-    await axios.get(process.env.apiBaseUrl + '/players').then(response => {
-      this.players = response.data.map(s => {
-        return new Players(s.userId, s.userName)
+    await axios
+      .get(process.env.apiBaseUrl + '/v1' + '/players')
+      .then(response => {
+        this.players = response.data.map(s => {
+          return new Players(s.userId, s.userName)
+        })
       })
-    })
   },
   methods: {
     selectChanged() {
