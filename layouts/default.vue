@@ -193,4 +193,7 @@ article.post:last-child {
 .menu-list li {
   padding: 5px;
 }
+section.section {
+  padding: 1.5rem 0.5rem;
+}
 </style>

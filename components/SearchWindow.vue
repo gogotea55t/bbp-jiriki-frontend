@@ -1,26 +1,31 @@
 <template>
-  <section class="section">
+  <div>
     <div class="field has-addons">
-      <div class="select control has-icons-left">
-        <select
-          id="search-attr"
-          v-model="queryKey"
-          name="search-attr"
-          @change="queryKeySelectChanged"
-        >
-          <option value="jiriki">
-            地力
-          </option>
-          <option value="name" selected>
-            楽曲名
-          </option>
-          <option value="contributor">
-            投稿者名
-          </option>
-          <option value="instrument">
-            楽器
-          </option>
-        </select>
+      <div class="control has-icons-left">
+        <div class="select">
+          <select
+            id="search-attr"
+            v-model="queryKey"
+            name="search-attr"
+            @change="queryKeySelectChanged"
+          >
+            <option value="jiriki">
+              地力
+            </option>
+            <option value="name" selected>
+              楽曲名
+            </option>
+            <option value="contributor">
+              投稿者名
+            </option>
+            <option value="instrument">
+              楽器
+            </option>
+          </select>
+        </div>
+        <span class="icon is-left">
+          <font-awesome-icon icon="search"></font-awesome-icon>
+        </span>
       </div>
       <div v-if="!isJirikiRankSelected" class="control is-expanded">
         <input
@@ -42,15 +47,19 @@
         </button>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import JirikiSelector from './JirikiSelector.vue'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+library.add(faSearch)
 export default Vue.extend({
   name: 'SearchWindow',
-  components: { JirikiSelector },
+  components: { JirikiSelector, FontAwesomeIcon },
   data: function() {
     return {
       isJirikiRankSelected: false,
