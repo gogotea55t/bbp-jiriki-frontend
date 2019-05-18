@@ -7,7 +7,7 @@ import axios from 'axios'
 jest.setTimeout(20000)
 
 const mock = new MockAdapter(axios)
-mock.onGet(process.env.apiBaseUrl + '/players').reply(200, [
+mock.onGet(process.env.apiBaseUrl + '/v1' + '/players').reply(200, [
   {
     userId: 'u001',
     userName: '妖怪1'
