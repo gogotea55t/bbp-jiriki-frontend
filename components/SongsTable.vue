@@ -40,7 +40,7 @@ export default Vue.extend({
   },
   methods: {
     async loadSongsByQuery(query: string) {
-      let url = process.env.apiBaseUrl + query
+      let url = process.env.apiBaseUrl + '/v1' + query
       let songsResponse: Array<Songs> = await axios
         .get<Array<Songs>>(url)
         .then(response => {
@@ -63,7 +63,7 @@ export default Vue.extend({
     },
     async loadMore(query: string) {
       let numberOfSongsAdded: number = await axios
-        .get(process.env.apiBaseUrl + query)
+        .get(process.env.apiBaseUrl + '/v1' + query)
         .then(response => {
           if (response.data.length > 0) {
             response.data.forEach(element => {

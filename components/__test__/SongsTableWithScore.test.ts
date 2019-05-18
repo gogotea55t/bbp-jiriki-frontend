@@ -217,9 +217,11 @@ jest.setTimeout(20000)
 
 const mock = new MockAdapter(axios)
 const apiBaseUrl: string = process.env.apiBaseUrl || 'http://localhost:8080'
-mock.onGet(apiBaseUrl + '/players/u001/scores').reply(200, sampleSongs.data)
 mock
-  .onGet(apiBaseUrl + '/players/u001/scores?page=2')
+  .onGet(apiBaseUrl + '/v1' + '/players/u001/scores')
+  .reply(200, sampleSongs.data)
+mock
+  .onGet(apiBaseUrl + '/v1' + '/players/u001/scores?page=2')
   .reply(200, sampleSongsPage2.data)
 
 describe(SongTableWithScore.default, () => {
