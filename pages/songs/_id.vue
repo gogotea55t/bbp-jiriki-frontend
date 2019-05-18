@@ -67,7 +67,7 @@ export default Vue.extend({
   async created() {
     let id = this.$route.params.id
     let songResponse: Songs = await axios
-      .get(process.env.apiBaseUrl + '/songs/' + id)
+      .get(process.env.apiBaseUrl + '/v1' + '/songs/' + id)
       .then(response => {
         let s: any = response.data
         return new Songs(
@@ -84,7 +84,7 @@ export default Vue.extend({
       })
 
     let scoreResponse = await axios
-      .get(process.env.apiBaseUrl + '/songs/' + id + '/scores')
+      .get(process.env.apiBaseUrl + '/v1' + '/songs/' + id + '/scores')
       .then(response => {
         return response.data
       })
