@@ -1,7 +1,11 @@
 <template>
   <div>
-    <search-window @search-emit="search" />
-    <SongsTable ref="songTable" :query="query"></SongsTable>
+    <section class="section">
+      <search-window @search-emit="search" />
+    </section>
+    <section class="section">
+      <SongsTable ref="songTable" :query="query"></SongsTable>
+    </section>
     <img id="songlist-loader" src="~/static/loading.gif" alt="now loading..." />
   </div>
 </template>

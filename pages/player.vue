@@ -1,9 +1,17 @@
 <template>
   <div>
-    <PlayerSelector @player-selected="searchByPlayer"></PlayerSelector>
-    <SearchWindow @search-emit="searchSongs"></SearchWindow>
-    <SongsTableWithScore ref="songTable" :query="query"></SongsTableWithScore>
-    <img id="songlist-loader" src="~/static/loading.gif" alt="now loading..." />
+    <section class="section">
+      <PlayerSelector @player-selected="searchByPlayer"></PlayerSelector>
+      <SearchWindow @search-emit="searchSongs"></SearchWindow>
+    </section>
+    <section class="section">
+      <SongsTableWithScore ref="songTable" :query="query"></SongsTableWithScore>
+      <img
+        id="songlist-loader"
+        src="~/static/loading.gif"
+        alt="now loading..."
+      />
+    </section>
   </div>
 </template>
 
