@@ -23,8 +23,8 @@ const sampleScores = [
   { userName: '人間', score: 64 }
 ]
 
-mock.onGet(apiBaseUrl + '/songs/200').reply(200, sampleSong)
-mock.onGet(apiBaseUrl + '/songs/200/scores').reply(200, sampleScores)
+mock.onGet(apiBaseUrl + '/v1' + '/songs/200').reply(200, sampleSong)
+mock.onGet(apiBaseUrl + '/v1' + '/songs/200/scores').reply(200, sampleScores)
 describe(ScorePage.default, () => {
   it('サーバーからデータを取得できる', done => {
     const wrapper = shallowMount(ScorePage.default, {
