@@ -31,30 +31,6 @@
               スプレッドシートへ
             </a>
           </div>
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="field is-grouped">
-                <p class="control">
-                  <a class="button is-small">
-                    <span class="icon">
-                      <i class="fa fa-user-plus"></i>
-                    </span>
-                    <span>
-                      Register
-                    </span>
-                  </a>
-                </p>
-                <p class="control">
-                  <a class="button is-small is-info is-outlined">
-                    <span class="icon">
-                      <i class="fa fa-user"></i>
-                    </span>
-                    <span>Login</span>
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </nav>
@@ -117,8 +93,17 @@ library.add(faHome)
 library.add(faMusic)
 library.add(faUsers)
 library.add(faTable)
+
 export default Vue.extend({
-  components: { FontAwesomeIcon }
+  components: { FontAwesomeIcon },
+  mounted() {
+    let burger: any = document.querySelector('.burger')
+    let menu: any = document.querySelector('#' + burger.dataset.target)
+    burger.addEventListener('click', function() {
+      burger.classList.toggle('is-active')
+      menu.classList.toggle('is-active')
+    })
+  }
 })
 </script>
 
