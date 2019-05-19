@@ -3,7 +3,7 @@
     <nav class="navbar is-white topNav">
       <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item" href="index.html">
+          <a class="navbar-item" href="/">
             大合奏！バンドブラザーズ☆10 地力表
           </a>
           <div class="navbar-burger burger" data-target="topNav">
@@ -55,6 +55,8 @@
                 <div class="tags has-addons">
                   <a
                     class="tag is-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     href="https://github.com/dansup/bulma-templates"
                   >
                     Bulma Templates
@@ -63,12 +65,17 @@
                 </div>
               </div>
               <div class="control">
-                <div class="tags has-addons">
-                  <a class="tag is-link">The source code is licensed</a>
-                  <span class="tag is-light">
-                    MIT &nbsp;<i class="fa fa-github"></i>
-                  </span>
-                </div>
+                <a
+                  class="tag is-dark"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://github.com/gogotea55t/bbp-jiriki-frontend"
+                >
+                  <font-awesome-icon
+                    :icon="['fab', 'github']"
+                  ></font-awesome-icon>
+                  Github
+                </a>
               </div>
             </div>
           </div>
@@ -87,12 +94,14 @@ import {
   faUsers,
   faTable
 } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faHome)
 library.add(faMusic)
 library.add(faUsers)
 library.add(faTable)
+library.add(faGithub)
 
 export default Vue.extend({
   components: { FontAwesomeIcon },
