@@ -3,7 +3,7 @@
     <nav class="navbar is-white topNav">
       <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item" href="index.html">
+          <a class="navbar-item" href="/">
             大合奏！バンドブラザーズ☆10 地力表
           </a>
           <div class="navbar-burger burger" data-target="topNav">
@@ -60,14 +60,6 @@
                     Bulma Templates
                   </a>
                   <span class="tag is-light">Daniel Supernault</span>
-                </div>
-              </div>
-              <div class="control">
-                <div class="tags has-addons">
-                  <a class="tag is-link">The source code is licensed</a>
-                  <span class="tag is-light">
-                    MIT &nbsp;<i class="fa fa-github"></i>
-                  </span>
                 </div>
               </div>
             </div>
