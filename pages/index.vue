@@ -45,6 +45,24 @@
               大合奏！バンドブラザーズＰ☆10地力表スプレッドシート
             </a>
           </li>
+          <li>
+            <a
+              href="https://docs.google.com/spreadsheets/d/1ytTkiJmK6mlhgGrp3C8eGBDdC3zTemsOL3tCDle5CP4/edit#gid=0"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              大合奏！バンドブラザーズＰ☆10ドラム難易度表
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://docs.google.com/spreadsheets/d/1mGRtvWVigp9HKqv5II504fdoze5pMT08JnOKaj8-1eM/edit#gid=0"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              大合奏！バンドブラザーズＰギターコード難易度表
+            </a>
+          </li>
         </ul>
       </div>
     </article>

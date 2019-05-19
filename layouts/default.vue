@@ -55,12 +55,27 @@
                 <div class="tags has-addons">
                   <a
                     class="tag is-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     href="https://github.com/dansup/bulma-templates"
                   >
                     Bulma Templates
                   </a>
                   <span class="tag is-light">Daniel Supernault</span>
                 </div>
+              </div>
+              <div class="control">
+                <a
+                  class="tag is-black"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://github.com/gogotea55t/bbp-jiriki-frontend"
+                >
+                  <font-awesome-icon
+                    :icon="['fab', 'github']"
+                  ></font-awesome-icon>
+                  Github
+                </a>
               </div>
             </div>
           </div>
@@ -79,12 +94,14 @@ import {
   faUsers,
   faTable
 } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faHome)
 library.add(faMusic)
 library.add(faUsers)
 library.add(faTable)
+library.add(faGithub)
 
 export default Vue.extend({
   components: { FontAwesomeIcon },
