@@ -24,6 +24,7 @@ import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { error } from 'util'
 library.add(faUser)
 export default Vue.extend({
   name: 'PlayerSelector',
@@ -41,6 +42,10 @@ export default Vue.extend({
         this.players = response.data.map(s => {
           return new Players(s.userId, s.userName)
         })
+      })
+      .catch(error => {
+        console.log(error)
+        throw new Error('サーバーとの通信に失敗しました。')
       })
   },
   methods: {

@@ -56,7 +56,7 @@ export default Vue.extend({
         })
         .catch(error => {
           console.log(error)
-          return []
+          throw new Error('サーバーとの通信に失敗しました。')
         })
       this.songs = songsResponse
       return songsResponse.length

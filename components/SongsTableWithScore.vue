@@ -45,28 +45,11 @@ export default Vue.extend({
       this.songs = new Array<SongsWithScore>()
       const apiBaseUrl: string =
         process.env.apiBaseUrl || 'http://localhost:8080'
-      await axios.get(apiBaseUrl + '/v1' + query).then(response => {
-        this.songs = response.data.map(s => {
-          return new SongsWithScore(
-            s.songId,
-            s.jirikiRank,
-            s.songName,
-            s.contributor,
-            s.instrument,
-            s.score
-          )
-        })
-      })
-    },
-    async loadMore(query: String) {
-      let count: number = 0
-      const apiBaseUrl: string =
-        process.env.apiBaseUrl || 'http://localhost:8080'
-      await axios.get(apiBaseUrl + '/v1' + query).then(response => {
-        response.data.forEach(s => {
-          count++
-          this.songs.push(
-            new SongsWithScore(
+      await axios
+        .get(apiBaseUrl + '/v1' + query)
+        .then(response => {
+          this.songs = response.data.map(s => {
+            return new SongsWithScore(
               s.songId,
               s.jirikiRank,
               s.songName,
@@ -74,9 +57,38 @@ export default Vue.extend({
               s.instrument,
               s.score
             )
-          )
+          })
         })
-      })
+        .catch(error => {
+          throw new Error('サーバーとの接続に失敗しました')
+        })
+
+      return this.songs.length
+    },
+    async loadMore(query: String) {
+      let count: number = 0
+      const apiBaseUrl: string =
+        process.env.apiBaseUrl || 'http://localhost:8080'
+      await axios
+        .get(apiBaseUrl + '/v1' + query)
+        .then(response => {
+          response.data.forEach(s => {
+            count++
+            this.songs.push(
+              new SongsWithScore(
+                s.songId,
+                s.jirikiRank,
+                s.songName,
+                s.contributor,
+                s.instrument,
+                s.score
+              )
+            )
+          })
+        })
+        .catch(error => {
+          throw new Error('サーバーとの接続に失敗しました')
+        })
 
       return count
     }

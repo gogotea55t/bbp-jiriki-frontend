@@ -80,7 +80,7 @@ export default Vue.extend({
       })
       .catch(error => {
         console.log(error)
-        throw error
+        throw new Error('サーバーとの接続に失敗しました')
       })
 
     let scoreResponse = await axios
@@ -90,6 +90,7 @@ export default Vue.extend({
       })
       .catch(error => {
         console.log(error)
+        throw new Error('サーバーとの接続に失敗しました')
       })
     this.song = songResponse
     this.scores = scoreResponse
