@@ -66,7 +66,7 @@
               </div>
               <div class="control">
                 <a
-                  class="tag is-black"
+                  class="tag is-dark"
                   target="_blank"
                   rel="noopener noreferrer"
                   href="https://github.com/gogotea55t/bbp-jiriki-frontend"
