@@ -67,3 +67,22 @@ describe(PlayerSelector.default, () => {
     }, 5000)
   })
 })
+
+describe(PlayerSelector.default, () => {
+  it('通信エラーが起きる', () => {
+    const mockWhenNetWorkError = new MockAdapter(axios)
+    mockWhenNetWorkError.onGet(process.env.apiBaseUrl + '/v1' + '/players')
+      .networkError
+
+    const wrapper = shallowMount(PlayerSelector.default, {
+      mocks: {
+        Promise,
+        mockWhenNetWorkError
+      }
+    })
+    setTimeout(done => {
+      expect(wrapper.vm).toThrowError
+      done
+    }, 5000)
+  })
+})

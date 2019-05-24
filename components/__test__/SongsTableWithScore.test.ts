@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import * as SongTableWithScore from '../SongsTableWithScore.vue'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
@@ -275,5 +275,51 @@ describe(SongTableWithScore.default, () => {
       done2
       done()
     }, 5000)
+  })
+})
+
+describe(SongTableWithScore.default, () => {
+  it('ネットワークエラーでつながらない', () => {
+    const mockWithNetworkError = new MockAdapter(axios)
+    const apiBaseUrl: string = process.env.apiBaseUrl || 'http://localhost:8080'
+    mockWithNetworkError.onGet(apiBaseUrl + '/v1/players/u001/scores')
+      .networkError
+    const wrapperWithNetworkError = shallowMount(SongTableWithScore.default, {
+      propsData: {
+        query: '/players/u001/scores'
+      },
+      mocks: {
+        mockWithNetworkError
+      }
+    })
+
+    expect(wrapperWithNetworkError.vm.$nextTick).toThrowError
+  })
+})
+
+describe(SongTableWithScore.default, () => {
+  it('次を読み込もうとしたときにネットワークエラーで急につながらない', () => {
+    const mockWithNetworkError = new MockAdapter(axios)
+    const apiBaseUrl: string = process.env.apiBaseUrl || 'http://localhost:8080'
+    mockWithNetworkError
+      .onGet(apiBaseUrl + '/v1/players/u001/scores')
+      .reply(200, sampleSongs)
+    mockWithNetworkError.onGet(apiBaseUrl + '/v1/players/u001/scores?page=1')
+      .networkError
+    const wrapperWithNetworkError = shallowMount(SongTableWithScore.default, {
+      propsData: {
+        query: '/players/u001/scores'
+      },
+      mocks: {
+        mockWithNetworkError
+      }
+    })
+    const vueInstance: any = wrapperWithNetworkError.vm
+    const numberOfSongsAdded: Promise<number> = vueInstance.loadMore(
+      '/players/u001/scores?page=1'
+    )
+    numberOfSongsAdded.catch(error => {
+      expect(error.message).toBe('サーバーとの接続に失敗しました')
+    })
   })
 })

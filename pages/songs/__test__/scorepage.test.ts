@@ -48,3 +48,57 @@ describe(ScorePage.default, () => {
     }, 5000)
   })
 })
+
+describe(ScorePage.default, () => {
+  it('サーバーから楽曲データが取れない', done => {
+    const mockWhenNetWorkError = new MockAdapter(axios)
+    mockWhenNetWorkError.onGet(apiBaseUrl + '/v1' + '/songs/200').networkError
+    mockWhenNetWorkError
+      .onGet(apiBaseUrl + '/v1/songs/200/scores')
+      .reply(200, sampleScores)
+
+    const wrapperWhenNetworkError = shallowMount(ScorePage.default, {
+      mocks: {
+        mockWhenNetWorkError,
+        $route: {
+          params: {
+            id: '200'
+          }
+        }
+      }
+    })
+
+    setTimeout(done2 => {
+      expect(wrapperWhenNetworkError).toThrowError
+      done2
+      done()
+    }, 5000)
+  })
+})
+
+describe(ScorePage.default, () => {
+  it('サーバーからスコアデータが取れない', done => {
+    const mockWhenNetWorkError = new MockAdapter(axios)
+    mockWhenNetWorkError
+      .onGet(apiBaseUrl + '/v1' + '/songs/200')
+      .reply(200, sampleSong)
+    mockWhenNetWorkError.onGet(apiBaseUrl + '/v1/songs/200/scores').networkError
+
+    const wrapperWhenNetworkError = shallowMount(ScorePage.default, {
+      mocks: {
+        mockWhenNetWorkError,
+        $route: {
+          params: {
+            id: '200'
+          }
+        }
+      }
+    })
+
+    setTimeout(done2 => {
+      expect(wrapperWhenNetworkError).toThrowError
+      done2
+      done()
+    }, 5000)
+  })
+})

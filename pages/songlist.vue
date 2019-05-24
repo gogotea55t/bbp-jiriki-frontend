@@ -104,12 +104,13 @@ export default Vue.extend({
       this.query = '/songs?' + searchQuery + '&page='
       this.page = 0
       let songTable: any = this.$refs.songTable
-      let numberOfSongsAdded: number = songTable.loadSongsByQuery(
-        this.query + this.page
-      )
-      if (numberOfSongsAdded < 20) {
-        this.disableLoading()
-      }
+      songTable
+        .loadSongsByQuery(this.query + this.page)
+        .then(numberOfSongsAdded => {
+          if (numberOfSongsAdded < 20) {
+            this.disableLoading()
+          }
+        })
     }
   }
 })
