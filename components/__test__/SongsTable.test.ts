@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import * as SongsTable from '../SongsTable.vue'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
@@ -226,5 +226,44 @@ describe(SongsTable.default, () => {
       done2
       done()
     }, 5000)
+  })
+})
+
+describe(SongsTable.default, () => {
+  it('ページ読み込み時にネットワークエラー', () => {
+    const mockWhenNetworkError = new MockAdapter(axios)
+    mockWhenNetworkError.onGet(apiBaseUrl + '/v1' + '/songs?page=').networkError
+    const wrapperWhenNetworkError = shallowMount(SongsTable.default, {
+      propsData: {
+        query: '/songs?page='
+      },
+      mocks: {
+        mockWhenNetworkError
+      }
+    })
+    expect(wrapperWhenNetworkError.vm).toThrowError
+  })
+
+  it('ページ読み込み時に生きていたサーバが次ページを読み込むとき急に死ぬ', async () => {
+    const mockWhenNetworkError = new MockAdapter(axios)
+    mockWhenNetworkError
+      .onGet(apiBaseUrl + '/v1' + '/songs?page=')
+      .reply(200, sampleSongs.data)
+    mockWhenNetworkError.onGet(apiBaseUrl + '/v1' + '/songs?page=1')
+      .networkError
+
+    const wrapperWhenNetworkError = shallowMount(SongsTable.default, {
+      propsData: {
+        query: '/songs?page='
+      },
+      mocks: {
+        mockWhenNetworkError
+      }
+    })
+    let vueInstance: any = wrapperWhenNetworkError.vm
+    let errorExpected: Promise<number> = vueInstance.loadMore('/songs?page=1')
+    return errorExpected.catch(error => {
+      expect(error.message).toBe('サーバーとの通信に失敗しました')
+    })
   })
 })
