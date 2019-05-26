@@ -13,6 +13,7 @@ sudo: true
 cache: yarn
 before_install:
   - sudo apt-get update
+  - sudo apt-get heroku-toolbelt
 script:
   - yarn run test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   - echo $HEROKU_CREDENTIALS_EMAIL echo $HEROKU_CREDENTIALS_PASSWORD | heroku login
