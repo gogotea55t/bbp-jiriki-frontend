@@ -26,4 +26,4 @@ ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=80
 
 # start the app
-CMD [ "yarn", "start:prod" ]
+CMD [ "sudo", "yarn", "start:prod" ]
