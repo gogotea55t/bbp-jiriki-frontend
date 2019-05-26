@@ -8,6 +8,7 @@ WORKDIR /usr/src/nuxt-app
 RUN apk update && apk upgrade
 RUN apk add git
 RUN apk add curl
+RUN apk add sudo
 
 # copy the app, note .dockerignore
 COPY . /usr/src/nuxt-app/
@@ -26,4 +27,4 @@ ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=80
 
 # start the app
-CMD [ "sudo yarn", "start:prod" ]
+CMD [ "sudo", "yarn", "start:prod" ]
