@@ -7,6 +7,7 @@ WORKDIR /usr/src/nuxt-app
 # update and install dependency
 RUN apk update && apk upgrade
 RUN apk add git
+RUN apk add curl
 
 # copy the app, note .dockerignore
 COPY . /usr/src/nuxt-app/
