@@ -18,3 +18,4 @@ deploy:
   script:
     - docker build -t bbp-jiriki-frontend .
     - heroku container:push web -a bbp-jiriki-frontend
+    - heroku container:release web -a bbp-jiriki-frontend

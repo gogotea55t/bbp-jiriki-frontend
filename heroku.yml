@@ -3,5 +3,3 @@ build:
     web: Dockerfile
 release:
   image: web
-  command:
-    - heroku container:release web -a bbp-jiriki-frontend
