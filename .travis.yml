@@ -19,6 +19,6 @@ deploy:
   api_key:
     secure: loUpfG4P8D6J4QRBh8yKxmaycd9kj3iw9pUCbh2nChW5Y1IOUvwShbCiB+NcHKzPZyjHglItayLR61YwJey5oiilU5yQbypXGnwdKIpzS5MuKWiSKHhrBWa8kO7R8TpQbQ1YO0/uwnDoRxt+oUZaY/DuXxuLsehTt7B7udZezazV249RdvekmTnnfrx3GgvaaCFo+dpfM47wn5MP/MJ46OGKVumV3ZE/RstcRPpoNKB8Go5/tZxOi0/jmdG41NcKE76OvCFCXKONGLtB0n9DAMFRIGvw/EJjwwshkwghwQoxzLPvadgdZAtf93r5vBBxhsyaQJLUGjMxj/0nluAIY5m78syniLuljqTTuCadGpe9DkN5gIzABYxeTLpRtJMSMKbOdu6hAgZeRhJ/5QsFVrTnX52yd85wM7hKLqjCWrujKi/1wWVR/yBsD4HuvQmxA6vnnVP6Xjm00pPDtM8abBVaVIKpmJ677dKcTnH6v1whz3H/3Qn7FJXMgLJtGf1Ba/E3fXk2KEjIrvJwHkizzNf8QgHCVsKZhvWx9Vrjy9HZVQonvPdlUqGg1QHAyPgMrW+caLj4pM0UL+ZoJLMGlsJq/H0EgaUFISa5TOuKRbdvP36IAml32NvfOx+ZU+RXKZEFkzFaR4M6bpkW39lla2lKW50t4ciySfLcbNS1vc4=
   script:
-    - "echo " + $HEROKU_CREDENTIALS_EMAIL + " echo " + $HEROKU_CREDENTIALS_PASSWORD + " | heroku login"
-    - "docker build -t bbp-jiriki-frontend ."
-    - "heroku container:push bbp-jiriki-frontend"
+    - echo $HEROKU_CREDENTIALS_EMAIL echo $HEROKU_CREDENTIALS_PASSWORD | heroku login
+    - docker build -t bbp-jiriki-frontend .
+    - heroku container:push bbp-jiriki-frontend
