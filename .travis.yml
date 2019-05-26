@@ -9,7 +9,7 @@ addons:
       - heroku-toolbelt
 node_js: node
 dist: trusty
-sudo: false
+sudo: true
 cache: yarn
 script:
   - yarn run test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
