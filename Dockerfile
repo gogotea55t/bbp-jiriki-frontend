@@ -16,13 +16,13 @@ RUN yarn install
 # since it builds the server as well
 RUN yarn run build:prod
 
-# expose 5000 on container
-EXPOSE 5000
+# expose 80 on container
+EXPOSE 80
 
 # set app serving to permissive / assigned
 ENV NUXT_HOST=0.0.0.0
 # set app port
-ENV NUXT_PORT=5000
+ENV NUXT_PORT=80
 
 # start the app
 CMD [ "yarn", "start:prod" ]
