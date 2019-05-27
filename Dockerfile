@@ -9,12 +9,9 @@ RUN apk update && apk upgrade
 RUN apk add git
 RUN apk add curl
 RUN apk add sudo
-RUN apk add groupadd
-RUN apk add useradd
-RUN groupadd -g 1000 developer && \
-    useradd  -g      developer -G sudo -m -s /bin/bash gogotea && \
+RUN adduser -S gogotea && \
     echo 'gogotea:55t' | chpasswd
-RUN echo 'Defaults visiblepw'             >> /etc/sudoers
+RUN echo 'Defaults visiblepw' >> /etc/sudoers
 RUN echo 'gogotea ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 
