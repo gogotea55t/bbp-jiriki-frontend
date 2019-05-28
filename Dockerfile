@@ -10,6 +10,7 @@ RUN apk add git
 RUN apk add curl
 RUN apk add sudo
 RUN echo 'root:root' |chpasswd
+RUN chown root /usr/bin/sudo
 RUN adduser -S gogotea && \
     echo 'gogotea:55t' | chpasswd
 RUN echo 'Defaults visiblepw' >> /etc/sudoers
