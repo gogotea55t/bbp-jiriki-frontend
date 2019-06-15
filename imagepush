@@ -1,0 +1,5 @@
+#!bin/bash
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin bbp10-jiriki.cf
+docker build -t bbp-jiriki-frontend .
+docker tag bbp-jiriki-frontend bbp10-jiriki.cf/bbp-jiriki-frontend:$1
+docker push bbp10-jiriki.cf/bbp-jiriki-frontend:$1
