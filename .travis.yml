@@ -1,6 +1,17 @@
-language: 'node_js'
-node_js: 'node'
+language: node_js
+services:
+  - docker
+node_js: node
 dist: trusty
-sudo: false
-cache: 'yarn'
-script: yarn run test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+sudo: true
+cache: yarn
+before_install:
+  - sudo apt-get update
+script:
+  - yarn run test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+deploy:
+  provider: script
+  script: bash imagepush $TRAVIS_TAG
+  on:
+    tags: true
+    branch: release

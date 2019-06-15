@@ -1,3 +1,4 @@
 module.exports = {
-  apiBaseUrl: 'http://xxxxxxxxxxxxx:8080'
+  apiBaseUrl: 'http://xxxxxxxxxxxxx:8080',
+  port: 80
 }
