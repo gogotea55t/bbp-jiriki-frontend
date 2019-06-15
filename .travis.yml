@@ -7,7 +7,6 @@ sudo: true
 cache: yarn
 before_install:
   - sudo apt-get update
-  - sudo apt-get install heroku-toolbelt
 script:
   - yarn run test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
