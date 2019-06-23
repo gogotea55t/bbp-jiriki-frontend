@@ -1,4 +1,4 @@
 module.exports = {
-  apiBaseUrl: 'http://xxxxxxxxxxxxx:8080',
-  port: 80
+  apiBaseUrl: 'https://bbp10-jiriki.cf/api',
+  port: 3000
 }
