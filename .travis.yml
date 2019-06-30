@@ -15,3 +15,7 @@ deploy:
   on:
     tags: true
     branch: release
+notifications:
+  webhooks:
+    urls:
+      - https://discordapp.com/api/webhooks/594672739617472525/SWWZQIFHVg8hUVCIiMpnWGU5YrAgvmKdKr1OIaoddHWDmKFL3Q7S3NrQbS8Xpq2l7J7A
