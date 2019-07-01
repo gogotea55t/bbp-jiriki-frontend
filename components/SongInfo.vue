@@ -46,30 +46,18 @@ export default Vue.extend({
       scores: []
     }
   },
-  computed: {
-    songsIdentifier: function() {
-      return (
-        this.$data.song.songName +
-        ' / ' +
-        this.$data.song.contributor +
-        ' (' +
-        this.$data.song.instrument +
-        ')'
-      )
-    }
-  },
   watch: {
     songId: function() {
       this.song = new Songs('', '', '', '', '')
       this.scores = []
-      this.loadInfo(this.songId)
+      this.loadInfo(this.$props.songId)
     }
   },
   async created() {
-    if (this.songId === '') {
+    if (this.$props.songId === '') {
       return
     } else {
-      this.loadInfo(this.songId)
+      this.loadInfo(this.$props.songId)
     }
   },
   methods: {
