@@ -12,6 +12,7 @@
         v-for="song of songs"
         :key="song.songId"
         :song="song"
+        @toggleModal="toggleModal"
       ></SongColWithScore>
     </tbody>
   </table>
@@ -91,6 +92,9 @@ export default Vue.extend({
         })
 
       return count
+    },
+    toggleModal(emittedSongId) {
+      this.$emit('toggleModal', emittedSongId)
     }
   }
 })
