@@ -1,5 +1,5 @@
 <template>
-  <div :class="modal">
+  <div id="song-info-modal" :class="modal">
     <div class="modal-background" @click="untoggleModal"></div>
     <div class="modal-card">
       <header class="modal-card-head">

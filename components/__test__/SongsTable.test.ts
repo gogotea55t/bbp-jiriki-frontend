@@ -215,6 +215,12 @@ describe(SongsTable.default, () => {
     }, 5000)
   })
 
+  it('モーダル発火イベントを受け取ると親へ横流しする', () => {
+    const vueInstance: any = wrapper.vm
+    vueInstance.toggleModal('001')
+    expect(wrapper.emitted('toggle-modal')[0][0]).toBe('001')
+  })
+
   it('読み込んだ後さらに読み込む', done => {
     const vueInstance: any = wrapper.vm
     const reply: Promise<number> = vueInstance.loadMore('/songs?page=1')

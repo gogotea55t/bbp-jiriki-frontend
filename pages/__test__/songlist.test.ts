@@ -1,6 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import * as Songlist from '../songlist.vue'
 import SongsTableStub from '../__stubs__/SongsTableStub.vue'
+import SongInfoModalStub from '../__stubs__/SongInfoModalStub.vue'
 
 describe(Songlist.default, () => {
   const wrapper = shallowMount(Songlist.default, {
@@ -8,7 +9,8 @@ describe(Songlist.default, () => {
       query: '/songs?page='
     },
     stubs: {
-      SongsTable: SongsTableStub
+      SongsTable: SongsTableStub,
+      SongInfoModal: SongInfoModalStub
     }
   })
 
@@ -35,5 +37,10 @@ describe(Songlist.default, () => {
   it('スクロールしてみる', () => {
     const vueInstance: any = wrapper.vm
     vueInstance.handleScroll()
+  })
+
+  it('モーダルが起動する', () => {
+    const vueInstance: any = wrapper.vm
+    vueInstance.toggleModal('001')
   })
 })
