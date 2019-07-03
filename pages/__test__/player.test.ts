@@ -1,6 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import * as Player from '../player.vue'
 import SongsTableWithScoreStub from '../__stubs__/SongsTableWithScoreStub.vue'
+import SongInfoModalStub from '../__stubs__/SongInfoModalStub.vue'
 
 describe(Player.default, () => {
   const wrapper = shallowMount(Player.default, {
@@ -10,7 +11,8 @@ describe(Player.default, () => {
       page: 0
     },
     stubs: {
-      SongsTableWithScore: SongsTableWithScoreStub
+      SongsTableWithScore: SongsTableWithScoreStub,
+      SongInfoModal: SongInfoModalStub
     }
   })
 
@@ -56,5 +58,10 @@ describe(Player.default, () => {
 
   it('スクロールする', () => {
     window.dispatchEvent(new CustomEvent('scroll', { detail: 2000 }))
+  })
+
+  it('モーダル発火イベントを受け取る', () => {
+    const vueInstance: any = wrapper.vm
+    vueInstance.toggleModal('57')
   })
 })

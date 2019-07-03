@@ -276,6 +276,21 @@ describe(SongTableWithScore.default, () => {
       done()
     }, 5000)
   })
+
+  it('モーダル発火イベントを受け取ると親へ横流しする', () => {
+    const wrapper = mount(SongTableWithScore.default, {
+      mocks: {
+        mock
+      },
+      propsData: {
+        query: '/players/u001/scores'
+      }
+    })
+
+    const vueInstance: any = wrapper.vm
+    vueInstance.toggleModal('57')
+    expect(wrapper.emitted('toggleModal')[0][0]).toBe('57')
+  })
 })
 
 describe(SongTableWithScore.default, () => {

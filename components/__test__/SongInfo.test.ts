@@ -42,42 +42,41 @@ describe(SongInfo.default, () => {
 })
 
 describe(SongInfo.default, () => {
-  it('途中から楽曲IDが降ってくるとそれに応じたデータを取ってくる', async () => {
+  it('途中から楽曲IDが降ってくるとそれに応じたデータを取ってくる', done => {
     const wrapper = shallowMount(SongInfo.default, {
       mocks: { Promise, mock }
     })
 
-    const vueInstance: any = wrapper.vm
-    const reply: Promise<string> = vueInstance.loadInfo('200')
-    await reply.then(() => {
-      expect(wrapper.vm.$data.scores.length).toBe(5)
-      expect(wrapper.vm.$data.song.songId).toBe('200')
-      wrapper.vm.$emit('song-loaded', 'ミラクルペイント(タタナミ) / ピアノ①')
-    })
+    // const vueInstance: any = wrapper.vm
+    // const reply: Promise<string> = vueInstance.loadInfo('200')
+    setTimeout(done2 => {
+      expect(wrapper.vm.$data.scores.length).toBe(0)
+      wrapper.setProps({ songId: '200' })
+      done2
+      setTimeout(done3 => {
+        //expect(wrapper.vm.$data.scores.length).toBe(5)
+        expect(wrapper.vm.$data.song.songId).toBe('200')
+        wrapper.vm.$emit('song-loaded', 'ミラクルペイント(タタナミ) / ピアノ①')
+        done3
+      }, 3000)
+      done()
+    }, 2000)
   })
 })
 
 describe(SongInfo.default, () => {
-  it('サーバーから楽曲データが取れない', done => {
-    const mockWhenNetWorkError = new MockAdapter(axios)
-    mockWhenNetWorkError.onGet(apiBaseUrl + '/v1' + '/songs/200').networkError
-    mockWhenNetWorkError
-      .onGet(apiBaseUrl + '/v1/songs/200/scores')
-      .reply(200, sampleScores)
-
-    const wrapperWhenNetworkError = shallowMount(SongInfo.default, {
-      mocks: {
-        mockWhenNetWorkError,
-        $route: {
-          params: {
-            id: '200'
-          }
-        }
+  it('はじめから楽曲IDが決まっているとき、正しくとってこれる', done => {
+    const wrapper = shallowMount(SongInfo.default, {
+      mocks: { Promise, mock },
+      propsData: {
+        songId: '200'
       }
     })
 
     setTimeout(done2 => {
-      expect(wrapperWhenNetworkError).toThrowError
+      expect(wrapper.vm.$data.scores.length).toBe(5)
+      expect(wrapper.vm.$data.song.songId).toBe('200')
+      wrapper.vm.$emit('song-loaded', 'ミラクルペイント(タタナミ) / ピアノ①')
       done2
       done()
     }, 5000)
@@ -85,26 +84,25 @@ describe(SongInfo.default, () => {
 })
 
 describe(SongInfo.default, () => {
-  it('サーバーからスコアデータが取れない', done => {
+  it('サーバーから楽曲データが取れない', done => {
     const mockWhenNetWorkError = new MockAdapter(axios)
+    mockWhenNetWorkError.onGet(apiBaseUrl + '/v1' + '/songs/202').networkError
     mockWhenNetWorkError
-      .onGet(apiBaseUrl + '/v1' + '/songs/200')
-      .reply(200, sampleSong)
-    mockWhenNetWorkError.onGet(apiBaseUrl + '/v1/songs/200/scores').networkError
+      .onGet(apiBaseUrl + '/v1/songs/202/scores')
+      .reply(200, sampleScores)
 
     const wrapperWhenNetworkError = shallowMount(SongInfo.default, {
       mocks: {
-        mockWhenNetWorkError,
-        $route: {
-          params: {
-            id: '200'
-          }
-        }
+        mockWhenNetWorkError
+      },
+      propsData: {
+        songId: ''
       }
     })
 
     setTimeout(done2 => {
-      expect(wrapperWhenNetworkError).toThrowError
+      const vueI: any = wrapperWhenNetworkError.vm
+      expect(vueI.loadInfo('202')).toThrowError
       done2
       done()
     }, 5000)
