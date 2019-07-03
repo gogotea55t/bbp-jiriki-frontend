@@ -54,10 +54,10 @@ export default Vue.extend({
     }
   },
   async created() {
-    if (this.$props.songId === '') {
+    if (this.songId === '') {
       return
     } else {
-      this.loadInfo(this.$props.songId)
+      this.loadInfo(this.songId)
     }
   },
   methods: {

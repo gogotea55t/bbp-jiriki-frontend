@@ -13,8 +13,6 @@ export default Vue.extend({
   data: function() {
     return {
       id: this.$route.params.id,
-      song: new Songs(this.$route.params.id, '', '', '', ''),
-      scores: [],
       songsIdentifier: ''
     }
   },
