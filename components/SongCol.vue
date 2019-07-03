@@ -1,5 +1,5 @@
 <template>
-  <tr @click="jumpToInfoPage">
+  <tr @click="toggleModal">
     <JirikiRank :jiriki-rank="song.jirikiRank" />
     <td>{{ song.songName }}</td>
     <td>{{ song.contributor }}</td>
@@ -22,8 +22,9 @@ export default Vue.extend({
     return {}
   },
   methods: {
-    jumpToInfoPage: function() {
-      window.location.href = '/songs/' + this.$props.song.songId
+    toggleModal: function() {
+      this.$emit('toggleModal', this.$props.song.songId)
+      console.log(this.$props.song.songId)
     }
   }
 })

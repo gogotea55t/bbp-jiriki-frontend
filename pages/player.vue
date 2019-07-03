@@ -5,12 +5,17 @@
       <SearchWindow @search-emit="searchSongs"></SearchWindow>
     </section>
     <section class="section">
-      <SongsTableWithScore ref="songTable" :query="query"></SongsTableWithScore>
+      <SongsTableWithScore
+        ref="songTable"
+        :query="query"
+        @toggleModal="toggleModal"
+      ></SongsTableWithScore>
       <img
         id="songlist-loader"
         src="~/static/loading.gif"
         alt="now loading..."
       />
+      <SongInfoModal ref="modalSection"></SongInfoModal>
     </section>
   </div>
 </template>
@@ -20,9 +25,15 @@ import Vue from 'vue'
 import PlayerSelector from '../components/PlayerSelector.vue'
 import SearchWindow from '../components/SearchWindow.vue'
 import SongsTableWithScore from '../components/SongsTableWithScore.vue'
+import SongInfoModal from '../components/SongInfoModal.vue'
 export default Vue.extend({
   name: 'Player',
-  components: { PlayerSelector, SearchWindow, SongsTableWithScore },
+  components: {
+    PlayerSelector,
+    SearchWindow,
+    SongsTableWithScore,
+    SongInfoModal
+  },
   data() {
     return {
       query: '/players/u001/scores?page=',
@@ -124,6 +135,10 @@ export default Vue.extend({
         loader.style.display = 'none'
       }
       window.removeEventListener('scroll', this.handleScroll)
+    },
+    toggleModal(emittedSongId) {
+      const modalComponent: any = this.$refs.modalSection
+      modalComponent.toggleModal(emittedSongId)
     }
   }
 })

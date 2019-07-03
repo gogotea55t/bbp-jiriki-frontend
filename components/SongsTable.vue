@@ -11,6 +11,7 @@
         v-for="song of songs"
         :key="'song' + song.songId"
         :song="song"
+        @toggleModal="toggleModal"
       ></SongCol>
     </tbody>
   </table>
@@ -39,6 +40,9 @@ export default Vue.extend({
     await this.loadSongsByQuery(this.query)
   },
   methods: {
+    toggleModal(id) {
+      this.$emit('toggle-modal', id)
+    },
     async loadSongsByQuery(query: string) {
       let url = process.env.apiBaseUrl + '/v1' + query
       let songsResponse: Array<Songs> = await axios

@@ -4,9 +4,14 @@
       <search-window @search-emit="search" />
     </section>
     <section class="section">
-      <SongsTable ref="songTable" :query="query"></SongsTable>
+      <SongsTable
+        ref="songTable"
+        :query="query"
+        @toggle-modal="toggleModal"
+      ></SongsTable>
     </section>
     <img id="songlist-loader" src="~/static/loading.gif" alt="now loading..." />
+    <SongInfoModal ref="modalSection"></SongInfoModal>
   </div>
 </template>
 
@@ -15,10 +20,11 @@ import Vue from 'vue'
 import SongsTable from '../components/SongsTable.vue'
 import SearchWindow from '../components/SearchWindow.vue'
 import Songs from '../components/Songs'
+import SongInfoModal from '../components/SongInfoModal.vue'
 import axios from 'axios'
 
 export default Vue.extend({
-  components: { SongsTable, SearchWindow },
+  components: { SongsTable, SearchWindow, SongInfoModal },
   data: function() {
     return {
       songs: new Array<Songs>(),
@@ -111,6 +117,10 @@ export default Vue.extend({
             this.disableLoading()
           }
         })
+    },
+    toggleModal(emittedSongId) {
+      const modalComp: any = this.$refs.modalSection
+      modalComp.toggleModal(emittedSongId)
     }
   }
 })
