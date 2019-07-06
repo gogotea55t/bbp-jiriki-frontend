@@ -72,6 +72,42 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  name: 'Index'
+  name: 'Index',
+  head() {
+    return {
+      title: '大合奏！バンドブラザーズP☆10地力表',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            '大合奏！バンドブラザーズPにおける☆10の難易度とスコアを管理するページです。'
+        },
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+        { hid: 'twitter:site', name: 'twitter:site', content: '@bbp10_jiriki' },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: 'https://bbp10-jiriki.cf'
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: '大合奏！バンドブラザーズP☆10地力表'
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            '大合奏！バンドブラザーズPにおける☆10の難易度とスコアを管理するページです。'
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: 'https://bbp10-jiriki.cf/favicon.ico'
+        }
+      ]
+    }
+  }
 })
 </script>
