@@ -25,4 +25,11 @@ describe(SongInfoModal.default, () => {
     vueInstance.songLoaded(songIdentifier)
     expect(wrapper.vm.$data.modalSongIdentifier).toBe(songIdentifier)
   })
+
+  it('すでに読み込み済みのモーダルを表示する命令が来たらモーダルの表示だけをする', () => {
+    vueInstance.toggleModal('002')
+    vueInstance.toggleModal('002')
+    expect(wrapper.vm.$data.modalSongIdentifier).not.toBe('')
+    expect(wrapper.classes()).toContain('is-active')
+  })
 })
