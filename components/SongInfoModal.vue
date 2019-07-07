@@ -13,11 +13,15 @@
         ></button>
       </header>
       <section class="modal-card-body">
-        <SongInfo :song-id="modalSongId"></SongInfo>
+        <SongInfo :song-id="modalSongId" @song-loaded="songLoaded"></SongInfo>
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-success">
-          シェア
+        <song-share-button
+          :song-id="modalSongId"
+          :song-identifier="modalSongIdentifier"
+        />
+        <button class="button is-pulled-right" @click="untoggleModal">
+          閉じる
         </button>
       </footer>
     </div>
@@ -27,6 +31,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import SongInfo from '../components/SongInfo.vue'
+import SongShareButton from '../components/SongShareButton.vue'
 
 export class ModalClassObj {
   'is-active': boolean
@@ -38,10 +43,11 @@ export class ModalClassObj {
 }
 
 export default Vue.extend({
-  components: { SongInfo },
+  components: { SongInfo, SongShareButton },
   data: function() {
     return {
       modalSongId: '',
+      modalSongIdentifier: '',
       modal: new ModalClassObj()
     }
   },
@@ -52,6 +58,10 @@ export default Vue.extend({
     },
     untoggleModal() {
       this.modal['is-active'] = false
+      this.modalSongIdentifier = ''
+    },
+    songLoaded(songIdentifierEmitted) {
+      this.modalSongIdentifier = songIdentifierEmitted
     }
   }
 })

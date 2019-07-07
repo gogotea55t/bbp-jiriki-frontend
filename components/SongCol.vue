@@ -24,7 +24,6 @@ export default Vue.extend({
   methods: {
     toggleModal: function() {
       this.$emit('toggleModal', this.$props.song.songId)
-      console.log(this.$props.song.songId)
     }
   }
 })

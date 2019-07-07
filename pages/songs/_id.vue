@@ -1,5 +1,12 @@
 <template>
-  <div><SongInfo :song-id="id" @song-loaded="loaded"></SongInfo></div>
+  <div>
+    <section class="section">
+      <SongInfo :song-id="id" @song-loaded="loaded"></SongInfo>
+    </section>
+    <section class="section">
+      <song-share-button :song-id="id" :song-identifier="songsIdentifier" />
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
@@ -7,9 +14,10 @@ import Vue from 'vue'
 import SongInfo from '../../components/SongInfo.vue'
 import ScoreStyle from '../../components/ScoreStyle.vue'
 import Songs from '../../components/Songs'
+import SongShareButton from '../../components/SongShareButton.vue'
 import axios from 'axios'
 export default Vue.extend({
-  components: { SongInfo },
+  components: { SongInfo, SongShareButton },
   data: function() {
     return {
       id: this.$route.params.id,

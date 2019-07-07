@@ -18,4 +18,11 @@ describe(SongInfoModal.default, () => {
     vueInstance.untoggleModal()
     expect(wrapper.classes()).not.toContain('is-active')
   })
+
+  it('読み込み完了が告げられるとプロパティを書き換える', () => {
+    const songIdentifier: String = 'a(b) / c'
+    expect(wrapper.vm.$data.modalSongIdentifier).not.toBe(songIdentifier)
+    vueInstance.songLoaded(songIdentifier)
+    expect(wrapper.vm.$data.modalSongIdentifier).toBe(songIdentifier)
+  })
 })
