@@ -74,6 +74,7 @@ import Vue from 'vue'
 export default Vue.extend({
   name: 'Index',
   head() {
+    const BASE_URL: String = process.env.baseUrl || ''
     return {
       title: '大合奏！バンドブラザーズP☆10地力表',
       meta: [
@@ -88,7 +89,7 @@ export default Vue.extend({
         {
           hid: 'og:url',
           property: 'og:url',
-          content: 'https://bbp10-jiriki.cf'
+          content: BASE_URL + '/'
         },
         {
           hid: 'og:title',
@@ -104,7 +105,7 @@ export default Vue.extend({
         {
           hid: 'og:image',
           property: 'og:image',
-          content: 'https://bbp10-jiriki.cf/favicon.ico'
+          content: BASE_URL + '/favicon.ico'
         }
       ]
     }
