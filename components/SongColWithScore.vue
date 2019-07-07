@@ -24,7 +24,7 @@ export default Vue.extend({
   },
   methods: {
     jumpToInfoPage: function() {
-      window.location.href = '/songs/' + this.$props.song.songId
+      this.$emit('toggleModal', this.$props.song.songId)
     }
   }
 })

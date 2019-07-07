@@ -1,99 +1,79 @@
 <template>
   <div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>地力</th>
-          <th>楽曲名</th>
-          <th>投稿者名</th>
-          <th>楽器名</th>
-        </tr>
-      </thead>
-      <tbody>
-        <SongCol :song="song" />
-      </tbody>
-    </table>
-    <table class="table">
-      <tr>
-        <th>プレイヤー</th>
-        <th>得点</th>
-      </tr>
-      <tr v-for="score in scores" :key="score.id">
-        <td>{{ score.userName }}</td>
-        <ScoreStyle :score="score.score" />
-      </tr>
-    </table>
+    <section class="section">
+      <SongInfo :song-id="id" @song-loaded="loaded"></SongInfo>
+    </section>
+    <section class="section">
+      <song-share-button :song-id="id" :song-identifier="songsIdentifier" />
+    </section>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import SongCol from '../../components/SongCol.vue'
+import SongInfo from '../../components/SongInfo.vue'
 import ScoreStyle from '../../components/ScoreStyle.vue'
 import Songs from '../../components/Songs'
+import SongShareButton from '../../components/SongShareButton.vue'
 import axios from 'axios'
 export default Vue.extend({
-  components: { SongCol, ScoreStyle },
+  components: { SongInfo, SongShareButton },
   data: function() {
     return {
       id: this.$route.params.id,
-      song: new Songs(this.$route.params.id, '', '', '', ''),
-      scores: []
+      songsIdentifier: ''
     }
   },
   head() {
-    const songsIdentifier =
-      this.$data.song.songName +
-      ' / ' +
-      this.$data.song.contributor +
-      ' (' +
-      this.$data.song.instrument +
-      ')'
+    const BASE_URL: string = process.env.baseUrl || ''
     return {
-      title: songsIdentifier + ' - 大合奏！バンドブラザーズ☆10地力表',
+      title:
+        this.$data.songsIdentifier + ' - 大合奏！バンドブラザーズ☆10地力表',
       meta: [
-        { name: 'twitter:card', content: 'summary' },
         {
-          name: 'twitter:title',
-          content: songsIdentifier + ' - 大合奏！バンドブラザーズ☆10地力表'
+          hid: 'description',
+          name: 'description',
+          content: this.$data.songsIdentifier + 'の得点一覧、楽曲情報です。'
+        },
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+        { hid: 'twitter:site', name: 'twitter:site', content: '@bbp10_jiriki' },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: BASE_URL + '/songs/' + this.$route.params.id
         },
         {
+          hid: 'og:title',
+          property: 'og:title',
+          content:
+            this.$data.songsIdentifier + ' - 大合奏！バンドブラザーズ☆10地力表'
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.$data.songsIdentifier + 'の得点一覧、楽曲情報です。'
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: BASE_URL + '/favicon.ico'
+        },
+        { name: 'twitter:card', content: 'summary' },
+        {
+          hid: 'twitter:description',
           name: 'twitter:description',
-          content: songsIdentifier + 'の得点一覧です。'
+          content: this.$data.songsIdentifier + 'の得点一覧、楽曲情報です。'
         }
       ]
     }
   },
   async created() {
     let id = this.$route.params.id
-    let songResponse: Songs = await axios
-      .get(process.env.apiBaseUrl + '/v1' + '/songs/' + id)
-      .then(response => {
-        let s: any = response.data
-        return new Songs(
-          s.songId,
-          s.jirikiRank,
-          s.songName,
-          s.contributor,
-          s.instrument
-        )
-      })
-      .catch(error => {
-        console.log(error)
-        throw new Error('サーバーとの接続に失敗しました')
-      })
-
-    let scoreResponse = await axios
-      .get(process.env.apiBaseUrl + '/v1' + '/songs/' + id + '/scores')
-      .then(response => {
-        return response.data
-      })
-      .catch(error => {
-        console.log(error)
-        throw new Error('サーバーとの接続に失敗しました')
-      })
-    this.song = songResponse
-    this.scores = scoreResponse
+  },
+  methods: {
+    loaded(identifierEmitted) {
+      this.songsIdentifier = identifierEmitted
+    }
   }
 })
 </script>

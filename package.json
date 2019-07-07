@@ -1,7 +1,7 @@
 {
   "name": "bbp-jiriki-frontend",
   "version": "1.0.0",
-  "description": "Frontend project for jiriki API.",
+  "description": "大合奏！バンドブラザーズPにおける☆10の難易度とスコアを管理するページです。",
   "author": "gogotea55t",
   "private": true,
   "scripts": {
