@@ -53,12 +53,14 @@ export default Vue.extend({
   },
   methods: {
     toggleModal(emittedSongId) {
-      this.modalSongId = emittedSongId
+      if (this.modalSongId !== emittedSongId) {
+        this.modalSongId = emittedSongId
+        this.modalSongIdentifier = ''
+      }
       this.modal['is-active'] = true
     },
     untoggleModal() {
       this.modal['is-active'] = false
-      this.modalSongIdentifier = ''
     },
     songLoaded(songIdentifierEmitted) {
       this.modalSongIdentifier = songIdentifierEmitted

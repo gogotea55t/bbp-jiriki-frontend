@@ -32,6 +32,7 @@ import SongCol from './SongCol.vue'
 import ScoreStyle from './ScoreStyle.vue'
 import Songs from './Songs'
 import axios from 'axios'
+
 export default Vue.extend({
   components: { SongCol, ScoreStyle },
   props: {
@@ -48,8 +49,7 @@ export default Vue.extend({
   },
   watch: {
     songId: function() {
-      this.song = new Songs('', '', '', '', '')
-      this.scores = []
+      this.resetData()
       this.loadInfo(this.$props.songId)
     }
   },
@@ -99,6 +99,10 @@ export default Vue.extend({
           this.$data.song.instrument +
           ')'
       )
+    },
+    resetData: function() {
+      this.song = new Songs('', '', '', '', '')
+      this.scores = []
     }
   }
 })
