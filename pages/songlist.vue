@@ -33,19 +33,37 @@ export default Vue.extend({
     }
   },
   head() {
+    const BASE_URL: string = process.env.baseUrl || ''
     return {
       title: '楽曲一覧 - 大合奏！バンドブラザーズ☆10地力表',
       meta: [
-        { name: 'twitter:card', content: 'summary' },
         {
-          name: 'twitter:title',
+          hid: 'description',
+          name: 'description',
+          content: '登録されている楽曲の一覧です。'
+        },
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+        { hid: 'twitter:site', name: 'twitter:site', content: '@bbp10_jiriki' },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: BASE_URL + '/songlist'
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
           content: '得点一覧 - 大合奏！バンドブラザーズ☆10地力表'
         },
         {
-          name: 'twitter:description',
+          hid: 'og:description',
+          property: 'og:description',
           content: '登録されている楽曲の一覧です。'
         },
-        { name: 'description', content: '登録されている楽曲の一覧です。' }
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: BASE_URL + '/favicon.ico'
+        }
       ]
     }
   },
