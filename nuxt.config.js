@@ -1,5 +1,6 @@
 const pkg = require('./package')
 const environment = process.env.NODE_ENV || 'development'
+const BASE_URL = process.env.baseUrl || 'https://bbp10-jiriki.cf'
 const envSet = require(`./env.${environment}.js`)
 
 module.exports = {
@@ -9,11 +10,44 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: pkg.name,
+    title: '大合奏！バンドブラザーズP☆10地力表',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          '大合奏！バンドブラザーズPにおける☆10の難易度とスコアを管理するページです。'
+      },
+      { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+      { hid: 'twitter:site', name: 'twitter:site', content: '@bbp10_jiriki' },
+      {
+        hid: 'twitter:creator',
+        name: 'twitter:creator',
+        content: '@bbp10_jiriki'
+      },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: BASE_URL + '/'
+      },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: '大合奏！バンドブラザーズP☆10地力表'
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content:
+          '大合奏！バンドブラザーズPにおける☆10の難易度とスコアを管理するページです。'
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: BASE_URL + '/favicon.ico'
+      }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
