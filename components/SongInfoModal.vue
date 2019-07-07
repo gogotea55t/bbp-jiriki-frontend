@@ -58,7 +58,6 @@ export default Vue.extend({
     },
     untoggleModal() {
       this.modal['is-active'] = false
-      this.modalSongId = ''
       this.modalSongIdentifier = ''
     },
     songLoaded(songIdentifierEmitted) {
