@@ -28,9 +28,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import SongCol from './SongCol.vue'
-import ScoreStyle from './ScoreStyle.vue'
-import Songs from './Songs'
+import SongCol from '../molecules/SongCol.vue'
+import ScoreStyle from '../atoms/ScoreStyle.vue'
+import Songs from '../types/Songs'
 import axios from 'axios'
 
 export default Vue.extend({

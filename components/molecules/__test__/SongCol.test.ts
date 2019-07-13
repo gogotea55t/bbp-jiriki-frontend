@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import * as SongCol from '../SongCol.vue'
-import Songs from '../Songs'
+import Songs from '../../types/Songs'
 
 const sampleSong = new Songs(
   '001',

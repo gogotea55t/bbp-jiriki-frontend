@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Players from './Players'
+import Players from '../types/Players'
 import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUser } from '@fortawesome/free-solid-svg-icons'

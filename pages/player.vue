@@ -22,10 +22,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import PlayerSelector from '../components/PlayerSelector.vue'
-import SearchWindow from '../components/SearchWindow.vue'
-import SongsTableWithScore from '../components/SongsTableWithScore.vue'
-import SongInfoModal from '../components/SongInfoModal.vue'
+import PlayerSelector from '../components/atoms/PlayerSelector.vue'
+import SearchWindow from '../components/molecules/SearchWindow.vue'
+import SongsTableWithScore from '../components/organisms/SongsTableWithScore.vue'
+import SongInfoModal from '../components/molecules/SongInfoModal.vue'
 export default Vue.extend({
   name: 'Player',
   components: {
