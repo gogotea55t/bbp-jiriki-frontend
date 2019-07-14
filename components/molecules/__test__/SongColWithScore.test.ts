@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import * as SongColWithScore from '../SongColWithScore.vue'
-import SongsWithScore from '../SongsWithScore'
+import SongsWithScore from '../../types/SongsWithScore'
 
 describe(SongColWithScore.default, () => {
   const sampleSongs: SongsWithScore = new SongsWithScore(

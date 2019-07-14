@@ -21,8 +21,8 @@
 <script lang="ts">
 import Vue from 'vue'
 import axios from 'axios'
-import SongsWithScore from './SongsWithScore'
-import SongColWithScore from './SongColWithScore.vue'
+import SongsWithScore from '../types/SongsWithScore'
+import SongColWithScore from '../molecules/SongColWithScore.vue'
 export default Vue.extend({
   name: 'SongsTableWithScore',
   components: { SongColWithScore },

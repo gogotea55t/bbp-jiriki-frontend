@@ -11,10 +11,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import SongInfo from '../../components/SongInfo.vue'
-import ScoreStyle from '../../components/ScoreStyle.vue'
-import Songs from '../../components/Songs'
-import SongShareButton from '../../components/SongShareButton.vue'
+import SongInfo from '../../components/organisms/SongInfo.vue'
+import ScoreStyle from '../../components/atoms/ScoreStyle.vue'
+import Songs from '../../components/types/Songs'
+import SongShareButton from '../../components/molecules/SongShareButton.vue'
 import axios from 'axios'
 export default Vue.extend({
   components: { SongInfo, SongShareButton },

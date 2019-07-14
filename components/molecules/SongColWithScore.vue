@@ -10,9 +10,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import SongsWithScore from './SongsWithScore'
-import JirikiRank from './JirikiRank.vue'
-import ScoreStyle from './ScoreStyle.vue'
+import SongsWithScore from '../types/SongsWithScore'
+import JirikiRank from '../atoms/JirikiRank.vue'
+import ScoreStyle from '../atoms/ScoreStyle.vue'
 export default Vue.extend({
   name: 'SongColWithScore',
   components: { JirikiRank, ScoreStyle },

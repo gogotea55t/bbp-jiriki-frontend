@@ -17,10 +17,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import SongsTable from '../components/SongsTable.vue'
-import SearchWindow from '../components/SearchWindow.vue'
-import Songs from '../components/Songs'
-import SongInfoModal from '../components/SongInfoModal.vue'
+import SongsTable from '../components/organisms/SongsTable.vue'
+import SearchWindow from '../components/molecules/SearchWindow.vue'
+import Songs from '../components/types/Songs'
+import SongInfoModal from '../components/molecules/SongInfoModal.vue'
 import axios from 'axios'
 
 export default Vue.extend({

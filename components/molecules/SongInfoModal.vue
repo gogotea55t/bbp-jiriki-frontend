@@ -30,8 +30,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import SongInfo from '../components/SongInfo.vue'
-import SongShareButton from '../components/SongShareButton.vue'
+import SongInfo from '../organisms/SongInfo.vue'
+import SongShareButton from './SongShareButton.vue'
 
 export class ModalClassObj {
   'is-active': boolean
