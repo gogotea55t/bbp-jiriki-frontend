@@ -10,7 +10,11 @@
         @toggle-modal="toggleModal"
       ></SongsTable>
     </section>
-    <img id="songlist-loader" src="~/static/loading.gif" alt="now loading..." />
+    <Song-Loader
+      :has-next-page-to-load="hasNextPageToLoad"
+      :is-fetch-on-progress="isFetchOnProgress"
+      @load-more="getMore"
+    />
     <SongInfoModal ref="modalSection"></SongInfoModal>
   </div>
 </template>
@@ -21,15 +25,18 @@ import SongsTable from '../components/organisms/SongsTable.vue'
 import SearchWindow from '../components/molecules/SearchWindow.vue'
 import Songs from '../components/types/Songs'
 import SongInfoModal from '../components/molecules/SongInfoModal.vue'
+import SongLoader from '../components/molecules/SongLoader.vue'
 import axios from 'axios'
 
 export default Vue.extend({
-  components: { SongsTable, SearchWindow, SongInfoModal },
+  components: { SongsTable, SearchWindow, SongInfoModal, SongLoader },
   data: function() {
     return {
       songs: new Array<Songs>(),
       page: 0,
-      query: '/songs?page='
+      query: '/songs?page=',
+      hasNextPageToLoad: true,
+      isFetchOnProgress: false
     }
   },
   head() {
@@ -68,63 +75,28 @@ export default Vue.extend({
     }
   },
   mounted: function() {
-    window.addEventListener('scroll', this.handleScroll)
+    this.hasNextPageToLoad = true
   },
   methods: {
     getMore: async function() {
+      console.log('called??')
+      // 読み込み中フラグを立てておくことで二重通信を防ぐ
+      this.isFetchOnProgress = true
       this.page = this.page + 1
       let songTable: any = this.$refs.songTable
       let numberOfSongsAdded: number = await songTable.loadMore(
         this.query + this.page
       )
       if (numberOfSongsAdded < 20) {
-        // 空のデータしか返ってこなかった場合、ローディング画像を消す
-        let loaderImage = document.getElementById('songlist-loader')
-        if (loaderImage !== null) {
-          loaderImage.style.display = 'none'
-        }
+        // 空のデータしか返ってこなかった場合、ローディング画像を消し、ローディングをやめる
+        this.hasNextPageToLoad = false
       } else {
-        // スクロールを検知するイベントリスナーを追加
-        window.addEventListener('scroll', this.handleScroll)
+        this.hasNextPageToLoad = true
       }
-    },
-    // ローディング画像のところまでスクロールが行くと次のデータを読み込むようにする
-    handleScroll() {
-      let scrollTop =
-        document.documentElement.scrollTop || document.body.scrollTop
-      let loaderImage = document.getElementById('songlist-loader')
-      let loaderImagePosition = 0
-      if (loaderImage !== null) {
-        loaderImagePosition = loaderImage.offsetTop
-      } else {
-        window.removeEventListener('scroll', this.handleScroll)
-      }
-      let clientHeight =
-        document.documentElement.clientHeight || document.body.clientHeight
-      let scrollBottom = clientHeight + scrollTop
-      if (scrollBottom > loaderImagePosition) {
-        // 多重に通信されると困るので条件を満たした時点でイベントリスナーを一度消す
-        window.removeEventListener('scroll', this.handleScroll)
-        this.getMore()
-      }
-    },
-    enableLoading() {
-      let loader = document.getElementById('songlist-loader')
-      if (loader === null) {
-      } else if (loader.style.display === 'none') {
-        loader.style.display = 'block'
-        window.addEventListener('scroll', this.handleScroll)
-      }
-    },
-    disableLoading() {
-      let loader = document.getElementById('songlist-loader')
-      if (loader !== null) {
-        loader.style.display = 'none'
-      }
-      window.removeEventListener('scroll', this.handleScroll)
+      this.isFetchOnProgress = false
     },
     async search(searchQuery) {
-      this.enableLoading()
+      this.hasNextPageToLoad = true
       this.query = '/songs?' + searchQuery + '&page='
       this.page = 0
       let songTable: any = this.$refs.songTable
@@ -132,7 +104,7 @@ export default Vue.extend({
         .loadSongsByQuery(this.query + this.page)
         .then(numberOfSongsAdded => {
           if (numberOfSongsAdded < 20) {
-            this.disableLoading()
+            this.hasNextPageToLoad = false
           }
         })
     },
