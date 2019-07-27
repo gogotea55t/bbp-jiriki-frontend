@@ -43,21 +43,34 @@ describe(Player.default, () => {
     vueInstance.searchByPlayer('u001')
     vueInstance.getMore()
     vueInstance.getMore()
-    expect(wrapper.vm.$data.page).toBe(2)
+    setTimeout(() => {
+      expect(wrapper.vm.$data.hasNextPageToLoad).toBeFalsy
+      expect(wrapper.vm.$data.page).toBe(2)
+    }, 5000)
   })
 
   it('楽曲などで検索をかけることができる', () => {
     const vueInstance: any = wrapper.vm
     vueInstance.searchByPlayer('u001')
     vueInstance.searchSongs('instrument=クラシックギター')
-    expect(wrapper.vm.$data.query).toBe(
-      '/players/u001/scores?instrument=クラシックギター&page='
-    )
-    expect(wrapper.vm.$data.page).toBe(0)
+    setTimeout(() => {
+      expect(wrapper.vm.$data.query).toBe(
+        '/players/u001/scores?instrument=クラシックギター&page='
+      )
+      expect(wrapper.vm.$data.page).toBe(0)
+    }, 5000)
   })
 
-  it('スクロールする', () => {
-    window.dispatchEvent(new CustomEvent('scroll', { detail: 2000 }))
+  it('検索をかけるがヒットしないときは読み込みを中止できる', () => {
+    const vueInstance: any = wrapper.vm
+    vueInstance.searchByPlayer('u001')
+    vueInstance.searchSongs('contributor=クラシックギター')
+    setTimeout(() => {
+      expect(wrapper.vm.$data.query).toBe(
+        '/players/u001/scores?contributor=クラシックギター&page='
+      )
+      expect(wrapper.vm.$data.page).toBe(0)
+    }, 5000)
   })
 
   it('モーダル発火イベントを受け取る', () => {

@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils'
 import * as Songlist from '../songlist.vue'
 import SongsTableStub from '../__stubs__/SongsTableStub.vue'
 import SongInfoModalStub from '../__stubs__/SongInfoModalStub.vue'
-
+jest.setTimeout(20000)
 describe(Songlist.default, () => {
   const wrapper = shallowMount(Songlist.default, {
     propsData: {
@@ -18,11 +18,18 @@ describe(Songlist.default, () => {
     expect(wrapper.isVueInstance).toBeTruthy()
   })
 
-  it('さらに読み込みできる', () => {
+  it('さらに読み込みできる', done => {
     const vueInstance: any = wrapper.vm
     vueInstance.getMore()
-    expect(wrapper.vm.$data.query).toBe('/songs?page=')
-    expect(wrapper.vm.$data.page).toBe(1)
+    vueInstance.getMore()
+    setTimeout(done2 => {
+      expect(wrapper.vm.$data.isFetchOnProgress).toBeFalsy
+      expect(wrapper.vm.$data.hasNextPageToLoad).toBeTruthy
+      expect(wrapper.vm.$data.query).toBe('/songs?page=')
+      expect(wrapper.vm.$data.page).toBe(2)
+      done2
+      done()
+    }, 5000)
   })
 
   it('検索をかけたうえでさらに読み込みする', () => {
@@ -30,13 +37,22 @@ describe(Songlist.default, () => {
     vueInstance.search('name=RPG')
     expect(wrapper.vm.$data.page).toBe(0)
     vueInstance.getMore()
+    // wrapper.vm.$emit('load-more')
     expect(wrapper.vm.$data.query).toBe('/songs?name=RPG&page=')
     expect(wrapper.vm.$data.page).toBe(1)
   })
 
-  it('スクロールしてみる', () => {
+  it('検索をかけるがヒットしない', done => {
     const vueInstance: any = wrapper.vm
-    vueInstance.handleScroll()
+    vueInstance.search('instrument=ネンリキ')
+    setTimeout(done2 => {
+      expect(wrapper.vm.$data.page).toBe(0)
+
+      expect(wrapper.vm.$data.query).toBe('/songs?instrument=ネンリキ&page=')
+      expect(wrapper.vm.$data.hasNextPageToLoad).toBeFalsy
+      done2
+      done()
+    }, 5000)
   })
 
   it('モーダルが起動する', () => {
