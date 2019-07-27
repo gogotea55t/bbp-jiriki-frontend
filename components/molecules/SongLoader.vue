@@ -1,10 +1,12 @@
 <template>
-  <img
-    v-if="hasNextPageToLoad"
-    id="songlist-loader"
-    src="~/static/loading.gif"
-    alt="now loading..."
-  />
+  <div class="content has-text-centered">
+    <img
+      v-if="hasNextPageToLoad"
+      id="songlist-loader"
+      src="~/static/loading.gif"
+      alt="now loading..."
+    />
+  </div>
 </template>
 
 <script lang="ts">
