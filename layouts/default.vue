@@ -31,6 +31,18 @@
               スプレッドシートへ
             </a>
           </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="field is-grouped">
+                <p class="control" @click="login" v-if="!isAuthenticated">
+                  <Login-Button />
+                </p>
+                <p class="control" @click="logout" v-if="isAuthenticated">
+                  <button class="button is-small">ログアウト</button>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
@@ -88,6 +100,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
+import AuthPlugin from '~/plugins/auth'
 import {
   faHome,
   faMusic,
@@ -96,6 +109,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import LoginButton from '../components/atoms/LoginButton.vue'
 
 library.add(faHome)
 library.add(faMusic)
@@ -103,8 +117,11 @@ library.add(faUsers)
 library.add(faTable)
 library.add(faGithub)
 
+Vue.use(AuthPlugin)
+Vue.config.productionTip = false
+
 export default Vue.extend({
-  components: { FontAwesomeIcon },
+  components: { FontAwesomeIcon, LoginButton },
   mounted() {
     let burger: any = document.querySelector('.burger')
     let menu: any = document.querySelector('#' + burger.dataset.target)
@@ -112,6 +129,30 @@ export default Vue.extend({
       burger.classList.toggle('is-active')
       menu.classList.toggle('is-active')
     })
+  },
+  data() {
+    return {
+      isAuthenticated: false
+    }
+  },
+  async created() {
+    try {
+      await this.$auth.renewTokens()
+    } catch (e) {
+      console.log(e)
+    }
+  },
+  methods: {
+    login() {
+      this.$auth.login()
+    },
+    logout() {
+      this.$auth.logOut()
+    },
+    handleLoginEvent(data) {
+      this.isAuthenticated = data.loggedIn
+      this.profile = data.profile
+    }
   }
 })
 </script>
