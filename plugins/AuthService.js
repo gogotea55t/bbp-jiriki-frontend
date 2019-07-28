@@ -6,7 +6,8 @@ const webAuth = new auth0.WebAuth({
   domain: authConfig.domain,
   redirectUri: `${window.location.origin}/callback`,
   clientID: authConfig.clientId,
-  responseType: 'id_token',
+  audience: authConfig.audience,
+  responseType: 'token id_token',
   scope: 'openid profile email'
 })
 
@@ -17,6 +18,9 @@ export class AuthService extends EventEmitter {
   idToken = null
   profile = null
   tokenExpiry = null
+
+  accessToken = null
+  accessTokenExpiry = null
 
   // Starts the user login flow
   login(customState) {
@@ -45,6 +49,9 @@ export class AuthService extends EventEmitter {
 
     // Convert the JWT expiry time from seconds to milliseconds
     this.tokenExpiry = new Date(this.profile.exp * 1000)
+
+    this.accessToken = authResult.accessToken
+    this.accessTokenExpiry = new Date(Date.now() + authResult.expiresIn * 1000)
 
     localStorage.setItem(localStorageKey, 'true')
 
@@ -91,6 +98,26 @@ export class AuthService extends EventEmitter {
       Date.now() < this.tokenExpiry &&
       localStorage.getItem(localStorageKey) === 'true'
     )
+  }
+
+  isAccessTokenValid() {
+    return (
+      this.accessToken &&
+      this.accessTokenExpiry &&
+      Date.now() < this.accessTokenExpiry
+    )
+  }
+
+  getAccessToken() {
+    return new Promise((resolve, reject) => {
+      if (this.isAccessTokenValid()) {
+        resolve(this.accessToken)
+      } else {
+        this.renewTokens().then(authResult => {
+          resolve(authResult.accessToken)
+        }, reject)
+      }
+    })
   }
 }
 

@@ -3,8 +3,10 @@
     <nav class="navbar is-white topNav">
       <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item" href="/">
-            大合奏！バンドブラザーズ☆10 地力表
+          <a class="navbar-item">
+            <nuxt-link to="/">
+              大合奏！バンドブラザーズ☆10 地力表
+            </nuxt-link>
           </a>
           <div class="navbar-burger burger" data-target="topNav">
             <span></span>
@@ -14,12 +16,17 @@
         </div>
         <div id="topNav" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="/songlist">
-              <font-awesome-icon icon="music"></font-awesome-icon> 楽曲から探す
+            <a class="navbar-item">
+              <nuxt-link to="/songlist">
+                <font-awesome-icon icon="music"></font-awesome-icon>
+                楽曲から探す
+              </nuxt-link>
             </a>
-            <a class="navbar-item" href="/player">
-              <font-awesome-icon icon="users"></font-awesome-icon>
-              プレイヤーから探す
+            <a class="navbar-item">
+              <nuxt-link to="/player">
+                <font-awesome-icon icon="users"></font-awesome-icon>
+                プレイヤーから探す
+              </nuxt-link>
             </a>
             <a
               class="navbar-item"
@@ -36,6 +43,11 @@
               <div class="field is-grouped">
                 <p class="control" @click="login" v-if="!isAuthenticated">
                   <Login-Button />
+                </p>
+                <p class="control" v-if="isAuthenticated">
+                  <nuxt-link to="/user">
+                    <img :src="profile.picture" />
+                  </nuxt-link>
                 </p>
                 <p class="control" @click="logout" v-if="isAuthenticated">
                   <button class="button is-small">ログアウト</button>
