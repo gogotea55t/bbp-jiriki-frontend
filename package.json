@@ -81,7 +81,7 @@
       "./middleware/**/*.{js,vue,ts}",
       "./modules/**/*.{js,vue,ts}",
       "./pages/**/*.{js,vue,ts}",
-      "./plugins/**/*.{js,vue,ts}",
+      "./plugins/**/*.{vue,ts}",
       "./static/**/*.{js,vue,ts}"
     ]
   }
