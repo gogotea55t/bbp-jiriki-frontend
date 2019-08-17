@@ -6,4 +6,10 @@ export class AuthServiceStub extends EventEmitter {
       resolve()
     })
   }
+
+  profile = {
+    name: 'mock',
+    userid: 'mock',
+    picture: process.env.BaseUrl + '/favicon.ico'
+  }
 }

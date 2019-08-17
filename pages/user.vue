@@ -2,7 +2,7 @@
   <div v-if="profile">
     <div>
       <div>
-        <img :src="profile.picture" @click="view" />
+        <img :src="profile.picture" />
       </div>
       <div>
         <h2>{{ profile.name }}</h2>
@@ -28,9 +28,6 @@ export default Vue.extend({
   methods: {
     handleLoginEvent(data) {
       this.profile = data.profile
-    },
-    view() {
-      console.log(this.profile)
     }
   }
 })
