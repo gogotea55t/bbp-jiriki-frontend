@@ -26,9 +26,11 @@
     "@nuxt/typescript": "^2.5.1",
     "@nuxtjs/axios": "^5.4.1",
     "@nuxtjs/bulma": "^1.2.3",
+    "@types/auth0-js": "^9.10.2",
     "@types/jest": "^24.0.11",
     "@types/node": "^11.11.3",
     "@vue/test-utils": "^1.0.0-beta.29",
+    "auth0-js": "^9.11.2",
     "axios-mock-adapter": "^1.16.0",
     "babel-core": "^6.26.3",
     "babel-jest": "^24.5.0",
@@ -79,7 +81,7 @@
       "./middleware/**/*.{js,vue,ts}",
       "./modules/**/*.{js,vue,ts}",
       "./pages/**/*.{js,vue,ts}",
-      "./plugins/**/*.{js,vue,ts}",
+      "./plugins/**/*.{vue,ts}",
       "./static/**/*.{js,vue,ts}"
     ]
   }
