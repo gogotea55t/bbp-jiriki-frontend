@@ -4,3 +4,5 @@ services:
     image: bbp10-jiriki.cf:5000/bbp-jiriki-frontend:${BBP_FRONTEND_VERSION}
     ports:
       - 3000:3000
+    volumes:
+      - ./auth_config.json:/auth_config.json
