@@ -23,7 +23,6 @@
     "@fortawesome/free-brands-svg-icons": "^5.8.2",
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
     "@fortawesome/vue-fontawesome": "^0.1.6",
-    "@nuxt/typescript": "^2.5.1",
     "@nuxtjs/axios": "^5.4.1",
     "@nuxtjs/bulma": "^1.2.3",
     "@types/auth0-js": "^9.10.2",
@@ -46,6 +45,7 @@
     "vue-jest": "^3.0.4"
   },
   "devDependencies": {
+    "@nuxt/typescript-build": "^0.3.1",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.15.2",
     "eslint-config-prettier": "^4.1.0",

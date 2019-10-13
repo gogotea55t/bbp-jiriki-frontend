@@ -69,6 +69,15 @@ module.exports = {
    */
   plugins: ['~/plugins/auth'],
 
+  /**
+   * From Nuxt 2.10
+   */
+  buildModules: ['@nuxt/typescript-build'],
+  typescript: {
+    typeCheck: true,
+    ignoreNotFoundWarnings: true
+  },
+
   /*
    ** Nuxt.js modules
    */
