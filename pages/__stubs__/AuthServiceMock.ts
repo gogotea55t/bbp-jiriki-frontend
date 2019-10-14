@@ -7,9 +7,17 @@ export class AuthServiceStub extends EventEmitter {
     })
   }
 
+  getAccessToken() {
+    return new Promise((resolve, reject) => {
+      resolve()
+      return 'token'
+    })
+  }
+
   profile = {
     name: 'mock',
     userid: 'mock',
+    sub: 'mock',
     picture: process.env.BaseUrl + '/favicon.ico'
   }
 }

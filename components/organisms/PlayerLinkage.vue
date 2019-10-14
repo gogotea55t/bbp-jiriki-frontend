@@ -20,8 +20,8 @@
 <script lang="ts">
 import Vue from 'vue'
 import axios from 'axios'
-import PlayerSelector from '~/components/atoms/PlayerSelector.vue'
-import Players from '~/components/types/Players'
+import PlayerSelector from '../atoms/PlayerSelector.vue'
+import Players from '../types/Players'
 export default Vue.extend({
   components: { PlayerSelector },
   data: function() {
