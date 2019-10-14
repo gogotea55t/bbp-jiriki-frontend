@@ -28,6 +28,12 @@
                 プレイヤーから探す
               </nuxt-link>
             </a>
+            <a class="navbar-item">
+              <nuxt-link to="/player-linkage">
+                <font-awesome-icon icon="users"></font-awesome-icon>
+                プレイヤーをリンク
+              </nuxt-link>
+            </a>
             <a
               class="navbar-item"
               target="_blank"
