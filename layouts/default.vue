@@ -141,20 +141,6 @@ export default Vue.extend({
       burger.classList.toggle('is-active')
       menu.classList.toggle('is-active')
     })
-    console.log(this.$auth)
-  },
-  data() {
-    return {
-      isAuthenticated: false,
-      user: null
-    }
-  },
-  async created() {
-    try {
-      await this.$auth.getTokenSilently()
-    } catch (e) {
-      console.log(e)
-    }
   },
   methods: {
     login() {
@@ -164,10 +150,6 @@ export default Vue.extend({
       this.$auth.logout({
         returnTo: window.location.origin
       })
-    },
-    handleLoginEvent(data) {
-      this.isAuthenticated = data.loggedIn
-      this.user = data.user
     }
   }
 })
