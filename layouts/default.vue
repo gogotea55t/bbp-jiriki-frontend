@@ -40,19 +40,20 @@
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
-              <div class="field is-grouped">
-                <p class="control" @click="login" v-if="!isAuthenticated">
+              <div class="field is-grouped" v-if="!$auth.loading">
+                <p class="control" @click="login" v-if="!$auth.isAuthenticated">
                   <Login-Button />
                 </p>
-                <p class="control" v-if="isAuthenticated">
+                <p class="control" v-if="$auth.isAuthenticated">
                   <nuxt-link to="/user">
-                    <img :src="profile.picture" />
+                    <img :src="$auth.user.picture" />
                   </nuxt-link>
                 </p>
-                <p class="control" @click="logout" v-if="isAuthenticated">
+                <p class="control" @click="logout" v-if="$auth.isAuthenticated">
                   <button class="button is-small">ログアウト</button>
                 </p>
               </div>
+              <div v-if="$auth.loading">ロード中。。。</div>
             </div>
           </div>
         </div>
@@ -112,7 +113,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import AuthPlugin from '~/plugins/auth'
+import { Auth0Plugin } from '~/plugins/AuthService'
 import {
   faHome,
   faMusic,
@@ -129,7 +130,6 @@ library.add(faUsers)
 library.add(faTable)
 library.add(faGithub)
 
-Vue.use(AuthPlugin)
 Vue.config.productionTip = false
 
 export default Vue.extend({
@@ -142,28 +142,14 @@ export default Vue.extend({
       menu.classList.toggle('is-active')
     })
   },
-  data() {
-    return {
-      isAuthenticated: false
-    }
-  },
-  async created() {
-    try {
-      await this.$auth.renewTokens()
-    } catch (e) {
-      console.log(e)
-    }
-  },
   methods: {
     login() {
-      this.$auth.login()
+      this.$auth.loginWithRedirect()
     },
     logout() {
-      this.$auth.logOut()
-    },
-    handleLoginEvent(data) {
-      this.isAuthenticated = data.loggedIn
-      this.profile = data.profile
+      this.$auth.logout({
+        returnTo: window.location.origin
+      })
     }
   }
 })

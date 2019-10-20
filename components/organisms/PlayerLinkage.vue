@@ -31,10 +31,10 @@ export default Vue.extend({
   },
   methods: {
     async linkage() {
-      const token = await this.$auth.getAccessToken()
+      const token = await this.$auth.getTokenSilently()
       const data = {
         userId: this.playerId,
-        twitterUserId: this.$auth.profile.sub
+        twitterUserId: this.$auth.user.sub
       }
       await axios
         .put(process.env.apiBaseUrl + '/v1/players', data, {

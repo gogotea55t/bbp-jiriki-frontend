@@ -1,20 +1,14 @@
 import { EventEmitter } from 'events'
 
 export class AuthServiceStub extends EventEmitter {
-  handleAuthentication() {
-    return new Promise((resolve, reject) => {
-      resolve()
-    })
-  }
-
-  getAccessToken() {
+  getTokenSilently() {
     return new Promise((resolve, reject) => {
       resolve()
       return 'token'
     })
   }
 
-  profile = {
+  user = {
     name: 'mock',
     userid: 'mock',
     sub: 'mock',

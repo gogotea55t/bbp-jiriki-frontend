@@ -22,13 +22,9 @@ export default Vue.extend({
   name: 'userInfo',
   data() {
     return {
-      profile: this.$auth.profile
+      profile: this.$auth.user
     }
   },
-  methods: {
-    handleLoginEvent(data) {
-      this.profile = data.profile
-    }
-  }
+  methods: {}
 })
 </script>
