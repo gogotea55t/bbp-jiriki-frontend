@@ -67,7 +67,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/auth'],
+  plugins: ['~/plugins/AuthPlugin'],
 
   /**
    * From Nuxt 2.10

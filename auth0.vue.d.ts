@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import { AuthService } from 'plugins/AuthService'
+import { useAuth0 } from 'plugins/AuthService'
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $auth: AuthService
+    $auth: any
   }
 }
