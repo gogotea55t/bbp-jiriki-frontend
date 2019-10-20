@@ -32,15 +32,7 @@
 import Vue from 'vue'
 import SongInfo from '../organisms/SongInfo.vue'
 import SongShareButton from './SongShareButton.vue'
-
-export class ModalClassObj {
-  'is-active': boolean
-  modal: boolean
-  constructor() {
-    this['is-active'] = false
-    this.modal = true
-  }
-}
+import ModalClassObj from '../atoms/ModalClassObj'
 
 export default Vue.extend({
   components: { SongInfo, SongShareButton },
