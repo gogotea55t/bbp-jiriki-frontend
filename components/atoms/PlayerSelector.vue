@@ -48,6 +48,11 @@ export default Vue.extend({
         throw new Error('サーバーとの通信に失敗しました。')
       })
   },
+  mounted() {
+    if (this.$store.state.auth.loginUserId) {
+      this.playerId = this.$store.state.auth.loginUserId
+    }
+  },
   methods: {
     selectChanged() {
       this.$emit('player-selected', this.playerId)

@@ -45,6 +45,7 @@ export default Vue.extend({
         })
         .then(res => {
           alert(`${res.data.userName}さんに紐づけしました。`)
+          this.$store.commit('auth/setLoginUserId', res.data.userId)
           this.$router.push('/player')
         })
         .catch(err => {

@@ -112,6 +112,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { Auth0Plugin } from '~/plugins/AuthService'
 import {
@@ -134,6 +135,11 @@ Vue.config.productionTip = false
 
 export default Vue.extend({
   components: { FontAwesomeIcon, LoginButton },
+  computed: {
+    isAuthLoading() {
+      return this.$auth.loading
+    }
+  },
   mounted() {
     let burger: any = document.querySelector('.burger')
     let menu: any = document.querySelector('#' + burger.dataset.target)
@@ -141,6 +147,13 @@ export default Vue.extend({
       burger.classList.toggle('is-active')
       menu.classList.toggle('is-active')
     })
+  },
+  watch: {
+    async isAuthLoading() {
+      if (!this.isAuthLoading && this.$auth.isAuthenticated) {
+        await this.fetchLoginUser()
+      }
+    }
   },
   methods: {
     login() {
@@ -150,6 +163,27 @@ export default Vue.extend({
       this.$auth.logout({
         returnTo: window.location.origin
       })
+    },
+    async fetchLoginUser() {
+      const token = await this.$auth.getTokenSilently()
+      return await axios
+        .get(process.env.apiBaseUrl + '/v1/players/auth0', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(res => {
+          console.log(res)
+          if (res.data.userId) {
+            this.$store.dispatch('auth/setLoginUserId', res.data.userId)
+            this.$router.push('/players')
+          } else {
+            // userIdが登録されていなければ設定画面に飛ばして設定してもらう
+            this.$router.push('/user')
+          }
+        })
+        .catch(err => {})
     }
   }
 })
