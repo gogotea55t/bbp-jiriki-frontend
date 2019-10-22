@@ -27,15 +27,12 @@ export const useAuth0 = ({
       }
     },
     async created() {
-      console.log('created')
       this.auth0Client = await createAuth0Client({
         domain: options.domain,
         client_id: options.clientId,
         audience: options.audience,
         redirect_uri: redirectUri
       })
-
-      console.log(this.auth0Client + 'has made')
 
       try {
         if (
@@ -48,7 +45,6 @@ export const useAuth0 = ({
       } catch (e) {
         this.error = e
       } finally {
-        console.log(this.auth0Client)
         this.isAuthenticated = await this.auth0Client.isAuthenticated()
         this.user = await this.auth0Client.getUser()
         this.loading = false

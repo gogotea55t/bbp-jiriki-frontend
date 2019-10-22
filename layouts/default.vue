@@ -178,7 +178,6 @@ export default Vue.extend({
           }
         })
         .then(res => {
-          console.log(res)
           if (res.data.userId) {
             this.$store.dispatch('auth/setLoginUserId', res.data.userId)
             this.$router.push('/player')
