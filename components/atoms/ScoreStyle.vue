@@ -43,11 +43,13 @@ export default Vue.extend({
   },
   data: function() {
     return {
-      classObject: new ScoreStyleClassObject(0)
+      classObject: new ScoreStyleClassObject(this.score)
     }
   },
-  mounted: function() {
-    this.classObject = new ScoreStyleClassObject(this.score)
+  watch: {
+    score() {
+      this.classObject = new ScoreStyleClassObject(this.score)
+    }
   }
 })
 </script>

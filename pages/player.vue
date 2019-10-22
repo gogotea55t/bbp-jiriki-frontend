@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="section">
-      <PlayerSelector @player-selected="searchByPlayer"></PlayerSelector>
+      <PlayerSelector @player-selected="playerIdChanged"></PlayerSelector>
       <SearchWindow @search-emit="searchSongs"></SearchWindow>
     </section>
     <section class="section">
@@ -86,6 +86,12 @@ export default Vue.extend({
       ]
     }
   },
+  created() {
+    if (this.$store.state.auth.loginUserId) {
+      this.query =
+        '/players/' + this.$store.state.auth.loginUserId + '/scores?page='
+    }
+  },
   methods: {
     searchByPlayer(playerId) {
       this.page = 0
@@ -131,6 +137,14 @@ export default Vue.extend({
     toggleModal(emittedSongId) {
       const modalComponent: any = this.$refs.modalSection
       modalComponent.toggleModal(emittedSongId)
+    },
+    playerIdChanged(playerId) {
+      this.playerId = playerId
+    }
+  },
+  watch: {
+    playerId() {
+      this.searchByPlayer(this.playerId)
     }
   }
 })
