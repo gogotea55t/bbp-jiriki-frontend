@@ -177,7 +177,7 @@ export default Vue.extend({
           console.log(res)
           if (res.data.userId) {
             this.$store.dispatch('auth/setLoginUserId', res.data.userId)
-            this.$router.push('/players')
+            this.$router.push('/player')
           } else {
             // userIdが登録されていなければ設定画面に飛ばして設定してもらう
             this.$router.push('/user')
