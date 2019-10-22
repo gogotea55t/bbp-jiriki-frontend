@@ -22,7 +22,7 @@ import Vue from 'vue'
 import PlayerLinkage from '../components/organisms/PlayerLinkage.vue'
 
 export default Vue.extend({
-  name: 'userInfo',
+  name: 'UserInfo',
   components: { PlayerLinkage },
   data() {
     return {

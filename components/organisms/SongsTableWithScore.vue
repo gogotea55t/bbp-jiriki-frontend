@@ -42,7 +42,6 @@ export default Vue.extend({
   },
   methods: {
     async loadSongsByQuery(query: String) {
-      console.log(query)
       // 表示を切り替える前に配列を初期化する。一度中身を消さないとcssのクラスが残ってしまう。
       this.songs = new Array<SongsWithScore>()
       const apiBaseUrl: string =

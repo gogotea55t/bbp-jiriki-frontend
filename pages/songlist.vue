@@ -79,7 +79,6 @@ export default Vue.extend({
   },
   methods: {
     getMore: async function() {
-      console.log('called??')
       // 読み込み中フラグを立てておくことで二重通信を防ぐ
       this.isFetchOnProgress = true
       this.page = this.page + 1
