@@ -40,20 +40,24 @@
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
-              <div class="field is-grouped" v-if="!$auth.loading">
-                <p class="control" @click="login" v-if="!$auth.isAuthenticated">
+              <div v-if="!$auth.loading" class="field is-grouped">
+                <p v-if="!$auth.isAuthenticated" class="control" @click="login">
                   <Login-Button />
                 </p>
-                <p class="control" v-if="$auth.isAuthenticated">
+                <p v-if="$auth.isAuthenticated" class="control">
                   <nuxt-link to="/user">
                     <img :src="$auth.user.picture" />
                   </nuxt-link>
                 </p>
-                <p class="control" @click="logout" v-if="$auth.isAuthenticated">
-                  <button class="button is-small">ログアウト</button>
+                <p v-if="$auth.isAuthenticated" class="control" @click="logout">
+                  <button class="button is-small">
+                    ログアウト
+                  </button>
                 </p>
               </div>
-              <div v-if="$auth.loading">ロード中。。。</div>
+              <div v-if="$auth.loading">
+                ロード中。。。
+              </div>
             </div>
           </div>
         </div>
@@ -140,6 +144,13 @@ export default Vue.extend({
       return this.$auth.loading
     }
   },
+  watch: {
+    async isAuthLoading() {
+      if (!this.isAuthLoading && this.$auth.isAuthenticated) {
+        await this.fetchLoginUser()
+      }
+    }
+  },
   mounted() {
     let burger: any = document.querySelector('.burger')
     let menu: any = document.querySelector('#' + burger.dataset.target)
@@ -147,13 +158,6 @@ export default Vue.extend({
       burger.classList.toggle('is-active')
       menu.classList.toggle('is-active')
     })
-  },
-  watch: {
-    async isAuthLoading() {
-      if (!this.isAuthLoading && this.$auth.isAuthenticated) {
-        await this.fetchLoginUser()
-      }
-    }
   },
   methods: {
     login() {

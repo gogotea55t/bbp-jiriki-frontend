@@ -11,8 +11,8 @@
         @toggleModal="toggleModal"
       ></SongsTableWithScore>
       <song-loader
-        :hasNextPageToLoad="hasNextPageToLoad"
-        :isFetchOnProgress="isFetchOnProgress"
+        :has-next-page-to-load="hasNextPageToLoad"
+        :is-fetch-on-progress="isFetchOnProgress"
         @load-more="getMore"
       />
       <SongInfoModal ref="modalSection"></SongInfoModal>
@@ -86,6 +86,11 @@ export default Vue.extend({
       ]
     }
   },
+  watch: {
+    playerId() {
+      this.searchByPlayer(this.playerId)
+    }
+  },
   created() {
     if (this.$store.state.auth.loginUserId) {
       this.query =
@@ -140,11 +145,6 @@ export default Vue.extend({
     },
     playerIdChanged(playerId) {
       this.playerId = playerId
-    }
-  },
-  watch: {
-    playerId() {
-      this.searchByPlayer(this.playerId)
     }
   }
 })
