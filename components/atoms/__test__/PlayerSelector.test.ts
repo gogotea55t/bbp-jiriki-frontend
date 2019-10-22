@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { shallowMount, createLocalVue, createWrapper } from '@vue/test-utils'
 import * as PlayerSelector from '../PlayerSelector.vue'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
@@ -104,5 +104,51 @@ describe(PlayerSelector.default, () => {
       expect(wrapper.vm).toThrowError
       done
     }, 5000)
+  })
+})
+
+describe(PlayerSelector.default, () => {
+  it('マウント後にstoreの値が変わるので初期値が変わる', done => {
+    const wrapper = shallowMount(PlayerSelector.default, {
+      mocks: {
+        Promise,
+        mock
+      },
+      localVue,
+      store
+    })
+
+    expect(wrapper.vm.$data.playerId).toBe('u001')
+    //    expect(wrapper.vm.$data.defaultPlayerId).toBe('u001')
+    setTimeout(done2 => {
+      wrapper.vm.$store.state.auth.loginUserId = 'u003'
+      //    expect(wrapper.vm.$data.defaultPlayerId).toBe('u003')
+      expect(wrapper.vm.$data.playerId).toBe('u003')
+      done2
+      done()
+    }, 200)
+  })
+})
+
+describe(PlayerSelector.default, () => {
+  it('マウント後にstoreの値が変わるので初期値が変わる', () => {
+    const store2 = new Vuex.Store({
+      state: {
+        auth: {
+          loginUserId: 'u005'
+        }
+      }
+    })
+
+    const wrapper = shallowMount(PlayerSelector.default, {
+      mocks: {
+        Promise,
+        mock
+      },
+      localVue,
+      store: store2
+    })
+
+    expect(wrapper.vm.$data.playerId).toBe('u005')
   })
 })
