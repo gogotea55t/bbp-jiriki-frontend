@@ -39,7 +39,7 @@ export default Vue.extend({
   data() {
     return {
       query: '/players/u001/scores?page=',
-      playerId: this.$store.state.auth.loginUserId || 'u001',
+      playerId: 'u001',
       page: 0,
       hasNextPageToLoad: true,
       isFetchOnProgress: false
@@ -84,6 +84,12 @@ export default Vue.extend({
           content: 'プレイヤーごとの得点一覧です。'
         }
       ]
+    }
+  },
+  created() {
+    if (this.$store.state.auth.loginUserId) {
+      this.query =
+        '/players/' + this.$store.state.auth.loginUserId + '/scores?page='
     }
   },
   methods: {
