@@ -1,9 +1,20 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import * as Player from '../player.vue'
 import SongsTableWithScoreStub from '../__stubs__/SongsTableWithScoreStub.vue'
 import SongInfoModalStub from '../__stubs__/SongInfoModalStub.vue'
+import Vuex from 'vuex'
+
+const localVue = createLocalVue()
+localVue.use(Vuex)
 
 describe(Player.default, () => {
+  const store = new Vuex.Store({
+    state: {
+      auth: {
+        loginUserId: null
+      }
+    }
+  })
   const wrapper = shallowMount(Player.default, {
     propsData: {
       query: '/players/u001/scores?page=',
@@ -13,7 +24,9 @@ describe(Player.default, () => {
     stubs: {
       SongsTableWithScore: SongsTableWithScoreStub,
       SongInfoModal: SongInfoModalStub
-    }
+    },
+    store,
+    localVue
   })
 
   it('とりあえず表示できる', () => {
@@ -26,8 +39,7 @@ describe(Player.default, () => {
   })
 
   it('プレイヤーを切り替えるとクエリが切り替わる', () => {
-    const vueInstance: any = wrapper.vm
-    vueInstance.searchByPlayer('u002')
+    wrapper.setData({ playerId: 'u002' })
     expect(wrapper.vm.$data.query).toBe('/players/u002/scores?page=')
     expect(wrapper.vm.$data.page).toBe(0)
   })
@@ -76,5 +88,40 @@ describe(Player.default, () => {
   it('モーダル発火イベントを受け取る', () => {
     const vueInstance: any = wrapper.vm
     vueInstance.toggleModal('57')
+  })
+
+  it('プレイヤーが切り替わるとクエリが切り替わる', () => {
+    const vueInstance: any = wrapper.vm
+    vueInstance.playerIdChanged('u005')
+    expect(wrapper.vm.$data.playerId).toBe('u005')
+    expect(wrapper.vm.$data.query).toBe('/players/u005/scores?page=')
+  })
+})
+
+describe(Player.default, () => {
+  const store = new Vuex.Store({
+    state: {
+      auth: {
+        loginUserId: 'u004'
+      }
+    }
+  })
+
+  const wrapper = shallowMount(Player.default, {
+    propsData: {
+      query: '/players/u001/scores?page=',
+      playerId: '/u001',
+      page: 0
+    },
+    stubs: {
+      SongsTableWithScore: SongsTableWithScoreStub,
+      SongInfoModal: SongInfoModalStub
+    },
+    store,
+    localVue
+  })
+
+  it('storeにユーザーIDが入っているときはそこから情報を取る', () => {
+    expect(wrapper.vm.$data.query).toBe('/players/u004/scores?page=')
   })
 })
