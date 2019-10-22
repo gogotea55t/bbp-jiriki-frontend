@@ -3,11 +3,9 @@
     <nav class="navbar is-white topNav">
       <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item">
-            <nuxt-link to="/">
-              大合奏！バンドブラザーズ☆10 地力表
-            </nuxt-link>
-          </a>
+          <nuxt-link class="navbar-item" to="/">
+            大合奏！バンドブラザーズ☆10 地力表
+          </nuxt-link>
           <div class="navbar-burger burger" data-target="topNav">
             <span></span>
             <span></span>
@@ -16,18 +14,16 @@
         </div>
         <div id="topNav" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item">
-              <nuxt-link to="/songlist">
+            <nuxt-link class="navbar-item" to="/songlist">
+              <div>
                 <font-awesome-icon icon="music"></font-awesome-icon>
                 楽曲から探す
-              </nuxt-link>
-            </a>
-            <a class="navbar-item">
-              <nuxt-link to="/player">
-                <font-awesome-icon icon="users"></font-awesome-icon>
-                プレイヤーから探す
-              </nuxt-link>
-            </a>
+              </div>
+            </nuxt-link>
+            <nuxt-link class="navbar-item" to="/player">
+              <font-awesome-icon icon="users"></font-awesome-icon>
+              プレイヤーから探す
+            </nuxt-link>
             <a
               class="navbar-item"
               target="_blank"
