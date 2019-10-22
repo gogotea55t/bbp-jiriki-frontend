@@ -51,6 +51,7 @@ export default Vue.extend({
   mounted() {
     if (this.$store.state.auth.loginUserId) {
       this.playerId = this.$store.state.auth.loginUserId
+      this.$emit('player-selected', this.playerId)
     }
   },
   methods: {
