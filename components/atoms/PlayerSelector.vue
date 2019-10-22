@@ -35,6 +35,16 @@ export default Vue.extend({
       playerId: 'u001'
     }
   },
+  computed: {
+    defaultPlayerId() {
+      return this.$store.state.auth.loginUserId || 'u001'
+    }
+  },
+  watch: {
+    defaultPlayerId() {
+      this.playerId = this.defaultPlayerId
+    }
+  },
   async created() {
     await axios
       .get(process.env.apiBaseUrl + '/v1' + '/players')
@@ -51,6 +61,7 @@ export default Vue.extend({
   mounted() {
     if (this.$store.state.auth.loginUserId) {
       this.playerId = this.$store.state.auth.loginUserId
+      this.$emit('player-selected', this.playerId)
     }
   },
   methods: {
