@@ -7,7 +7,7 @@
       この選択は後でも行えます。
     </section>
     <div class="buttons is-centered">
-      <button class="button">
+      <button v-if="enableCancelButton" class="button" @click="cancel">
         今は紐づけない
       </button>
       <button class="button is-info" @click="linkage">
@@ -24,12 +24,21 @@ import PlayerSelector from '../atoms/PlayerSelector.vue'
 import Players from '../types/Players'
 export default Vue.extend({
   components: { PlayerSelector },
+  props: {
+    enableCancelButton: {
+      type: Boolean,
+      default: false
+    }
+  },
   data: function() {
     return {
       playerId: 'u001'
     }
   },
   methods: {
+    cancel() {
+      this.$emit('cancel')
+    },
     async linkage() {
       const token = await this.$auth.getTokenSilently()
       const data = {
