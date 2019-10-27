@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import PlayerLinkage from '../components/organisms/PlayerLinkage.vue'
+import PlayerLinkage from '../components/molecules/PlayerLinkage.vue'
 
 export default Vue.extend({
   name: 'UserInfo',
