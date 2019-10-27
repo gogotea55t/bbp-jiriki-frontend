@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import PlayerLinkage from '../organisms/PlayerLinkage.vue'
+import PlayerLinkage from '../molecules/PlayerLinkage.vue'
 import ModalClassObj from '../atoms/ModalClassObj'
 
 export default Vue.extend({

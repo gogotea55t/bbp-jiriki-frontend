@@ -127,7 +127,7 @@ import {
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import LoginButton from '../components/atoms/LoginButton.vue'
-import PlayerLinkageModal from '../components/molecules/PlayerLinkageModal.vue'
+import PlayerLinkageModal from '../components/organisms/PlayerLinkageModal.vue'
 
 library.add(faHome)
 library.add(faMusic)
