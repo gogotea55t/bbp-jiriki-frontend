@@ -37,7 +37,7 @@ export default Vue.extend({
         twitterUserId: this.$auth.user.sub
       }
       await axios
-        .put(process.env.apiBaseUrl + '/v1/players', data, {
+        .put(process.env.apiBaseUrl + '/v1/players/auth0', data, {
           headers: {
             Authorization: `Bearer ${token}`,
             'content-type': 'application/json'
