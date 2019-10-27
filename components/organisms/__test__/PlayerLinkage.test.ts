@@ -10,7 +10,7 @@ const mock = new MockAdapter(axios)
 const apiBaseUrl: any = process.env.apiBaseUrl //|| 'http://localhost:8080'
 
 mock
-  .onPut(apiBaseUrl + '/v1/players', {
+  .onPut(apiBaseUrl + '/v1/players/auth0', {
     userId: 'u003',
     twitterUserId: 'mock'
   })
