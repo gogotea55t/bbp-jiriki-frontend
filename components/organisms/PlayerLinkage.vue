@@ -37,7 +37,7 @@ export default Vue.extend({
         twitterUserId: this.$auth.user.sub
       }
       await axios
-        .put(process.env.apiBaseUrl + '/v1/players', data, {
+        .put(process.env.apiBaseUrl + '/v1/players/auth0', data, {
           headers: {
             Authorization: `Bearer ${token}`,
             'content-type': 'application/json'
@@ -49,7 +49,10 @@ export default Vue.extend({
           this.$router.push('/player')
         })
         .catch(err => {
-          throw new Error(err)
+          console.log(err.response)
+          const errMsg =
+            err.response.data.message || 'サーバーとの通信に失敗しました'
+          this.$nuxt.error({ statusCode: err.response.status, message: errMsg })
         })
     },
     selectChanged(playerId) {
