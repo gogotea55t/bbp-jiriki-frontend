@@ -43,6 +43,7 @@ export default Vue.extend({
   watch: {
     defaultPlayerId() {
       this.playerId = this.defaultPlayerId
+      this.$emit('player-selected', this.playerId)
     }
   },
   async created() {
