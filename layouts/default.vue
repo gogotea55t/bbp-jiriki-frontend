@@ -70,6 +70,9 @@
           </div>
         </div>
       </div>
+      <div>
+        <player-linkage-modal ref="linkageModal" />
+      </div>
     </section>
     <footer class="footer">
       <div class="container">
@@ -124,6 +127,7 @@ import {
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import LoginButton from '../components/atoms/LoginButton.vue'
+import PlayerLinkageModal from '../components/organisms/PlayerLinkageModal.vue'
 
 library.add(faHome)
 library.add(faMusic)
@@ -134,7 +138,7 @@ library.add(faGithub)
 Vue.config.productionTip = false
 
 export default Vue.extend({
-  components: { FontAwesomeIcon, LoginButton },
+  components: { FontAwesomeIcon, LoginButton, PlayerLinkageModal },
   computed: {
     isAuthLoading() {
       return this.$auth.loading
@@ -179,7 +183,8 @@ export default Vue.extend({
             this.$router.push('/player')
           } else {
             // userIdが登録されていなければ設定画面に飛ばして設定してもらう
-            this.$router.push('/user')
+            const linkageModal: any = this.$refs.linkageModal
+            linkageModal.toggleModal()
           }
         })
         .catch(err => {})
