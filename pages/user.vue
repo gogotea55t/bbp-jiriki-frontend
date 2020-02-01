@@ -30,6 +30,7 @@ export default Vue.extend({
     }
   },
   created() {
+    console.log('created???')
     if (!this.$auth.isAuthenticated) {
       this.$router.push('/')
     }

@@ -8,6 +8,12 @@ export class AuthServiceStub extends EventEmitter {
     })
   }
 
+  setLogout() {
+    this.isAuthenticated = !this.isAuthenticated
+  }
+
+  isAuthenticated: boolean = true
+
   user = {
     name: 'mock',
     userid: 'mock',
