@@ -29,6 +29,11 @@ export default Vue.extend({
       profile: this.$auth.user
     }
   },
+  created() {
+    if (!this.$auth.isAuthenticated) {
+      this.$router.push('/')
+    }
+  },
   methods: {}
 })
 </script>
