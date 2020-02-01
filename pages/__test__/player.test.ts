@@ -3,6 +3,7 @@ import * as Player from '../player.vue'
 import SongsTableWithScoreStub from '../__stubs__/SongsTableWithScoreStub.vue'
 import SongInfoModalStub from '../__stubs__/SongInfoModalStub.vue'
 import Vuex from 'vuex'
+import Vue from 'vue'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
@@ -40,8 +41,10 @@ describe(Player.default, () => {
 
   it('プレイヤーを切り替えるとクエリが切り替わる', () => {
     wrapper.setData({ playerId: 'u002' })
-    expect(wrapper.vm.$data.query).toBe('/players/u002/scores?page=')
-    expect(wrapper.vm.$data.page).toBe(0)
+    Vue.nextTick(() => {
+      expect(wrapper.vm.$data.query).toBe('/players/u002/scores?page=')
+      expect(wrapper.vm.$data.page).toBe(0)
+    })
   })
 
   it('一度読みこんだ後、もっと読み込むと同じクエリの2ページ目を取りに行く', () => {
@@ -93,8 +96,10 @@ describe(Player.default, () => {
   it('プレイヤーが切り替わるとクエリが切り替わる', () => {
     const vueInstance: any = wrapper.vm
     vueInstance.playerIdChanged('u005')
-    expect(wrapper.vm.$data.playerId).toBe('u005')
-    expect(wrapper.vm.$data.query).toBe('/players/u005/scores?page=')
+    Vue.nextTick(() => {
+      expect(wrapper.vm.$data.playerId).toBe('u005')
+      expect(wrapper.vm.$data.query).toBe('/players/u005/scores?page=')
+    })
   })
 })
 

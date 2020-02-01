@@ -3,6 +3,7 @@ import * as PlayerSelector from '../PlayerSelector.vue'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
 import Vuex from 'vuex'
+import Vue from 'vue'
 
 //global.Promise = jest.requireActual('Promise')
 jest.setTimeout(20000)
@@ -123,7 +124,9 @@ describe(PlayerSelector.default, () => {
     setTimeout(done2 => {
       wrapper.vm.$store.state.auth.loginUserId = 'u003'
       //    expect(wrapper.vm.$data.defaultPlayerId).toBe('u003')
-      expect(wrapper.vm.$data.playerId).toBe('u003')
+      Vue.nextTick(() => {
+        expect(wrapper.vm.$data.playerId).toBe('u003')
+      })
       done2
       done()
     }, 200)
