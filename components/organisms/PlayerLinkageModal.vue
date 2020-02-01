@@ -13,7 +13,11 @@
         ></button>
       </header>
       <section class="modal-card-body">
-        <player-linkage :enable-cancel-button="true" @cancel="cancel" />
+        <player-linkage
+          :enable-cancel-button="true"
+          @cancel="cancel"
+          @settings-changed="untoggleModal"
+        />
       </section>
     </div>
   </div>
