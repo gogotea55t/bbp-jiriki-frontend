@@ -3,9 +3,9 @@
     <nav class="navbar is-white topNav">
       <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item" href="/">
+          <nuxt-link class="navbar-item" to="/">
             大合奏！バンドブラザーズ☆10 地力表
-          </a>
+          </nuxt-link>
           <div class="navbar-burger burger" data-target="topNav">
             <span></span>
             <span></span>
@@ -14,13 +14,16 @@
         </div>
         <div id="topNav" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="/songlist">
-              <font-awesome-icon icon="music"></font-awesome-icon> 楽曲から探す
-            </a>
-            <a class="navbar-item" href="/player">
+            <nuxt-link class="navbar-item" to="/songlist">
+              <div>
+                <font-awesome-icon icon="music"></font-awesome-icon>
+                楽曲から探す
+              </div>
+            </nuxt-link>
+            <nuxt-link class="navbar-item" to="/player">
               <font-awesome-icon icon="users"></font-awesome-icon>
               プレイヤーから探す
-            </a>
+            </nuxt-link>
             <a
               class="navbar-item"
               target="_blank"
@@ -30,6 +33,28 @@
               <font-awesome-icon icon="table"></font-awesome-icon>
               スプレッドシートへ
             </a>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div v-if="!$auth.loading" class="field is-grouped">
+                <p v-if="!$auth.isAuthenticated" class="control" @click="login">
+                  <Login-Button />
+                </p>
+                <p v-if="$auth.isAuthenticated" class="control">
+                  <nuxt-link to="/user">
+                    <img :src="$auth.user.picture" />
+                  </nuxt-link>
+                </p>
+                <p v-if="$auth.isAuthenticated" class="control" @click="logout">
+                  <button class="button is-small">
+                    ログアウト
+                  </button>
+                </p>
+              </div>
+              <div v-if="$auth.loading">
+                ロード中。。。
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -44,6 +69,9 @@
             <nuxt />
           </div>
         </div>
+      </div>
+      <div>
+        <player-linkage-modal ref="linkageModal" />
       </div>
     </section>
     <footer class="footer">
@@ -87,7 +115,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
+import { Auth0Plugin } from '~/plugins/AuthService'
 import {
   faHome,
   faMusic,
@@ -96,6 +126,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import LoginButton from '../components/atoms/LoginButton.vue'
+import PlayerLinkageModal from '../components/organisms/PlayerLinkageModal.vue'
 
 library.add(faHome)
 library.add(faMusic)
@@ -103,8 +135,22 @@ library.add(faUsers)
 library.add(faTable)
 library.add(faGithub)
 
+Vue.config.productionTip = false
+
 export default Vue.extend({
-  components: { FontAwesomeIcon },
+  components: { FontAwesomeIcon, LoginButton, PlayerLinkageModal },
+  computed: {
+    isAuthLoading() {
+      return this.$auth.loading
+    }
+  },
+  watch: {
+    async isAuthLoading() {
+      if (!this.isAuthLoading && this.$auth.isAuthenticated) {
+        await this.fetchLoginUser()
+      }
+    }
+  },
   mounted() {
     let burger: any = document.querySelector('.burger')
     let menu: any = document.querySelector('#' + burger.dataset.target)
@@ -112,6 +158,37 @@ export default Vue.extend({
       burger.classList.toggle('is-active')
       menu.classList.toggle('is-active')
     })
+  },
+  methods: {
+    login() {
+      this.$auth.loginWithRedirect()
+    },
+    logout() {
+      this.$auth.logout({
+        returnTo: window.location.origin
+      })
+    },
+    async fetchLoginUser() {
+      const token = await this.$auth.getTokenSilently()
+      return await axios
+        .get(process.env.apiBaseUrl + '/v1/players/auth0', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(res => {
+          if (res.data.userId) {
+            this.$store.dispatch('auth/setLoginUserId', res.data.userId)
+            this.$router.push('/player')
+          } else {
+            // userIdが登録されていなければ設定画面に飛ばして設定してもらう
+            const linkageModal: any = this.$refs.linkageModal
+            linkageModal.toggleModal()
+          }
+        })
+        .catch(err => {})
+    }
   }
 })
 </script>

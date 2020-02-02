@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Players from './Players'
+import Players from '../types/Players'
 import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
@@ -35,6 +35,17 @@ export default Vue.extend({
       playerId: 'u001'
     }
   },
+  computed: {
+    defaultPlayerId(): string {
+      return this.$store.state.auth.loginUserId || 'u001'
+    }
+  },
+  watch: {
+    defaultPlayerId() {
+      this.$data.playerId = this.defaultPlayerId
+      this.$emit('player-selected', this.playerId)
+    }
+  },
   async created() {
     await axios
       .get(process.env.apiBaseUrl + '/v1' + '/players')
@@ -47,6 +58,12 @@ export default Vue.extend({
         console.log(error)
         throw new Error('サーバーとの通信に失敗しました。')
       })
+  },
+  mounted() {
+    if (this.$store.state.auth.loginUserId) {
+      this.playerId = this.$store.state.auth.loginUserId
+      this.$emit('player-selected', this.playerId)
+    }
   },
   methods: {
     selectChanged() {

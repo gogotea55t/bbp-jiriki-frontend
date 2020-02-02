@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="section">
-      <PlayerSelector @player-selected="searchByPlayer"></PlayerSelector>
+      <PlayerSelector @player-selected="playerIdChanged"></PlayerSelector>
       <SearchWindow @search-emit="searchSongs"></SearchWindow>
     </section>
     <section class="section">
@@ -10,10 +10,10 @@
         :query="query"
         @toggleModal="toggleModal"
       ></SongsTableWithScore>
-      <img
-        id="songlist-loader"
-        src="~/static/loading.gif"
-        alt="now loading..."
+      <song-loader
+        :has-next-page-to-load="hasNextPageToLoad"
+        :is-fetch-on-progress="isFetchOnProgress"
+        @load-more="getMore"
       />
       <SongInfoModal ref="modalSection"></SongInfoModal>
     </section>
@@ -22,23 +22,27 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import PlayerSelector from '../components/PlayerSelector.vue'
-import SearchWindow from '../components/SearchWindow.vue'
-import SongsTableWithScore from '../components/SongsTableWithScore.vue'
-import SongInfoModal from '../components/SongInfoModal.vue'
+import PlayerSelector from '../components/atoms/PlayerSelector.vue'
+import SearchWindow from '../components/molecules/SearchWindow.vue'
+import SongsTableWithScore from '../components/organisms/SongsTableWithScore.vue'
+import SongInfoModal from '../components/molecules/SongInfoModal.vue'
+import SongLoader from '../components/molecules/SongLoader.vue'
 export default Vue.extend({
   name: 'Player',
   components: {
     PlayerSelector,
     SearchWindow,
     SongsTableWithScore,
+    SongLoader,
     SongInfoModal
   },
   data() {
     return {
       query: '/players/u001/scores?page=',
       playerId: 'u001',
-      page: 0
+      page: 0,
+      hasNextPageToLoad: true,
+      isFetchOnProgress: false
     }
   },
   head() {
@@ -82,8 +86,16 @@ export default Vue.extend({
       ]
     }
   },
-  mounted() {
-    window.addEventListener('scroll', this.handleScroll)
+  watch: {
+    playerId() {
+      this.searchByPlayer(this.playerId)
+    }
+  },
+  created() {
+    if (this.$store.state.auth.loginUserId) {
+      this.query =
+        '/players/' + this.$store.state.auth.loginUserId + '/scores?page='
+    }
   },
   methods: {
     searchByPlayer(playerId) {
@@ -91,8 +103,10 @@ export default Vue.extend({
       this.playerId = playerId
       this.query = '/players/' + this.playerId + '/scores?page='
       let songsTable: any = this.$refs.songTable
-      songsTable.loadSongsByQuery(this.query + this.page)
-      this.enableLoading()
+      songsTable.loadSongsByQuery(this.query + this.page).then(() => {
+        this.isFetchOnProgress = false
+      })
+      this.hasNextPageToLoad = true
     },
     searchSongs(queryString: string) {
       this.page = 0
@@ -102,64 +116,35 @@ export default Vue.extend({
       songsTable
         .loadSongsByQuery(this.query + this.page)
         .then(numberOfSongsAdded => {
+          this.isFetchOnProgress = false
           if (numberOfSongsAdded < 20) {
-            this.disableLoading()
+            this.hasNextPageToLoad = false
           } else {
-            this.enableLoading()
+            this.hasNextPageToLoad = true
           }
         })
     },
     async getMore() {
+      this.isFetchOnProgress = true
       this.page = this.page + 1
       let songsTable: any = this.$refs.songTable
       await songsTable
         .loadMore(this.query + this.page)
         .then(numberOfSongsAdded => {
+          this.isFetchOnProgress = false
           if (numberOfSongsAdded < 20) {
-            this.disableLoading()
+            this.hasNextPageToLoad = false
           } else {
-            window.addEventListener('scroll', this.handleScroll)
+            this.hasNextPageToLoad = true
           }
         })
-    },
-    // ローディング画像のところまでスクロールが行くと次のデータを読み込むようにする
-    handleScroll() {
-      let scrollTop =
-        document.documentElement.scrollTop || document.body.scrollTop
-      let loaderImage = document.getElementById('songlist-loader')
-      let loaderImagePosition = 0
-      if (loaderImage !== null) {
-        loaderImagePosition = loaderImage.offsetTop
-      } else {
-        window.removeEventListener('scroll', this.handleScroll)
-      }
-      let clientHeight =
-        document.documentElement.clientHeight || document.body.clientHeight
-      let scrollBottom = clientHeight + scrollTop
-      if (scrollBottom > loaderImagePosition) {
-        // 多重に通信されると困るので条件を満たした時点でイベントリスナーを一度消す
-        window.removeEventListener('scroll', this.handleScroll)
-        this.getMore()
-      }
-    },
-    enableLoading() {
-      let loader = document.getElementById('songlist-loader')
-      if (loader === null) {
-      } else if (loader.style.display === 'none') {
-        loader.style.display = 'block'
-        window.addEventListener('scroll', this.handleScroll)
-      }
-    },
-    disableLoading() {
-      let loader = document.getElementById('songlist-loader')
-      if (loader !== null) {
-        loader.style.display = 'none'
-      }
-      window.removeEventListener('scroll', this.handleScroll)
     },
     toggleModal(emittedSongId) {
       const modalComponent: any = this.$refs.modalSection
       modalComponent.toggleModal(emittedSongId)
+    },
+    playerIdChanged(playerId) {
+      this.playerId = playerId
     }
   }
 })

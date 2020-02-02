@@ -9,8 +9,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import JirikiRank from './JirikiRank.vue'
-import Songs from './Songs'
+import JirikiRank from '../atoms/JirikiRank.vue'
+import Songs from '../types/Songs'
 
 export default Vue.extend({
   name: 'SongCol',

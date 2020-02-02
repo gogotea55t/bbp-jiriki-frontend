@@ -52,7 +52,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import JirikiSelector from './JirikiSelector.vue'
+import JirikiSelector from '../atoms/JirikiSelector.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'

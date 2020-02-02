@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import * as SearchWindow from '../SearchWindow.vue'
+import Vue from 'vue'
 
 describe(SearchWindow.default, () => {
   const wrapper = mount(SearchWindow.default)
@@ -22,9 +23,11 @@ describe(SearchWindow.default, () => {
     const searchAttr = wrapper.find('#search-attr')
     const searchButton = wrapper.find('#search-btn')
     searchAttr.setValue('jiriki')
-    const jirikiSelector = wrapper.find('#jiriki-selector')
-    jirikiSelector.setValue('地力Ｅ')
-    searchButton.trigger('click')
-    expect(wrapper.emitted()['search-emit'][0]).toContain('jiriki=地力Ｅ')
+    Vue.nextTick(() => {
+      const jirikiSelector = wrapper.find('#jiriki-selector')
+      jirikiSelector.setValue('地力Ｅ')
+      searchButton.trigger('click')
+      expect(wrapper.emitted()['search-emit'][0]).toContain('jiriki=地力Ｅ')
+    })
   })
 })
