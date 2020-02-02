@@ -36,13 +36,13 @@ export default Vue.extend({
     }
   },
   computed: {
-    defaultPlayerId() {
+    defaultPlayerId(): string {
       return this.$store.state.auth.loginUserId || 'u001'
     }
   },
   watch: {
     defaultPlayerId() {
-      this.playerId = this.defaultPlayerId
+      this.$data.playerId = this.defaultPlayerId
       this.$emit('player-selected', this.playerId)
     }
   },
