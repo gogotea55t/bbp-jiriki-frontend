@@ -19,6 +19,7 @@ after_failure:
   - ./send.sh failure $DISCORD_WEBHOOK
 deploy:
   provider: script
+  skip_cleanup: true
   script: bash imagepush $TRAVIS_TAG
   on:
     tags: true
