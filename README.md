@@ -69,7 +69,7 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 【終了条件】
 
 - [x] Twitter のアカウントでログインできる
-- [x]認証の基盤については[Auth0](https://auth0.com/jp/)がいいんじゃないかなーと目論見中
+- [x] 認証の基盤については[Auth0](https://auth0.com/jp/)がいいんじゃないかなーと目論見中
 - [x] ログインすると自分のユーザー画面に飛ぶようにする
 - [x] 地力表でのプレイヤーと Twitter のアカウントの紐づけができるようにする
 - [x] 権限管理はこの段階では特にしない
