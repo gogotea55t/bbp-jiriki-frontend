@@ -38,8 +38,8 @@ export default Vue.extend({
   },
   data() {
     return {
-      query: '/players/u001/scores?page=',
-      playerId: 'u001',
+      query: '/players/average/scores?page=',
+      playerId: 'average',
       page: 0,
       hasNextPageToLoad: true,
       isFetchOnProgress: false

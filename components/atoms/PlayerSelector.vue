@@ -2,6 +2,9 @@
   <div class="control has-icons-left">
     <div class="select is-fullwidth">
       <select v-model="playerId" @change="selectChanged">
+        <option value="average">
+          平均
+        </option>
         <option
           v-for="player in players"
           :key="player.userId"
@@ -32,12 +35,12 @@ export default Vue.extend({
   data: function() {
     return {
       players: new Array<Players>(),
-      playerId: 'u001'
+      playerId: 'average'
     }
   },
   computed: {
     defaultPlayerId(): string {
-      return this.$store.state.auth.loginUserId || 'u001'
+      return this.$store.state.auth.loginUserId || 'average'
     }
   },
   watch: {
