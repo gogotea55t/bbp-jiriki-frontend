@@ -154,4 +154,26 @@ describe(PlayerSelector.default, () => {
 
     expect(wrapper.vm.$data.playerId).toBe('u005')
   })
+
+  it('PlayerOnlyモードがオン', () => {
+    const store2 = new Vuex.Store({
+      state: {
+        auth: {}
+      }
+    })
+
+    const wrapper = shallowMount(PlayerSelector.default, {
+      mocks: {
+        Promise,
+        mock
+      },
+      propsData: {
+        playerOnly: true
+      },
+      localVue,
+      store: store2
+    })
+
+    expect(wrapper.vm.$data.playerId).toBe('u001')
+  })
 })
