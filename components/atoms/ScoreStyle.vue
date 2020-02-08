@@ -52,10 +52,13 @@ export default Vue.extend({
   },
   computed: {
     scoreView(): string {
+      if (!this.score) {
+        return ''
+      }
       if (this.decimal) {
-        return this.score?.toFixed(2)
+        return this.score.toFixed(2)
       } else {
-        return this.score?.toFixed(0)
+        return this.score.toFixed(0)
       }
     }
   },
