@@ -2,8 +2,11 @@
   <div class="control has-icons-left">
     <div class="select is-fullwidth">
       <select v-model="playerId" @change="selectChanged">
-        <option value="average">
+        <option v-if="!playerOnly" value="average">
           平均
+        </option>
+        <option v-if="!playerOnly" disabled>
+          ---------
         </option>
         <option
           v-for="player in players"
@@ -32,6 +35,16 @@ library.add(faUser)
 export default Vue.extend({
   name: 'PlayerSelector',
   components: { FontAwesomeIcon },
+  props: {
+    /**
+     *  プレイヤーと紐づく情報だけを表示するかどうか
+     *  trueにすると「平均」などが表示されない
+     */
+    playerOnly: {
+      type: Boolean,
+      default: false
+    }
+  },
   data: function() {
     return {
       players: new Array<Players>(),
@@ -63,10 +76,13 @@ export default Vue.extend({
       })
   },
   mounted() {
+    if (this.playerOnly) {
+      this.playerId = 'u001'
+    }
     if (this.$store.state.auth.loginUserId) {
       this.playerId = this.$store.state.auth.loginUserId
-      this.$emit('player-selected', this.playerId)
     }
+    this.$emit('player-selected', this.playerId)
   },
   methods: {
     selectChanged() {
