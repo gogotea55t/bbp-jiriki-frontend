@@ -1,6 +1,6 @@
 <template>
-  <td :class="classObject">
-    {{ score }}
+  <td :class="classObject" align="right">
+    {{ scoreView }}
   </td>
 </template>
 
@@ -43,7 +43,17 @@ export default Vue.extend({
   },
   data: function() {
     return {
-      classObject: new ScoreStyleClassObject(this.score)
+      classObject: new ScoreStyleClassObject(this.score),
+      decimal: this.$store.state.score.isDecimal
+    }
+  },
+  computed: {
+    scoreView(): string {
+      if (this.decimal) {
+        return this.score?.toFixed(2)
+      } else {
+        return this.score?.toFixed(0)
+      }
     }
   },
   watch: {
