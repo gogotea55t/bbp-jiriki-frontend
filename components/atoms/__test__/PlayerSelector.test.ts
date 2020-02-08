@@ -80,7 +80,7 @@ describe(PlayerSelector.default, () => {
 
     setTimeout(done2 => {
       wrapper.find('select').trigger('change')
-      expect(wrapper.emitted()['player-selected'][0]).toContain('u001')
+      expect(wrapper.emitted()['player-selected'][0]).toContain('average')
       done2
       done()
     }, 5000)
@@ -119,7 +119,7 @@ describe(PlayerSelector.default, () => {
       store
     })
 
-    expect(wrapper.vm.$data.playerId).toBe('u001')
+    expect(wrapper.vm.$data.playerId).toBe('average')
     //    expect(wrapper.vm.$data.defaultPlayerId).toBe('u001')
     setTimeout(done2 => {
       wrapper.vm.$store.state.auth.loginUserId = 'u003'
