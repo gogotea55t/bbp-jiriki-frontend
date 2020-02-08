@@ -34,8 +34,8 @@ describe(Player.default, () => {
     expect(wrapper.isVueInstance).toBeTruthy()
   })
 
-  it('真っ先に表示されるのはu001さんのスコア', () => {
-    expect(wrapper.vm.$data.query).toBe('/players/u001/scores?page=')
+  it('真っ先に表示されるのは平均値のスコア', () => {
+    expect(wrapper.vm.$data.query).toBe('/players/average/scores?page=')
     expect(wrapper.vm.$data.page).toBe(0)
   })
 

@@ -1,6 +1,9 @@
 <template>
   <div>
-    <player-selector @player-selected="selectChanged"></player-selector>
+    <player-selector
+      :player-only="true"
+      @player-selected="selectChanged"
+    ></player-selector>
     <section class="section">
       地力表のスプレッドシート上のユーザー名を選んでください。<br />
       今後ログインした時、このユーザーの情報が最初に表示されるようになります。<br />

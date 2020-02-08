@@ -8,6 +8,7 @@
       <SongsTableWithScore
         ref="songTable"
         :query="query"
+        :decimal="decimal"
         @toggleModal="toggleModal"
       ></SongsTableWithScore>
       <song-loader
@@ -38,8 +39,8 @@ export default Vue.extend({
   },
   data() {
     return {
-      query: '/players/u001/scores?page=',
-      playerId: 'u001',
+      query: '/players/average/scores?page=',
+      playerId: 'average',
       page: 0,
       hasNextPageToLoad: true,
       isFetchOnProgress: false
@@ -84,6 +85,11 @@ export default Vue.extend({
           content: 'プレイヤーごとの得点一覧です。'
         }
       ]
+    }
+  },
+  computed: {
+    decimal(): boolean {
+      return this.playerId === 'average'
     }
   },
   watch: {

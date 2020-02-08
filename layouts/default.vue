@@ -140,7 +140,7 @@ Vue.config.productionTip = false
 export default Vue.extend({
   components: { FontAwesomeIcon, LoginButton, PlayerLinkageModal },
   computed: {
-    isAuthLoading() {
+    isAuthLoading(): boolean {
       return this.$auth.loading
     }
   },
