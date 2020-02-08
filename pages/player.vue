@@ -8,6 +8,7 @@
       <SongsTableWithScore
         ref="songTable"
         :query="query"
+        :decimal="decimal"
         @toggleModal="toggleModal"
       ></SongsTableWithScore>
       <song-loader
@@ -86,13 +87,13 @@ export default Vue.extend({
       ]
     }
   },
+  computed: {
+    decimal(): boolean {
+      return this.playerId === 'average'
+    }
+  },
   watch: {
     playerId() {
-      if (this.playerId === 'average') {
-        this.$store.dispatch('score/setDecimal', true)
-      } else {
-        this.$store.dispatch('score/setDecimal', false)
-      }
       this.searchByPlayer(this.playerId)
     }
   },

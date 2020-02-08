@@ -12,6 +12,7 @@
         v-for="song of songs"
         :key="song.songId"
         :song="song"
+        :decimal="decimal"
         @toggleModal="toggleModal"
       ></SongColWithScore>
     </tbody>
@@ -30,6 +31,10 @@ export default Vue.extend({
     query: {
       type: String,
       default: ''
+    },
+    decimal: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

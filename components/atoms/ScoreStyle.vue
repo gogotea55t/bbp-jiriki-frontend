@@ -39,12 +39,15 @@ export default Vue.extend({
     score: {
       type: Number,
       default: 0
+    },
+    decimal: {
+      type: Boolean,
+      default: false
     }
   },
   data: function() {
     return {
-      classObject: new ScoreStyleClassObject(this.score),
-      decimal: this.$store.state.score.isDecimal
+      classObject: new ScoreStyleClassObject(this.score)
     }
   },
   computed: {
