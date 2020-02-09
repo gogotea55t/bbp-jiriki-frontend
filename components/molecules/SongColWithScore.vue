@@ -4,7 +4,7 @@
     <td>{{ song.songName }}</td>
     <td>{{ song.contributor }}</td>
     <td>{{ song.instrument }}</td>
-    <ScoreStyle :score="song.score"></ScoreStyle>
+    <ScoreStyle :score="song.score" :decimal="isDecimal"></ScoreStyle>
   </tr>
 </template>
 
@@ -20,6 +20,15 @@ export default Vue.extend({
     song: {
       type: SongsWithScore,
       default: new SongsWithScore('', '', '', '', '', 0)
+    },
+    decimal: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      isDecimal: this.decimal
     }
   },
   methods: {
