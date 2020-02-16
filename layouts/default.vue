@@ -107,6 +107,11 @@
                   Github
                 </a>
               </div>
+              <div class="control">
+                <nuxt-link to="/privacy" class="tag is-info">
+                  プライバシーポリシー
+                </nuxt-link>
+              </div>
             </div>
           </div>
         </div>
