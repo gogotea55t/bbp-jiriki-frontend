@@ -62,7 +62,9 @@
     <section class="container">
       <div class="columns">
         <div class="column is-3">
-          <aside class="menu"></aside>
+          <aside class="menu">
+            <adsbygoogle />
+          </aside>
         </div>
         <div class="column is-9">
           <div class="box content">
@@ -105,6 +107,11 @@
                   Github
                 </a>
               </div>
+              <div class="control">
+                <nuxt-link to="/privacy" class="tag is-info">
+                  プライバシーポリシー
+                </nuxt-link>
+              </div>
             </div>
           </div>
         </div>
@@ -128,6 +135,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import LoginButton from '../components/atoms/LoginButton.vue'
 import PlayerLinkageModal from '../components/organisms/PlayerLinkageModal.vue'
+import { adsbygoogle } from '@nuxtjs/google-adsense'
 
 library.add(faHome)
 library.add(faMusic)
@@ -138,7 +146,7 @@ library.add(faGithub)
 Vue.config.productionTip = false
 
 export default Vue.extend({
-  components: { FontAwesomeIcon, LoginButton, PlayerLinkageModal },
+  components: { FontAwesomeIcon, LoginButton, PlayerLinkageModal, adsbygoogle },
   computed: {
     isAuthLoading(): boolean {
       return this.$auth.loading
