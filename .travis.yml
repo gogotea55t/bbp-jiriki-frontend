@@ -6,14 +6,8 @@ dist: trusty
 sudo: required
 cache: yarn
 before_install:
-  - sudo rm -r /var/lib/apt/lists
-  - sudo mkdir /var/lib/apt/lists
-  - sudo mkdir /var/lib/apt/lists/partial
-  - sudo apt-get autoclean
-  - sudo apt-get clean
   - openssl aes-256-cbc -K $encrypted_bd0c21e377f6_key -iv $encrypted_bd0c21e377f6_iv
     -in auth_config.json.enc -out ./auth_config.json -d
-  - sudo apt-get update -qq
 script:
   - yarn run test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 after_success:
