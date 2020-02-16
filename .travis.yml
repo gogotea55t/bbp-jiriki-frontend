@@ -3,7 +3,7 @@ services:
   - docker
 node_js: node
 dist: trusty
-sudo: true
+sudo: required
 cache: yarn
 before_install:
   - openssl aes-256-cbc -K $encrypted_bd0c21e377f6_key -iv $encrypted_bd0c21e377f6_iv
