@@ -6,7 +6,7 @@ dist: trusty
 sudo: required
 cache: yarn
 before_install:
-  - wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+  - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
   - openssl aes-256-cbc -K $encrypted_bd0c21e377f6_key -iv $encrypted_bd0c21e377f6_iv
     -in auth_config.json.enc -out ./auth_config.json -d
   - sudo apt-get update
