@@ -86,6 +86,8 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 
 ### Phase4 得点・楽曲の書き込みができる
 
+Phase3 よりも優先させるかも
+
 【終了条件】
 
 - 得点を登録できる
