@@ -70,6 +70,11 @@
       "^@/(.*)$": "<rootDir>/$1",
       "^/(.*)$": "<rootDir>/$1"
     },
+    "globals": {
+      "ts-jest": {
+        "diagnostics": false
+      }
+    },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "transform": {
       ".*\\.(vue)$": "vue-jest",
