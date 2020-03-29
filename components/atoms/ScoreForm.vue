@@ -1,17 +1,17 @@
 <template>
   <div>
     <input
-      class="input smallinput"
-      type="text"
+      v-model="scoreForm"
       v-tooltip="{
         content: tooltipMsg,
         show: showTooltip,
         trigger: 'manual'
       }"
+      class="input smallinput"
+      type="text"
       @keyup.enter="submitScore"
       @focus="triggerTooltip"
       @blur="triggerTooltip"
-      v-model="scoreForm"
     />
   </div>
 </template>

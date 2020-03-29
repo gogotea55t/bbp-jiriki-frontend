@@ -1,10 +1,10 @@
 <template>
   <td :class="classObject" align="right">
-    <span class="control" v-if="edit">
+    <span v-if="edit" class="control">
       <score-form
         :score="score"
-        :songId="songId"
-        :userId="playerId"
+        :song-id="songId"
+        :user-id="playerId"
         @score-submitted="scoreSubmitted"
       />
     </span>
@@ -40,7 +40,7 @@ export class ScoreStyleClassObject {
     }
   }
 }
-import ScoreForm from '~/components/atoms/ScoreForm.vue'
+import ScoreForm from './ScoreForm.vue'
 export default Vue.extend({
   name: 'ScoreStyle',
   components: { ScoreForm },

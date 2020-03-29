@@ -4,12 +4,18 @@
       :jiriki-rank="song.jirikiRank"
       @click="jumpToInfoPage"
     ></JirikiRank>
-    <td @click="jumpToInfoPage">{{ song.songName }}</td>
-    <td @click="jumpToInfoPage">{{ song.contributor }}</td>
-    <td @click="jumpToInfoPage">{{ song.instrument }}</td>
+    <td @click="jumpToInfoPage">
+      {{ song.songName }}
+    </td>
+    <td @click="jumpToInfoPage">
+      {{ song.contributor }}
+    </td>
+    <td @click="jumpToInfoPage">
+      {{ song.instrument }}
+    </td>
     <ScoreStyle
       :score="song.score"
-      :songId="song.songId"
+      :song-id="song.songId"
       :player-id="playerId"
       :decimal="isDecimal"
     ></ScoreStyle>
