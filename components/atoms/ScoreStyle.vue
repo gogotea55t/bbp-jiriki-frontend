@@ -1,6 +1,14 @@
 <template>
   <td :class="classObject" align="right">
-    {{ scoreView }}
+    <span class="control" v-if="edit">
+      <score-form
+        :score="score"
+        :songId="songId"
+        :userId="playerId"
+        @score-submitted="scoreSubmitted"
+      />
+    </span>
+    <span v-else>{{ scoreView }}</span>
   </td>
 </template>
 
@@ -32,9 +40,10 @@ export class ScoreStyleClassObject {
     }
   }
 }
-
+import ScoreForm from '~/components/atoms/ScoreForm.vue'
 export default Vue.extend({
   name: 'ScoreStyle',
+  components: { ScoreForm },
   props: {
     score: {
       type: Number,
@@ -43,6 +52,18 @@ export default Vue.extend({
     decimal: {
       type: Boolean,
       default: false
+    },
+    songId: {
+      type: String,
+      default: null
+    },
+    playerId: {
+      type: String,
+      default: null
+    },
+    edit: {
+      type: Boolean,
+      default: true
     }
   },
   data: function() {
@@ -65,6 +86,11 @@ export default Vue.extend({
   watch: {
     score() {
       this.classObject = new ScoreStyleClassObject(this.score)
+    }
+  },
+  methods: {
+    scoreSubmitted(score: Number): void {
+      this.classObject = new ScoreStyleClassObject(score)
     }
   }
 })

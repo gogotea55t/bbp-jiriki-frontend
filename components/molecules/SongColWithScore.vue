@@ -1,10 +1,18 @@
 <template>
-  <tr @click="jumpToInfoPage">
-    <JirikiRank :jiriki-rank="song.jirikiRank"></JirikiRank>
-    <td>{{ song.songName }}</td>
-    <td>{{ song.contributor }}</td>
-    <td>{{ song.instrument }}</td>
-    <ScoreStyle :score="song.score" :decimal="isDecimal"></ScoreStyle>
+  <tr>
+    <JirikiRank
+      :jiriki-rank="song.jirikiRank"
+      @click="jumpToInfoPage"
+    ></JirikiRank>
+    <td @click="jumpToInfoPage">{{ song.songName }}</td>
+    <td @click="jumpToInfoPage">{{ song.contributor }}</td>
+    <td @click="jumpToInfoPage">{{ song.instrument }}</td>
+    <ScoreStyle
+      :score="song.score"
+      :songId="song.songId"
+      :player-id="playerId"
+      :decimal="isDecimal"
+    ></ScoreStyle>
   </tr>
 </template>
 
@@ -24,6 +32,10 @@ export default Vue.extend({
     decimal: {
       type: Boolean,
       default: false
+    },
+    playerId: {
+      type: String,
+      default: null
     }
   },
   data() {
