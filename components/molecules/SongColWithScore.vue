@@ -1,19 +1,21 @@
 <template>
   <tr>
     <JirikiRank
+      :id="'jiriki_' + song.songId"
       :jiriki-rank="song.jirikiRank"
       @click="jumpToInfoPage"
     ></JirikiRank>
-    <td @click="jumpToInfoPage">
+    <td :id="'songname_' + song.songId" @click="jumpToInfoPage">
       {{ song.songName }}
     </td>
-    <td @click="jumpToInfoPage">
+    <td :id="'contributor_' + song.songId" @click="jumpToInfoPage">
       {{ song.contributor }}
     </td>
-    <td @click="jumpToInfoPage">
+    <td :id="'instrument_' + song.songId" @click="jumpToInfoPage">
       {{ song.instrument }}
     </td>
     <ScoreStyle
+      :id="'score_' + song.songId"
       :score="song.score"
       :song-id="song.songId"
       :player-id="playerId"
