@@ -70,6 +70,17 @@ describe(ScoreStyle.default, () => {
     })
   })
 
+  it('スコア欄が空欄でもエラーにならない', () => {
+    const wrapper = shallowMount(ScoreStyle.default, {
+      propsData: {
+        score: '',
+        edit: false
+      }
+    })
+
+    expect(wrapper.isVueInstance).toBeTruthy
+  })
+
   it('78点から80点に変わると色が変わる', () => {
     const wrapper = shallowMount(ScoreStyle.default, {
       propsData: {
