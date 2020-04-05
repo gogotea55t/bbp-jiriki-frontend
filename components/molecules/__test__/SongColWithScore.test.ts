@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import * as SongColWithScore from '../SongColWithScore.vue'
 import SongsWithScore from '../../types/SongsWithScore'
 import { ok } from 'assert'
@@ -13,7 +13,7 @@ describe(SongColWithScore.default, () => {
     76
   )
 
-  const wrapper = mount(SongColWithScore.default, {
+  const wrapper = shallowMount(SongColWithScore.default, {
     propsData: {
       song: sampleSongs
     }
