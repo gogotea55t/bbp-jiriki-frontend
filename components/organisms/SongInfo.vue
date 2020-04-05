@@ -20,7 +20,11 @@
       </tr>
       <tr v-for="score in scores" :key="score.id">
         <td>{{ score.userName }}</td>
-        <ScoreStyle :score="score.score" />
+        <ScoreStyle
+          :song-id="song.songId"
+          :player-id="score.userId"
+          :score="score.score"
+        />
       </tr>
     </table>
   </div>
@@ -80,7 +84,7 @@ export default Vue.extend({
         })
 
       let scoreResponse = await axios
-        .get(process.env.apiBaseUrl + '/v1' + '/songs/' + id + '/scores')
+        .get(process.env.apiBaseUrl + '/v2' + '/songs/' + id + '/scores')
         .then(response => {
           return response.data
         })

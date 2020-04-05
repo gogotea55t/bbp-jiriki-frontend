@@ -60,10 +60,6 @@ export default Vue.extend({
     playerId: {
       type: String,
       default: null
-    },
-    edit: {
-      type: Boolean,
-      default: true
     }
   },
   data: function() {
@@ -81,6 +77,9 @@ export default Vue.extend({
       } else {
         return this.score.toFixed(0)
       }
+    },
+    edit(): boolean {
+      return this.$store.state.auth.loginUserId === this.playerId
     }
   },
   watch: {
