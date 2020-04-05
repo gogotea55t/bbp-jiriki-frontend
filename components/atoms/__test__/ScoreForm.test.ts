@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import * as ScoreForm from '../ScoreForm.vue'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'

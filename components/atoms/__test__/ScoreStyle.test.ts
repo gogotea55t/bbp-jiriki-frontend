@@ -1,6 +1,18 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import * as ScoreStyle from '../ScoreStyle.vue'
 import Vue from 'vue'
+import Vuex from 'vuex'
+
+const localVue = createLocalVue()
+localVue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    auth: {
+      loginUserId: 'u001'
+    }
+  }
+})
 
 describe(ScoreStyle.default, () => {
   it('90点以上の表示が銀色', () => {
@@ -8,7 +20,9 @@ describe(ScoreStyle.default, () => {
       propsData: {
         score: 92,
         decimal: false
-      }
+      },
+      localVue,
+      store
     })
     expect(wrapper.vm.$data.classObject.manzokuSitenai).toBe(true)
   })
@@ -18,7 +32,9 @@ describe(ScoreStyle.default, () => {
       propsData: {
         score: 100,
         decimal: false
-      }
+      },
+      localVue,
+      store
     })
     expect(wrapper.vm.$data.classObject.chousiniNorunja).toBe(true)
   })
@@ -27,7 +43,9 @@ describe(ScoreStyle.default, () => {
     const wrapper = shallowMount(ScoreStyle.default, {
       propsData: {
         score: undefined
-      }
+      },
+      localVue,
+      store
     })
     expect(wrapper.vm.$data.classObject.masakaHonkija).toBe(true)
   })
@@ -37,7 +55,9 @@ describe(ScoreStyle.default, () => {
       propsData: {
         score: 76.5432,
         decimal: true
-      }
+      },
+      localVue,
+      store
     })
     expect(wrapper.vm.$data.classObject.chutoHampa).toBe(true)
     const vueInstance: any = wrapper.vm
@@ -49,7 +69,9 @@ describe(ScoreStyle.default, () => {
       propsData: {
         score: undefined,
         decimal: true
-      }
+      },
+      localVue,
+      store
     })
     expect(wrapper.vm.$data.classObject.masakaHonkija).toBe(true)
   })
@@ -57,9 +79,10 @@ describe(ScoreStyle.default, () => {
   it('88点から90点に更新されたら背景色が変わる', () => {
     const wrapper = shallowMount(ScoreStyle.default, {
       propsData: {
-        score: 88,
-        edit: true
-      }
+        score: 88
+      },
+      localVue,
+      store
     })
     expect(wrapper.vm.$data.classObject.masakaKonoteido).toBe(true)
     const vueInstance: any = wrapper.vm
@@ -75,7 +98,9 @@ describe(ScoreStyle.default, () => {
       propsData: {
         score: '',
         edit: false
-      }
+      },
+      localVue,
+      store
     })
 
     expect(wrapper.isVueInstance).toBeTruthy
@@ -86,7 +111,9 @@ describe(ScoreStyle.default, () => {
       propsData: {
         score: 78,
         edit: false
-      }
+      },
+      localVue,
+      store
     })
 
     wrapper.setProps({
