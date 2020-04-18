@@ -81,6 +81,21 @@ export default Vue.extend({
             this.submitMsg = '登録失敗です。。。'
             console.log(error)
           })
+      } else if (this.scoreForm.toString() === '') {
+        console.log('削除しようとはしている')
+        const body = {
+          userId: this.userId,
+          songId: this.songId
+        }
+        axios
+          .delete(process.env.apiBaseUrl + '/v1/scores', { data: body })
+          .then(response => {
+            this.submitMsg = '登録を削除しました'
+            this.$emit('score-submitted', this.scoreForm)
+          })
+          .catch(error => {
+            this.submitMsg = '削除失敗です'
+          })
       }
     },
     triggerTooltip(): void {

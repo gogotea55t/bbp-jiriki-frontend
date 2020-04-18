@@ -3,6 +3,7 @@ import * as ScoreForm from '../ScoreForm.vue'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
 import Vue from 'vue'
+import { ok } from 'assert'
 
 const mock = new MockAdapter(axios)
 mock
@@ -20,6 +21,15 @@ mock
     score: '92'
   })
   .reply(500, {})
+
+mock
+  .onDelete(process.env.apiBaseUrl + '/v1/scores', {
+    data: {
+      userId: 'u001',
+      songId: '334'
+    }
+  })
+  .reply(204, {})
 
 // このおまじないがないとv-Tooltipでエラーが出る
 global.document.createRange = (): any => ({
@@ -49,18 +59,21 @@ describe(ScoreForm.default, () => {
     expect(wrapper.vm.$data.showTooltip).toBeFalsy
   })
 
-  it('不正なスコアが入力されているときはエンターキーが効かない', () => {
+  it('不正なスコアが入力されているときはエンターキーが効かない', done => {
     wrapper.find('input').trigger('focus')
     wrapper.vm.$data.scoreForm = 'aa'
-    wrapper.find('input').trigger('keyup-enter')
-    expect(wrapper.emitted).toBeFalsy
+    wrapper.find('input').trigger('keyup.enter')
+    setTimeout(() => {
+      expect(wrapper.emitted).toBeFalsy
+      done()
+    }, 10)
   })
 
-  it('スコア登録してもサーバーが死んでいたらダメ', () => {
+  it('スコア登録してもサーバーが死んでいたらダメ', done => {
     wrapper.find('input').trigger('focus')
     wrapper.vm.$data.scoreForm = '92'
     wrapper.find('input').trigger('keyup.enter')
-    Vue.nextTick(() => {
+    setTimeout(() => {
       expect(wrapper.vm.$data.submitMsg).toBe('登録失敗です。。。')
       const event = wrapper.emitted('score-submitted')
       if (event) {
@@ -68,14 +81,15 @@ describe(ScoreForm.default, () => {
       } else {
         expect(true).toBe(true)
       }
-    })
+      done()
+    }, 10)
   })
 
-  it('半角数字が入力されているときはエンターキーでスコア登録ができる', () => {
+  it('半角数字が入力されているときはエンターキーでスコア登録ができる', done => {
     wrapper.find('input').trigger('focus')
     wrapper.vm.$data.scoreForm = '90'
     wrapper.find('input').trigger('keyup.enter')
-    Vue.nextTick(() => {
+    setTimeout(() => {
       expect(wrapper.vm.$data.submitMsg).toBe('登録OK！')
       const event = wrapper.emitted('score-submitted')
       if (event) {
@@ -83,6 +97,23 @@ describe(ScoreForm.default, () => {
       } else {
         fail()
       }
-    })
+      done()
+    }, 10)
+  })
+
+  it('空欄にしたときにエンターキーを押すとスコア削除ができる', done => {
+    wrapper.find('input').trigger('focus')
+    wrapper.vm.$data.scoreForm = ''
+    wrapper.find('input').trigger('keyup.enter')
+    setTimeout(() => {
+      expect(wrapper.vm.$data.submitMsg).toBe('登録を削除しました')
+      const event = wrapper.emitted('score-submitted')
+      if (event) {
+        expect(event[1][0]).toBe('')
+      } else {
+        fail()
+      }
+      done()
+    }, 10)
   })
 })
