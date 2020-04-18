@@ -31,15 +31,6 @@ mock
   })
   .reply(204, {})
 
-mock
-  .onDelete(process.env.apiBaseUrl + '/v1/scores', {
-    data: {
-      userId: 'u004',
-      songId: '334'
-    }
-  })
-  .reply(404, {})
-
 // このおまじないがないとv-Tooltipでエラーが出る
 global.document.createRange = (): any => ({
   setStart: () => {},
@@ -68,18 +59,21 @@ describe(ScoreForm.default, () => {
     expect(wrapper.vm.$data.showTooltip).toBeFalsy
   })
 
-  it('不正なスコアが入力されているときはエンターキーが効かない', () => {
+  it('不正なスコアが入力されているときはエンターキーが効かない', done => {
     wrapper.find('input').trigger('focus')
     wrapper.vm.$data.scoreForm = 'aa'
-    wrapper.find('input').trigger('keyup-enter')
-    expect(wrapper.emitted).toBeFalsy
+    wrapper.find('input').trigger('keyup.enter')
+    setTimeout(() => {
+      expect(wrapper.emitted).toBeFalsy
+      done()
+    }, 10)
   })
 
-  it('スコア登録してもサーバーが死んでいたらダメ', () => {
+  it('スコア登録してもサーバーが死んでいたらダメ', done => {
     wrapper.find('input').trigger('focus')
     wrapper.vm.$data.scoreForm = '92'
     wrapper.find('input').trigger('keyup.enter')
-    Vue.nextTick(() => {
+    setTimeout(() => {
       expect(wrapper.vm.$data.submitMsg).toBe('登録失敗です。。。')
       const event = wrapper.emitted('score-submitted')
       if (event) {
@@ -87,14 +81,15 @@ describe(ScoreForm.default, () => {
       } else {
         expect(true).toBe(true)
       }
-    })
+      done()
+    }, 10)
   })
 
-  it('半角数字が入力されているときはエンターキーでスコア登録ができる', () => {
+  it('半角数字が入力されているときはエンターキーでスコア登録ができる', done => {
     wrapper.find('input').trigger('focus')
     wrapper.vm.$data.scoreForm = '90'
     wrapper.find('input').trigger('keyup.enter')
-    Vue.nextTick(() => {
+    setTimeout(() => {
       expect(wrapper.vm.$data.submitMsg).toBe('登録OK！')
       const event = wrapper.emitted('score-submitted')
       if (event) {
@@ -102,46 +97,23 @@ describe(ScoreForm.default, () => {
       } else {
         fail()
       }
-    })
+      done()
+    }, 10)
   })
 
-  it('空欄にしたときにエンターキーを押すとスコア削除ができる', () => {
+  it('空欄にしたときにエンターキーを押すとスコア削除ができる', done => {
     wrapper.find('input').trigger('focus')
     wrapper.vm.$data.scoreForm = ''
     wrapper.find('input').trigger('keyup.enter')
-    Vue.nextTick(() => {
+    setTimeout(() => {
       expect(wrapper.vm.$data.submitMsg).toBe('登録を削除しました')
       const event = wrapper.emitted('score-submitted')
       if (event) {
-        expect(event[0][0]).toBe('')
+        expect(event[1][0]).toBe('')
       } else {
         fail()
       }
-    })
-  })
-
-  it('空欄にしたときにエンターキーを押してスコア削除に失敗するとその旨表示される', () => {
-    const wrapper2 = shallowMount(ScoreForm.default, {
-      propsData: {
-        score: 88,
-        songId: '334',
-        userId: 'u004'
-      },
-      mocks: {
-        mock
-      }
-    })
-    wrapper2.find('input').trigger('focus')
-    wrapper2.vm.$data.scoreForm = ''
-    wrapper2.find('input').trigger('keyup.enter')
-    Vue.nextTick(() => {
-      expect(wrapper2.vm.$data.submitMsg).toBe('削除失敗です')
-      const event = wrapper2.emitted('score-submitted')
-      if (event) {
-        fail()
-      } else {
-        ok
-      }
-    })
+      done()
+    }, 10)
   })
 })
