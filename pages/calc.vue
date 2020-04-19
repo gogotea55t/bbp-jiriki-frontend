@@ -56,7 +56,7 @@
       >点です。
     </article>
     <article v-else>
-      負の数を入力するのはやめてください＞＜
+      コラコラコラコラ～ッ！(`o´)
     </article>
     <article v-if="isValid">
       <div v-if="lossByGood > 0">
@@ -104,7 +104,17 @@ export default Vue.extend({
       }
     },
     isValid(): boolean {
-      return !(this.best < 0 || this.good < 0 || this.bad < 0 || this.miss < 0)
+      function validate(num: Number): boolean {
+        return (
+          num.toString().indexOf('-') >= 0 || num.toString().indexOf('.') >= 0
+        )
+      }
+      return !(
+        validate(this.best) ||
+        validate(this.good) ||
+        validate(this.bad) ||
+        validate(this.miss)
+      )
     },
     scoreView(): Number {
       return Math.floor(this.score.valueOf())
