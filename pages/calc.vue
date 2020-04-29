@@ -2,7 +2,9 @@
   <div>
     <h2>スコア計算機</h2>
     <div class="field is-horizontal control">
-      <label class="field-label best">BEST</label>
+      <label class="field-label best">
+        BEST
+      </label>
       <input
         v-model.number="best"
         class="field-body input"
@@ -12,8 +14,10 @@
       />
     </div>
     <div class="field is-horizontal">
-      <label class="field-label good">GOOD</label
-      ><input
+      <label class="field-label good">
+        GOOD
+      </label>
+      <input
         v-model.number="good"
         class="field-body input"
         type="number"
@@ -22,8 +26,10 @@
       />
     </div>
     <div class="field is-horizontal">
-      <label class="field-label bad">BAD</label
-      ><input
+      <label class="field-label bad">
+        BAD
+      </label>
+      <input
         v-model.number="bad"
         class="field-body input"
         type="number"
@@ -32,8 +38,10 @@
       />
     </div>
     <div class="field is-horizontal">
-      <label class="field-label miss">MISS</label
-      ><input
+      <label class="field-label miss">
+        MISS
+      </label>
+      <input
         v-model.number="miss"
         class="field-body input"
         type="number"
@@ -42,30 +50,38 @@
       />
     </div>
     <div class="field is-horizontal">
-      <label class="field-label total">TOTAL NOTES</label
-      ><input
+      <label class="field-label total">
+        TOTAL NOTES
+      </label>
+      <input
         v-model.number="total"
         class="field-body input"
         type="number"
         readonly
       />
     </div>
-    <article v-if="isValid">
-      得点は <span class="numeral">{{ scoreView }}</span
-      >.<span class="decimal">{{ decimal }}</span
-      >点です。
+    <article v-if="isValid" id="score-result">
+      得点は
+      <span id="score-numeral-part" class="numeral">
+        {{ scoreView }}
+      </span>
+      .
+      <span id="score-decimal-part" class="decimal">
+        {{ decimal }}
+      </span>
+      点です。
     </article>
-    <article v-else>
+    <article v-else id="score-invalid-angry">
       コラコラコラコラ～ッ！(`o´)
     </article>
     <article v-if="isValid">
-      <div v-if="lossByGood > 0">
+      <div v-if="lossByGood > 0" id="score-loss-by-good">
         GOODでの失点は{{ lossByGood.toFixed(2) }}点です。
       </div>
-      <div v-if="lossByBad > 0">
+      <div v-if="lossByBad > 0" id="score-loss-by-bad">
         BADでの失点は{{ lossByBad.toFixed(2) }}点です。
       </div>
-      <div v-if="lossByMiss > 0">
+      <div v-if="lossByMiss > 0" id="score-loss-by-miss">
         MISSでの失点は{{ lossByMiss.toFixed(2) }}点です。
       </div>
     </article>
