@@ -3,7 +3,7 @@ import * as ScoreForm from '../ScoreForm.vue'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
 import Vue from 'vue'
-import { ok } from 'assert'
+import { AuthServiceStub } from '../../../pages/__stubs__/AuthServiceMock'
 
 const mock = new MockAdapter(axios)
 mock
@@ -49,7 +49,8 @@ describe(ScoreForm.default, () => {
       userId: 'u001'
     },
     mocks: {
-      mock
+      mock,
+      $auth: new AuthServiceStub()
     }
   })
   it('inputフォームにフォーカスするとメッセージが出る', () => {
