@@ -64,15 +64,21 @@ export default Vue.extend({
     }
   },
   methods: {
-    submitScore(): void {
+    async submitScore(): Promise<void> {
+      const token = await this.$auth.getTokenSilently()
       if (this.scoreIsValid) {
         const body = {
           userId: this.userId,
           songId: this.songId,
           score: this.scoreForm
         }
-        axios
-          .put(process.env.apiBaseUrl + '/v1/scores', body)
+        await axios
+          .put(process.env.apiBaseUrl + '/v1/scores', body, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'content-type': 'application/json'
+            }
+          })
           .then(response => {
             this.submitMsg = '登録OK！'
             this.$emit('score-submitted', this.scoreForm)
@@ -87,8 +93,14 @@ export default Vue.extend({
           userId: this.userId,
           songId: this.songId
         }
-        axios
-          .delete(process.env.apiBaseUrl + '/v1/scores', { data: body })
+        await axios
+          .delete(process.env.apiBaseUrl + '/v1/scores', {
+            data: body,
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'content-type': 'application/json'
+            }
+          })
           .then(response => {
             this.submitMsg = '登録を削除しました'
             this.$emit('score-submitted', this.scoreForm)

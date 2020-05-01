@@ -3,6 +3,7 @@ import * as ScoreForm from '../ScoreForm.vue'
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import { ok } from 'assert'
+import { AuthServiceStub } from '../../../pages/__stubs__/AuthServiceMock'
 
 const mock = new MockAdapter(axios)
 mock
@@ -32,7 +33,8 @@ it('空欄にしたときにエンターキーを押してスコア削除に失�
       userId: 'u004'
     },
     mocks: {
-      mock
+      mock,
+      $auth: new AuthServiceStub()
     }
   })
   wrapper2.find('input').trigger('focus')
