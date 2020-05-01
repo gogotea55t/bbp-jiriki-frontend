@@ -71,7 +71,6 @@ export default Vue.extend({
         })
       })
       .catch(error => {
-        console.log(error)
         throw new Error('サーバーとの通信に失敗しました。')
       })
   },

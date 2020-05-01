@@ -79,7 +79,6 @@ export default Vue.extend({
           )
         })
         .catch(error => {
-          console.log(error)
           throw new Error('サーバーとの接続に失敗しました')
         })
 
@@ -89,7 +88,6 @@ export default Vue.extend({
           return response.data
         })
         .catch(error => {
-          console.log(error)
           throw new Error('サーバーとの接続に失敗しました')
         })
       this.$data.song = songResponse

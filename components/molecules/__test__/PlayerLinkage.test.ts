@@ -86,7 +86,6 @@ describe(PlayerLinkage.default, () => {
     try {
       vueInstance.linkage()
     } catch (error) {
-      console.log(error)
       expect(error.status).toBe(401)
     }
   })

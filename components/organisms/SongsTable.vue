@@ -59,7 +59,6 @@ export default Vue.extend({
           })
         })
         .catch(error => {
-          console.log(error)
           throw new Error('サーバーとの通信に失敗しました。')
         })
       this.songs = songsResponse
@@ -85,7 +84,6 @@ export default Vue.extend({
           return response.data.length
         })
         .catch(error => {
-          console.log(error)
           return 0
         })
       return numberOfSongsAdded
