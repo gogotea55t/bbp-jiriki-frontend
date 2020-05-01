@@ -85,10 +85,8 @@ export default Vue.extend({
           })
           .catch(error => {
             this.submitMsg = '登録失敗です。。。'
-            console.log(error)
           })
       } else if (this.scoreForm.toString() === '') {
-        console.log('削除しようとはしている')
         const body = {
           userId: this.userId,
           songId: this.songId
