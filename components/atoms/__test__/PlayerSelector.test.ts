@@ -80,9 +80,14 @@ describe(PlayerSelector.default, () => {
 
     setTimeout(done2 => {
       wrapper.find('select').trigger('change')
-      expect(wrapper.emitted()['player-selected'][0]).toContain('average')
-      done2
-      done()
+      const event = wrapper.emitted()['player-selected']
+      if (event) {
+        expect(event[0]).toContain('average')
+        done2
+        done()
+      } else {
+        fail()
+      }
     }, 5000)
   })
 })

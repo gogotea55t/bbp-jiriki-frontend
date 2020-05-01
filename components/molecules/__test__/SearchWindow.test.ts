@@ -12,9 +12,8 @@ describe(SearchWindow.default, () => {
     const queryWord = wrapper.find('#query-word')
     queryWord.setValue('クラシックギター')
     searchButton.trigger('click')
-    expect(wrapper.emitted()['search-emit'][0]).toContain(
-      'instrument=クラシックギター'
-    )
+    const event: String[][] = wrapper.emitted()['search-emit'] || fail()
+    expect(event[0]).toContain('instrument=クラシックギター')
   })
 })
 describe(SearchWindow.default, () => {
