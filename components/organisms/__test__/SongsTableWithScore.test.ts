@@ -289,7 +289,12 @@ describe(SongTableWithScore.default, () => {
 
     const vueInstance: any = wrapper.vm
     vueInstance.toggleModal('57')
-    expect(wrapper.emitted('toggleModal')[0][0]).toBe('57')
+    const event = wrapper.emitted('toggleModal')
+    if (event) {
+      expect(event[0][0]).toBe('57')
+    } else {
+      fail()
+    }
   })
 })
 
