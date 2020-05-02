@@ -79,7 +79,7 @@ export default Vue.extend({
       }
     },
     edit(): boolean {
-      return this.$store.state.auth.loginUserId === this.playerId
+      return this.playerId === this.$store.state.auth.loginUserId
     }
   },
   watch: {
