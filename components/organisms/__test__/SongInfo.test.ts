@@ -28,7 +28,13 @@ mock.onGet(apiBaseUrl + '/v2' + '/songs/200/scores').reply(200, sampleScores)
 describe(SongInfo.default, () => {
   it('初期状態では何も読み込まない', done => {
     const wrapper = shallowMount(SongInfo.default, {
-      mocks: { Promise, mock }
+      mocks: {
+        Promise,
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
+      }
     })
 
     expect(wrapper.vm.$data.songId).toBeFalsy
@@ -44,7 +50,13 @@ describe(SongInfo.default, () => {
 describe(SongInfo.default, () => {
   it('途中から楽曲IDが降ってくるとそれに応じたデータを取ってくる', done => {
     const wrapper = shallowMount(SongInfo.default, {
-      mocks: { Promise, mock }
+      mocks: {
+        Promise,
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
+      }
     })
 
     // const vueInstance: any = wrapper.vm
@@ -67,7 +79,13 @@ describe(SongInfo.default, () => {
 describe(SongInfo.default, () => {
   it('はじめから楽曲IDが決まっているとき、正しくとってこれる', done => {
     const wrapper = shallowMount(SongInfo.default, {
-      mocks: { Promise, mock },
+      mocks: {
+        Promise,
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
+      },
       propsData: {
         songId: '200'
       }
@@ -93,7 +111,10 @@ describe(SongInfo.default, () => {
 
     const wrapperWhenNetworkError = shallowMount(SongInfo.default, {
       mocks: {
-        mockWhenNetWorkError
+        mockWhenNetWorkError,
+        $nuxt: {
+          error: () => {}
+        }
       },
       propsData: {
         songId: ''

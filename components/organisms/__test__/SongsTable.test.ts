@@ -203,7 +203,10 @@ describe(SongsTable.default, () => {
       query: '/songs?page='
     },
     mocks: {
-      mock
+      mock,
+      $nuxt: {
+        error: () => {}
+      }
     }
   })
 
@@ -245,7 +248,10 @@ describe(SongsTable.default, () => {
         query: '/songs?page='
       },
       mocks: {
-        mockWhenNetworkError
+        mockWhenNetworkError,
+        $nuxt: {
+          error: () => {}
+        }
       }
     })
     expect(wrapperWhenNetworkError.vm).toThrowError
@@ -264,7 +270,10 @@ describe(SongsTable.default, () => {
         query: '/songs?page='
       },
       mocks: {
-        mockWhenNetworkError
+        mockWhenNetworkError,
+        $nuxt: {
+          error: () => {}
+        }
       }
     })
     let vueInstance: any = wrapperWhenNetworkError.vm

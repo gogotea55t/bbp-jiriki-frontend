@@ -22,7 +22,10 @@ describe(SongInfo.default, () => {
 
     const wrapperWhenNetworkError_ = shallowMount(SongInfo.default, {
       mocks: {
-        mockWithNetWorkError
+        mockWithNetWorkError,
+        $nuxt: {
+          error: () => {}
+        }
       },
       propsData: {
         songId: ''

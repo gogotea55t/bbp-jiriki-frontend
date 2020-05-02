@@ -71,7 +71,8 @@ export default Vue.extend({
         })
       })
       .catch(error => {
-        throw new Error('サーバーとの通信に失敗しました。')
+        const errMsg = 'サーバーとの通信に失敗しました'
+        this.$nuxt.error({ statusCode: error.response.status, message: errMsg })
       })
   },
   mounted() {

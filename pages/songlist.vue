@@ -79,33 +79,37 @@ export default Vue.extend({
   },
   methods: {
     getMore: async function() {
-      // 読み込み中フラグを立てておくことで二重通信を防ぐ
-      this.isFetchOnProgress = true
-      this.page = this.page + 1
-      let songTable: any = this.$refs.songTable
-      let numberOfSongsAdded: number = await songTable.loadMore(
-        this.query + this.page
-      )
-      if (numberOfSongsAdded < 20) {
-        // 空のデータしか返ってこなかった場合、ローディング画像を消し、ローディングをやめる
-        this.hasNextPageToLoad = false
-      } else {
-        this.hasNextPageToLoad = true
-      }
-      this.isFetchOnProgress = false
+      try {
+        // 読み込み中フラグを立てておくことで二重通信を防ぐ
+        this.isFetchOnProgress = true
+        this.page = this.page + 1
+        let songTable: any = this.$refs.songTable
+        let numberOfSongsAdded: number = await songTable.loadMore(
+          this.query + this.page
+        )
+        if (numberOfSongsAdded < 20) {
+          // 空のデータしか返ってこなかった場合、ローディング画像を消し、ローディングをやめる
+          this.hasNextPageToLoad = false
+        } else {
+          this.hasNextPageToLoad = true
+        }
+        this.isFetchOnProgress = false
+      } catch (error) {}
     },
     async search(searchQuery) {
-      this.hasNextPageToLoad = true
-      this.query = '/songs?' + searchQuery + '&page='
-      this.page = 0
-      let songTable: any = this.$refs.songTable
-      songTable
-        .loadSongsByQuery(this.query + this.page)
-        .then(numberOfSongsAdded => {
-          if (numberOfSongsAdded < 20) {
-            this.hasNextPageToLoad = false
-          }
-        })
+      try {
+        this.hasNextPageToLoad = true
+        this.query = '/songs?' + searchQuery + '&page='
+        this.page = 0
+        let songTable: any = this.$refs.songTable
+        songTable
+          .loadSongsByQuery(this.query + this.page)
+          .then(numberOfSongsAdded => {
+            if (numberOfSongsAdded < 20) {
+              this.hasNextPageToLoad = false
+            }
+          })
+      } catch (error) {}
     },
     toggleModal(emittedSongId) {
       const modalComp: any = this.$refs.modalSection

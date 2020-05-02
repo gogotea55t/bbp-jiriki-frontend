@@ -62,8 +62,7 @@ export default Vue.extend({
           this.$router.push('/player')
         })
         .catch(err => {
-          const errMsg =
-            err.response.data.message || 'サーバーとの通信に失敗しました'
+          const errMsg = 'サーバーとの通信に失敗しました'
           this.$nuxt.error({ statusCode: err.response.status, message: errMsg })
         })
     },
