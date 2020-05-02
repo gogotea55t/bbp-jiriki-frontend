@@ -70,8 +70,9 @@ export default Vue.extend({
             )
           })
         })
-        .catch(error => {
-          throw new Error('サーバーとの接続に失敗しました')
+        .catch(err => {
+          const errMsg = 'サーバーとの通信に失敗しました'
+          this.$nuxt.error({ statusCode: 500, message: errMsg })
         })
 
       return this.songs.length
@@ -97,8 +98,9 @@ export default Vue.extend({
             )
           })
         })
-        .catch(error => {
-          throw new Error('サーバーとの接続に失敗しました')
+        .catch(err => {
+          const errMsg = 'サーバーとの通信に失敗しました'
+          this.$nuxt.error({ statusCode: err.response.status, message: errMsg })
         })
 
       return count

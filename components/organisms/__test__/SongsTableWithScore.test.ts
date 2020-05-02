@@ -240,7 +240,10 @@ describe(SongTableWithScore.default, () => {
   it('表示できる', () => {
     const wrapper = mount(SongTableWithScore.default, {
       mocks: {
-        mock
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
       },
       propsData: {
         query: '/players/u001/scores'
@@ -254,7 +257,10 @@ describe(SongTableWithScore.default, () => {
   it('楽曲の読み込みができる', done => {
     const wrapper = mount(SongTableWithScore.default, {
       mocks: {
-        mock
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
       },
       propsData: {
         query: '/players/u001/scores'
@@ -273,7 +279,10 @@ describe(SongTableWithScore.default, () => {
   it('一度読みこんだ後さらに読み込む', done => {
     const wrapper = mount(SongTableWithScore.default, {
       mocks: {
-        mock
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
       },
       propsData: {
         query: '/players/u001/scores'
@@ -298,7 +307,10 @@ describe(SongTableWithScore.default, () => {
   it('モーダル発火イベントを受け取ると親へ横流しする', () => {
     const wrapper = mount(SongTableWithScore.default, {
       mocks: {
-        mock
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
       },
       propsData: {
         query: '/players/u001/scores'
@@ -329,7 +341,10 @@ describe(SongTableWithScore.default, () => {
         query: '/players/u001/scores'
       },
       mocks: {
-        mockWithNetworkError
+        mockWithNetworkError,
+        $nuxt: {
+          error: () => {}
+        }
       },
       localVue,
       store
@@ -353,7 +368,10 @@ describe(SongTableWithScore.default, () => {
         query: '/players/u001/scores'
       },
       mocks: {
-        mockWithNetworkError
+        mockWithNetworkError,
+        $nuxt: {
+          error: () => {}
+        }
       },
       localVue,
       store

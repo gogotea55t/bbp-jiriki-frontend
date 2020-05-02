@@ -2,6 +2,10 @@ const pkg = require('./package')
 const environment = process.env.NODE_ENV || 'development'
 const BASE_URL = process.env.baseUrl || 'https://bbp10-jiriki.cf'
 const envSet = require(`./env.${environment}.js`)
+process.on('unhandledPromiseRejection', (reason, p) => {
+  console.log('Unhandled rejection at:' + p)
+  throw reason
+})
 
 module.exports = {
   mode: 'spa',
