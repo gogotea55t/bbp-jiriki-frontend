@@ -41,7 +41,7 @@ it('空欄にしたときにエンターキーを押してスコア削除に失�
   wrapper2.vm.$data.scoreForm = ''
   wrapper2.find('input').trigger('keyup.enter')
   setTimeout(() => {
-    expect(wrapper2.vm.$data.submitMsg).toBe('削除失敗です')
+    expect(wrapper2.vm.$data.submitMsg).toBe('削除失敗または削除済です')
     const event = wrapper2.emitted('score-submitted')
     if (event) {
       fail()

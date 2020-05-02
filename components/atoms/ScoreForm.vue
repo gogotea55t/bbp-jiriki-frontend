@@ -86,7 +86,7 @@ export default Vue.extend({
           .catch(error => {
             this.submitMsg = '登録失敗です。。。'
           })
-      } else if (this.scoreForm.toString() === '') {
+      } else if (!this.scoreForm || this.scoreForm.toString() === '') {
         const body = {
           userId: this.userId,
           songId: this.songId
@@ -104,7 +104,7 @@ export default Vue.extend({
             this.$emit('score-submitted', this.scoreForm)
           })
           .catch(error => {
-            this.submitMsg = '削除失敗です'
+            this.submitMsg = '削除失敗または削除済です'
           })
       }
     },
