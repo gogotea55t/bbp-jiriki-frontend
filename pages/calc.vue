@@ -67,6 +67,7 @@
       </label>
       <input
         v-model.number="total"
+        id="total_notes"
         class="field-body input"
         type="number"
         readonly
@@ -101,7 +102,7 @@
       </div>
     </article>
     <article>
-      <h3 @click="furtherOption = !furtherOption">
+      <h3 id="furtherOptionButton" @click="furtherOption = !furtherOption">
         <span v-if="furtherOption">▼</span>
         <span v-else>▶</span>
         詳細
@@ -115,8 +116,15 @@
               type="number"
               min="0"
               max="100"
-            />であれば、予想されるTAIL MISSは{{ estimatedMinTailMiss }} ~
-            {{ estimatedMaxTailMiss }}個です。
+            />であれば、予想されるTAIL MISSは
+            <span id="estimated_min_tail_miss">
+              {{ estimatedMinTailMiss }}
+            </span>
+            ~
+            <span id="estimated_max_tail_miss">
+              {{ estimatedMaxTailMiss }}
+            </span>
+            個です。
           </li>
           <li>
             目標の点数が
@@ -126,11 +134,17 @@
               min="0"
               max="100"
             />であれば、減らすべきGOODは
-            {{ goodForGoal }}
+            <span id="good_for_goal">
+              {{ goodForGoal }}
+            </span>
             個、減らすべきBADは
-            {{ badForGoal }}
+            <span id="bad_for_goal">
+              {{ badForGoal }}
+            </span>
             個、減らすべきMISSは
-            {{ missForGoal }}
+            <span id="miss_for_goal">
+              {{ missForGoal }}
+            </span>
             個です。（実現可能性は考えていません）
           </li>
         </ul>
