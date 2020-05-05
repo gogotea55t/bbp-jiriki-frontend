@@ -12,9 +12,8 @@ describe(SearchWindow.default, () => {
     const queryWord = wrapper.find('#query-word')
     queryWord.setValue('クラシックギター')
     searchButton.trigger('click')
-    expect(wrapper.emitted()['search-emit'][0]).toContain(
-      'instrument=クラシックギター'
-    )
+    const event: String[][] = wrapper.emitted()['search-emit'] || fail()
+    expect(event[0]).toContain('instrument=クラシックギター')
   })
 })
 describe(SearchWindow.default, () => {
@@ -27,7 +26,12 @@ describe(SearchWindow.default, () => {
       const jirikiSelector = wrapper.find('#jiriki-selector')
       jirikiSelector.setValue('地力Ｅ')
       searchButton.trigger('click')
-      expect(wrapper.emitted()['search-emit'][0]).toContain('jiriki=地力Ｅ')
+      const event = wrapper.emitted()['search-emit']
+      if (event) {
+        expect(event[0]).toContain('jiriki=地力Ｅ')
+      } else {
+        fail()
+      }
     })
   })
 })

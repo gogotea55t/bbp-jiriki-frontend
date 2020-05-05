@@ -36,7 +36,10 @@ describe(PlayerSelector.default, () => {
     const wrapper = shallowMount(PlayerSelector.default, {
       mocks: {
         Promise,
-        mock
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
       },
       localVue,
       store
@@ -50,7 +53,10 @@ describe(PlayerSelector.default, () => {
     const wrapper = shallowMount(PlayerSelector.default, {
       mocks: {
         Promise,
-        mock
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
       },
       localVue,
       store
@@ -72,7 +78,10 @@ describe(PlayerSelector.default, () => {
     const wrapper = shallowMount(PlayerSelector.default, {
       mocks: {
         Promise,
-        mock
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
       },
       localVue,
       store
@@ -80,9 +89,14 @@ describe(PlayerSelector.default, () => {
 
     setTimeout(done2 => {
       wrapper.find('select').trigger('change')
-      expect(wrapper.emitted()['player-selected'][0]).toContain('average')
-      done2
-      done()
+      const event = wrapper.emitted()['player-selected']
+      if (event) {
+        expect(event[0]).toContain('average')
+        done2
+        done()
+      } else {
+        fail()
+      }
     }, 5000)
   })
 })
@@ -96,7 +110,10 @@ describe(PlayerSelector.default, () => {
     const wrapper = shallowMount(PlayerSelector.default, {
       mocks: {
         Promise,
-        mockWhenNetWorkError
+        mockWhenNetWorkError,
+        $nuxt: {
+          error: () => {}
+        }
       },
       localVue,
       store
@@ -113,7 +130,10 @@ describe(PlayerSelector.default, () => {
     const wrapper = shallowMount(PlayerSelector.default, {
       mocks: {
         Promise,
-        mock
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
       },
       localVue,
       store
@@ -146,7 +166,10 @@ describe(PlayerSelector.default, () => {
     const wrapper = shallowMount(PlayerSelector.default, {
       mocks: {
         Promise,
-        mock
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
       },
       localVue,
       store: store2
@@ -165,7 +188,10 @@ describe(PlayerSelector.default, () => {
     const wrapper = shallowMount(PlayerSelector.default, {
       mocks: {
         Promise,
-        mock
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
       },
       propsData: {
         playerOnly: true

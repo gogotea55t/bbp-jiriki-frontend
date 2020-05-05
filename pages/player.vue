@@ -9,6 +9,7 @@
         ref="songTable"
         :query="query"
         :decimal="decimal"
+        :player-id="playerId"
         @toggleModal="toggleModal"
       ></SongsTableWithScore>
       <song-loader

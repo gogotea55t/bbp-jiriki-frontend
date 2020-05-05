@@ -16,19 +16,25 @@ const sampleSong = {
 }
 
 const sampleScores = [
-  { userName: '妖怪1', score: 100 },
-  { userName: '妖怪2', score: 99 },
-  { userName: 'どちらかというと妖怪', score: 88 },
-  { userName: 'どちらかというと人間', score: 79 },
-  { userName: '人間', score: 64 }
+  { userId: 'u001', userName: '妖怪1', score: 100 },
+  { userId: 'u002', userName: '妖怪2', score: 99 },
+  { userId: 'u003', userName: 'どちらかというと妖怪', score: 88 },
+  { userId: 'u004', userName: 'どちらかというと人間', score: 79 },
+  { userId: 'u005', userName: '人間', score: 64 }
 ]
 
 mock.onGet(apiBaseUrl + '/v1' + '/songs/200').reply(200, sampleSong)
-mock.onGet(apiBaseUrl + '/v1' + '/songs/200/scores').reply(200, sampleScores)
+mock.onGet(apiBaseUrl + '/v2' + '/songs/200/scores').reply(200, sampleScores)
 describe(SongInfo.default, () => {
   it('初期状態では何も読み込まない', done => {
     const wrapper = shallowMount(SongInfo.default, {
-      mocks: { Promise, mock }
+      mocks: {
+        Promise,
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
+      }
     })
 
     expect(wrapper.vm.$data.songId).toBeFalsy
@@ -44,7 +50,13 @@ describe(SongInfo.default, () => {
 describe(SongInfo.default, () => {
   it('途中から楽曲IDが降ってくるとそれに応じたデータを取ってくる', done => {
     const wrapper = shallowMount(SongInfo.default, {
-      mocks: { Promise, mock }
+      mocks: {
+        Promise,
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
+      }
     })
 
     // const vueInstance: any = wrapper.vm
@@ -67,7 +79,13 @@ describe(SongInfo.default, () => {
 describe(SongInfo.default, () => {
   it('はじめから楽曲IDが決まっているとき、正しくとってこれる', done => {
     const wrapper = shallowMount(SongInfo.default, {
-      mocks: { Promise, mock },
+      mocks: {
+        Promise,
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
+      },
       propsData: {
         songId: '200'
       }
@@ -93,7 +111,10 @@ describe(SongInfo.default, () => {
 
     const wrapperWhenNetworkError = shallowMount(SongInfo.default, {
       mocks: {
-        mockWhenNetWorkError
+        mockWhenNetWorkError,
+        $nuxt: {
+          error: () => {}
+        }
       },
       propsData: {
         songId: ''

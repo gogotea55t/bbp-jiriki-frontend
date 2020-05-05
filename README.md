@@ -41,13 +41,14 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 
 ## システムの構成
 
-![システム構成図](/docs/system01.png)
+![システム構成図](/docs/system02.png)
 
 - Google Sheets API からバックエンドのサーバーが 1 日に 1 回データを取りに行って DB(PostgreSQL か MySQL にする)に反映
 - バックエンドのサーバは REST API っぽい返答をする
 - フロントエンドが描画
 - 更新系の処理が入ってもこの構図は変えないが、スプレッドシートは状況次第では廃止する。
   - スプレッドシートにはスプレッドシートのいいところもあるのでできれば残したい
+- スコアを更新すると RabbitMQ を通してスプレッドシートに更新をかけに行く
 
 ## 今後の展望
 
@@ -85,6 +86,8 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
   - 人類は間違えるし、人類は進化する
 
 ### Phase4 得点・楽曲の書き込みができる
+
+Phase3 よりも優先させるかも
 
 【終了条件】
 

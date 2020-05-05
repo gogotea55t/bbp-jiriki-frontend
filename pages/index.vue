@@ -20,7 +20,7 @@
             スプレッドシートから1日に1回データを取得し、取得した内容を表示します。
           </li>
           <li>
-            このページからデータの更新は(まだ)できません。得点などの更新は
+            このページからデータの更新は一部できません。得点以外の情報は
             <a
               href="https://docs.google.com/spreadsheets/d/1YBCP7kBrhCha5v8RRklTwXs0rbS437EG1yLNdwFm634/edit#gid=0"
             >
@@ -31,6 +31,61 @@
           <li>得点欄に数字以外が書いてあるものは反映されません。</li>
         </ul>
       </div>
+    </article>
+    <article class="post">
+      <h4>更新履歴</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>バージョン</th>
+            <th>日付</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>v0.2.0</td>
+            <td>2020/5/6</td>
+            <td>
+              スコアの登録ができるようになりました。<br />
+              得点計算機の追加もしました。
+            </td>
+          </tr>
+          <tr>
+            <td>v0.1.3</td>
+            <td>2020/2/16</td>
+            <td>プライバシーポリシーを追加しました。</td>
+          </tr>
+          <tr>
+            <td>v0.1.1</td>
+            <td>2020/2/9</td>
+            <td>平均点の表示ができるようになりました。</td>
+          </tr>
+          <tr>
+            <td>v0.1.0</td>
+            <td>2019/2/2</td>
+            <td>ログインに対応しました。</td>
+          </tr>
+          <tr>
+            <td>v0.0.3</td>
+            <td>2019/7/7</td>
+            <td>
+              楽曲をモーダルで表示できるようにしました。
+              <br />Twitterシェア機能を追加しました。
+            </td>
+          </tr>
+          <tr>
+            <td>v0.0.2</td>
+            <td>2019/6/23</td>
+            <td>URLの調整をしました</td>
+          </tr>
+          <tr>
+            <td>v0.0.1</td>
+            <td>2019/6/16</td>
+            <td>公開しました</td>
+          </tr>
+        </tbody>
+      </table>
     </article>
     <article class="post">
       <div class="content">

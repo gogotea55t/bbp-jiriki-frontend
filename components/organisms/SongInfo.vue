@@ -20,7 +20,11 @@
       </tr>
       <tr v-for="score in scores" :key="score.id">
         <td>{{ score.userName }}</td>
-        <ScoreStyle :score="score.score" />
+        <ScoreStyle
+          :song-id="song.songId"
+          :player-id="score.userId"
+          :score="score.score"
+        />
       </tr>
     </table>
   </div>
@@ -62,43 +66,41 @@ export default Vue.extend({
   },
   methods: {
     async loadInfo(id) {
-      let songResponse: Songs = await axios
-        .get(process.env.apiBaseUrl + '/v1' + '/songs/' + id)
-        .then(response => {
-          let s: any = response.data
-          return new Songs(
-            s.songId,
-            s.jirikiRank,
-            s.songName,
-            s.contributor,
-            s.instrument
-          )
-        })
-        .catch(error => {
-          console.log(error)
-          throw new Error('サーバーとの接続に失敗しました')
-        })
+      try {
+        let songResponse: Songs = await axios
+          .get(process.env.apiBaseUrl + '/v1' + '/songs/' + id)
+          .then(response => {
+            let s: any = response.data
+            return new Songs(
+              s.songId,
+              s.jirikiRank,
+              s.songName,
+              s.contributor,
+              s.instrument
+            )
+          })
 
-      let scoreResponse = await axios
-        .get(process.env.apiBaseUrl + '/v1' + '/songs/' + id + '/scores')
-        .then(response => {
-          return response.data
-        })
-        .catch(error => {
-          console.log(error)
-          throw new Error('サーバーとの接続に失敗しました')
-        })
-      this.$data.song = songResponse
-      this.$data.scores = scoreResponse
-      this.$emit(
-        'song-loaded',
-        this.$data.song.songName +
-          ' / ' +
-          this.$data.song.contributor +
-          ' (' +
-          this.$data.song.instrument +
-          ')'
-      )
+        let scoreResponse = await axios
+          .get(process.env.apiBaseUrl + '/v2' + '/songs/' + id + '/scores')
+          .then(response => {
+            return response.data
+          })
+
+        this.$data.song = songResponse
+        this.$data.scores = scoreResponse
+        this.$emit(
+          'song-loaded',
+          this.$data.song.songName +
+            ' / ' +
+            this.$data.song.contributor +
+            ' (' +
+            this.$data.song.instrument +
+            ')'
+        )
+      } catch (error) {
+        const errMsg = 'サーバーとの通信に失敗しました'
+        this.$nuxt.error({ statusCode: 500, message: errMsg })
+      }
     },
     resetData: function() {
       this.song = new Songs('', '', '', '', '')

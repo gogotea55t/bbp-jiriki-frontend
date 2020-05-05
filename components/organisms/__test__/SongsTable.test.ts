@@ -203,7 +203,10 @@ describe(SongsTable.default, () => {
       query: '/songs?page='
     },
     mocks: {
-      mock
+      mock,
+      $nuxt: {
+        error: () => {}
+      }
     }
   })
 
@@ -218,7 +221,8 @@ describe(SongsTable.default, () => {
   it('モーダル発火イベントを受け取ると親へ横流しする', () => {
     const vueInstance: any = wrapper.vm
     vueInstance.toggleModal('001')
-    expect(wrapper.emitted('toggle-modal')[0][0]).toBe('001')
+    const event = wrapper.emitted('toggle-modal') || fail()
+    expect(event[0][0]).toBe('001')
   })
 
   it('読み込んだ後さらに読み込む', done => {
@@ -244,7 +248,10 @@ describe(SongsTable.default, () => {
         query: '/songs?page='
       },
       mocks: {
-        mockWhenNetworkError
+        mockWhenNetworkError,
+        $nuxt: {
+          error: () => {}
+        }
       }
     })
     expect(wrapperWhenNetworkError.vm).toThrowError
@@ -263,7 +270,10 @@ describe(SongsTable.default, () => {
         query: '/songs?page='
       },
       mocks: {
-        mockWhenNetworkError
+        mockWhenNetworkError,
+        $nuxt: {
+          error: () => {}
+        }
       }
     })
     let vueInstance: any = wrapperWhenNetworkError.vm

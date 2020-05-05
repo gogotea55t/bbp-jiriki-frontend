@@ -45,25 +45,26 @@ export default Vue.extend({
     },
     async loadSongsByQuery(query: string) {
       let url = process.env.apiBaseUrl + '/v1' + query
-      let songsResponse: Array<Songs> = await axios
-        .get<Array<Songs>>(url)
-        .then(response => {
-          return response.data.map(s => {
-            return new Songs(
-              s.songId,
-              s.jirikiRank,
-              s.songName,
-              s.contributor,
-              s.instrument
-            )
+      try {
+        let songsResponse: Array<Songs> = await axios
+          .get<Array<Songs>>(url)
+          .then(response => {
+            return response.data.map(s => {
+              return new Songs(
+                s.songId,
+                s.jirikiRank,
+                s.songName,
+                s.contributor,
+                s.instrument
+              )
+            })
           })
-        })
-        .catch(error => {
-          console.log(error)
-          throw new Error('サーバーとの通信に失敗しました。')
-        })
-      this.songs = songsResponse
-      return songsResponse.length
+        this.songs = songsResponse
+        return songsResponse.length
+      } catch (err) {
+        const errMsg = 'サーバーとの通信に失敗しました'
+        this.$nuxt.error({ statusCode: 500, message: errMsg })
+      }
     },
     async loadMore(query: string) {
       let numberOfSongsAdded: number = await axios
@@ -85,7 +86,6 @@ export default Vue.extend({
           return response.data.length
         })
         .catch(error => {
-          console.log(error)
           return 0
         })
       return numberOfSongsAdded

@@ -4,7 +4,7 @@
       <div class="container">
         <div class="navbar-brand">
           <nuxt-link class="navbar-item" to="/">
-            大合奏！バンドブラザーズ☆10 地力表
+            <img src="favicon.ico" />大合奏！バンドブラザーズP☆10 地力表
           </nuxt-link>
           <div class="navbar-burger burger" data-target="topNav">
             <span></span>
@@ -23,6 +23,10 @@
             <nuxt-link class="navbar-item" to="/player">
               <font-awesome-icon icon="users"></font-awesome-icon>
               プレイヤーから探す
+            </nuxt-link>
+            <nuxt-link class="navbar-item" to="/calc">
+              <font-awesome-icon icon="calculator"></font-awesome-icon>
+              得点計算機
             </nuxt-link>
             <a
               class="navbar-item"
@@ -114,6 +118,15 @@
               </div>
             </div>
           </div>
+          <div class="content has-text-centered">
+            <div class="columns is-mobile is-centered">
+              <div class="field is-grouped is-grouped-multiline">
+                <div class="control">
+                  (c)2018-2020 gogotea55t bbp10-jiriki-ver0.2.0
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
@@ -129,7 +142,8 @@ import {
   faHome,
   faMusic,
   faUsers,
-  faTable
+  faTable,
+  faCalculator
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -142,6 +156,7 @@ library.add(faMusic)
 library.add(faUsers)
 library.add(faTable)
 library.add(faGithub)
+library.add(faCalculator)
 
 Vue.config.productionTip = false
 

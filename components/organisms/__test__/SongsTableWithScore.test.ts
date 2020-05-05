@@ -1,7 +1,8 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount, shallowMount, createLocalVue } from '@vue/test-utils'
 import * as SongTableWithScore from '../SongsTableWithScore.vue'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
+import Vuex from 'vuex'
 
 const sampleSongs = {
   data: [
@@ -224,15 +225,31 @@ mock
   .onGet(apiBaseUrl + '/v1' + '/players/u001/scores?page=2')
   .reply(200, sampleSongsPage2.data)
 
+const localVue = createLocalVue()
+localVue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    auth: {
+      loginUserId: null
+    }
+  }
+})
+
 describe(SongTableWithScore.default, () => {
   it('表示できる', () => {
     const wrapper = mount(SongTableWithScore.default, {
       mocks: {
-        mock
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
       },
       propsData: {
         query: '/players/u001/scores'
-      }
+      },
+      localVue,
+      store
     })
     expect(wrapper.isVueInstance).toBeTruthy
   })
@@ -240,11 +257,16 @@ describe(SongTableWithScore.default, () => {
   it('楽曲の読み込みができる', done => {
     const wrapper = mount(SongTableWithScore.default, {
       mocks: {
-        mock
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
       },
       propsData: {
         query: '/players/u001/scores'
-      }
+      },
+      localVue,
+      store
     })
 
     setTimeout(done2 => {
@@ -257,11 +279,16 @@ describe(SongTableWithScore.default, () => {
   it('一度読みこんだ後さらに読み込む', done => {
     const wrapper = mount(SongTableWithScore.default, {
       mocks: {
-        mock
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
       },
       propsData: {
         query: '/players/u001/scores'
-      }
+      },
+      localVue,
+      store
     })
     const vueInstance: any = wrapper.vm
     const reply: Promise<number> = vueInstance.loadMore(
@@ -280,16 +307,26 @@ describe(SongTableWithScore.default, () => {
   it('モーダル発火イベントを受け取ると親へ横流しする', () => {
     const wrapper = mount(SongTableWithScore.default, {
       mocks: {
-        mock
+        mock,
+        $nuxt: {
+          error: () => {}
+        }
       },
       propsData: {
         query: '/players/u001/scores'
-      }
+      },
+      localVue,
+      store
     })
 
     const vueInstance: any = wrapper.vm
     vueInstance.toggleModal('57')
-    expect(wrapper.emitted('toggleModal')[0][0]).toBe('57')
+    const event = wrapper.emitted('toggleModal')
+    if (event) {
+      expect(event[0][0]).toBe('57')
+    } else {
+      fail()
+    }
   })
 })
 
@@ -299,13 +336,18 @@ describe(SongTableWithScore.default, () => {
     const apiBaseUrl: string = process.env.apiBaseUrl || 'http://localhost:8080'
     mockWithNetworkError.onGet(apiBaseUrl + '/v1/players/u001/scores')
       .networkError
-    const wrapperWithNetworkError = shallowMount(SongTableWithScore.default, {
+    const wrapperWithNetworkError = mount(SongTableWithScore.default, {
       propsData: {
         query: '/players/u001/scores'
       },
       mocks: {
-        mockWithNetworkError
-      }
+        mockWithNetworkError,
+        $nuxt: {
+          error: () => {}
+        }
+      },
+      localVue,
+      store
     })
 
     expect(wrapperWithNetworkError.vm.$nextTick).toThrowError
@@ -321,13 +363,18 @@ describe(SongTableWithScore.default, () => {
       .reply(200, sampleSongs)
     mockWithNetworkError.onGet(apiBaseUrl + '/v1/players/u001/scores?page=1')
       .networkError
-    const wrapperWithNetworkError = shallowMount(SongTableWithScore.default, {
+    const wrapperWithNetworkError = mount(SongTableWithScore.default, {
       propsData: {
         query: '/players/u001/scores'
       },
       mocks: {
-        mockWithNetworkError
-      }
+        mockWithNetworkError,
+        $nuxt: {
+          error: () => {}
+        }
+      },
+      localVue,
+      store
     })
     const vueInstance: any = wrapperWithNetworkError.vm
     const numberOfSongsAdded: Promise<number> = vueInstance.loadMore(
