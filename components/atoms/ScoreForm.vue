@@ -118,7 +118,8 @@ export default Vue.extend({
 
 <style>
 .smallinput {
-  width: 40px;
+  width: 45px;
+  float: right;
 }
 
 .tooltip {
