@@ -14,22 +14,11 @@
       {{ song.instrument }}
     </td>
     <td>
-      <div style="white-space: nowrap;">
-        <span class="tag">BEST:&nbsp;{{ song.max }}</span>
-        <font-awesome-icon
-          v-if="song.score >= song.max"
-          :icon="['fa', 'medal']"
-          color="#DBB400"
-        ></font-awesome-icon>
-      </div>
-      <div style="white-space: nowrap;">
-        <span class="tag">AVG&nbsp;:&nbsp;{{ song.average }}</span>
-        <font-awesome-icon
-          v-if="song.score >= song.average"
-          :icon="['fa', 'medal']"
-          color="#C9CACA"
-        ></font-awesome-icon>
-      </div>
+      <ScoreDetailStyle
+        :score="song.score"
+        :max="song.max"
+        :average="song.average"
+      ></ScoreDetailStyle>
     </td>
     <ScoreStyle
       :id="'score_' + song.songId"
@@ -48,15 +37,11 @@ import Vue from 'vue'
 import SongsWithScore from '../types/SongsWithScore'
 import JirikiRank from '../atoms/JirikiRank.vue'
 import ScoreStyle from '../atoms/ScoreStyle.vue'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faMedal } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faMedal)
+import ScoreDetailStyle from '../atoms/ScoreDetailStyle.vue'
 
 export default Vue.extend({
   name: 'SongColWithScore',
-  components: { FontAwesomeIcon, JirikiRank, ScoreStyle },
+  components: { JirikiRank, ScoreStyle, ScoreDetailStyle },
   props: {
     song: {
       type: SongsWithScore,
