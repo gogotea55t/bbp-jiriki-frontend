@@ -39,3 +39,34 @@ Branchは以下のルールで回しています。
 * APIキーなどヤバいファイルをコミットしてないかチェック(GitGuardian)
 
 masterブランチはビルド成功の状態にキープしておきたいので、ご協力をお願いします。
+
+## frontendのディレクトリ構成
+
+基本的にはnuxt.jsのディレクトリ構成そのままです。
+```
+├─assets
+├─components
+│  ├─atoms
+│  │  └─__test__
+│  ├─molecules
+│  │  └─__test__
+│  ├─organisms
+│  │  └─__test__
+│  └─types
+├─docs
+├─layouts
+├─middleware
+├─pages
+│  ├─songs
+│  │  └─__test__
+│  ├─__stubs__
+│  └─__test__
+├─plugins
+├─static
+└─store
+```
+
+componentsの配下のみ、atoms, molecules, organisms, typesに分けています。[Atomic Design](https://design.dena.com/design/atomic-design-%E3%82%92%E5%88%86%E3%81%8B%E3%81%A3%E3%81%9F%E3%81%A4%E3%82%82%E3%82%8A%E3%81%AB%E3%81%AA%E3%82%8B/)の考えに沿って振り分けたつもりですが、そうでもなくなってきています。
+
+## APIドキュメント
+[こちら](https://documenter.getpostman.com/view/11301522/Szmb8LTh?version=latest#fa5d028d-8e9a-4248-ab06-a8c472812c64)です。
