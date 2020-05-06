@@ -5,6 +5,8 @@
       <th>楽曲名</th>
       <th>投稿者名</th>
       <th>楽器名</th>
+      <th>最高点</th>
+      <th>平均点</th>
       <th>得点</th>
     </thead>
     <tbody>
@@ -57,7 +59,7 @@ export default Vue.extend({
       const apiBaseUrl: string =
         process.env.apiBaseUrl || 'http://localhost:8080'
       await axios
-        .get(apiBaseUrl + '/v1' + query)
+        .get(apiBaseUrl + '/v2' + query)
         .then(response => {
           this.songs = response.data.map(s => {
             return new SongsWithScore(
@@ -66,7 +68,9 @@ export default Vue.extend({
               s.songName,
               s.contributor,
               s.instrument,
-              s.score
+              s.score,
+              s.average,
+              s.max
             )
           })
         })
@@ -82,7 +86,7 @@ export default Vue.extend({
       const apiBaseUrl: string =
         process.env.apiBaseUrl || 'http://localhost:8080'
       await axios
-        .get(apiBaseUrl + '/v1' + query)
+        .get(apiBaseUrl + '/v2' + query)
         .then(response => {
           response.data.forEach(s => {
             count++
@@ -93,7 +97,9 @@ export default Vue.extend({
                 s.songName,
                 s.contributor,
                 s.instrument,
-                s.score
+                s.score,
+                s.average,
+                s.max
               )
             )
           })

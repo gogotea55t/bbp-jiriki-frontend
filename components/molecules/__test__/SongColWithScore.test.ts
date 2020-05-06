@@ -10,7 +10,9 @@ describe(SongColWithScore.default, () => {
     'あれ',
     'それ',
     'シンセリード',
-    76
+    76,
+    80,
+    99
   )
 
   const wrapper = shallowMount(SongColWithScore.default, {

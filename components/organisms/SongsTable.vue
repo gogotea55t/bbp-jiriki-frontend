@@ -68,7 +68,7 @@ export default Vue.extend({
     },
     async loadMore(query: string) {
       let numberOfSongsAdded: number = await axios
-        .get(process.env.apiBaseUrl + '/v1' + query)
+        .get(process.env.apiBaseUrl + '/v2' + query)
         .then(response => {
           if (response.data.length > 0) {
             response.data.forEach(element => {

@@ -16,6 +16,20 @@
     </td>
     <ScoreStyle
       :id="'score_' + song.songId"
+      :score="song.max"
+      :song-id="song.songId"
+      :player-id="playerId"
+      :decimal="isDecimal"
+    ></ScoreStyle>
+    <ScoreStyle
+      :id="'score_' + song.songId"
+      :score="song.average"
+      :song-id="song.songId"
+      :player-id="playerId"
+      :decimal="isDecimal"
+    ></ScoreStyle>
+    <ScoreStyle
+      :id="'score_' + song.songId"
       :score="song.score"
       :song-id="song.songId"
       :player-id="playerId"
@@ -35,7 +49,7 @@ export default Vue.extend({
   props: {
     song: {
       type: SongsWithScore,
-      default: new SongsWithScore('', '', '', '', '', 0)
+      default: new SongsWithScore('', '', '', '', '', 0, 0, 0)
     },
     decimal: {
       type: Boolean,

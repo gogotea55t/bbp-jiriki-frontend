@@ -9,7 +9,9 @@ export default class SongsWithScore extends Songs {
     songName: string,
     contributor: string,
     instrument: string,
-    score: Number
+    score: Number,
+    average: Number,
+    max: Number
   ) {
     super(songId, jirikiRank, songName, contributor, instrument)
     this.score = score
