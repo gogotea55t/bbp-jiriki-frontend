@@ -1,14 +1,16 @@
 <template>
-  <td :class="classObject" align="right">
-    <span v-if="edit" class="control">
-      <score-form
-        :score="score"
-        :song-id="songId"
-        :user-id="playerId"
-        @score-submitted="scoreSubmitted"
-      />
-    </span>
-    <span v-else>{{ scoreView }}</span>
+  <td align="center">
+    <div class="tag is-large" :class="classObject">
+      <span v-if="edit" class="control">
+        <score-form
+          :score="score"
+          :song-id="songId"
+          :user-id="playerId"
+          @score-submitted="scoreSubmitted"
+        />
+      </span>
+      <span v-else>{{ scoreView }}</span>
+    </div>
   </td>
 </template>
 
@@ -97,22 +99,25 @@ export default Vue.extend({
 
 <style>
 .masakaHonkija {
-  background-color: #efefef;
+  background-color: #efefef !important;
 }
 
 .chutoHampa {
-  background-color: #a4c2ea;
+  background-color: #a4c2ea !important;
 }
 
 .masakaKonoteido {
-  background-color: #ea9999;
+  background-color: #ea9999 !important;
 }
 
 .manzokuSitenai {
-  background-color: #cccccc;
+  background-color: #cccccc !important;
 }
 
 .chousiniNorunja {
-  background-color: gold;
+  background-color: gold !important;
+}
+.text-muted {
+  color: #6c757d !important;
 }
 </style>

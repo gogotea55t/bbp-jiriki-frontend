@@ -1,13 +1,18 @@
 <template>
-  <table>
+  <table id="score-table">
     <thead>
-      <th>地力</th>
-      <th>楽曲名</th>
-      <th>投稿者名</th>
-      <th>楽器名</th>
-      <th>最高点</th>
-      <th>平均点</th>
-      <th>得点</th>
+      <th align="center">
+        地力
+      </th>
+      <th align="center">
+        楽曲名
+      </th>
+      <th align="center">
+        楽器名
+      </th>
+      <th align="center" colspan="2">
+        得点
+      </th>
     </thead>
     <tbody>
       <SongColWithScore
@@ -69,8 +74,8 @@ export default Vue.extend({
               s.contributor,
               s.instrument,
               s.score,
-              s.average,
-              s.max
+              s.max,
+              s.average
             )
           })
         })
@@ -98,8 +103,8 @@ export default Vue.extend({
                 s.contributor,
                 s.instrument,
                 s.score,
-                s.average,
-                s.max
+                s.max,
+                s.average
               )
             )
           })
