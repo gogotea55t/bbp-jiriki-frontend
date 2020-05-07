@@ -68,15 +68,4 @@ describe(SongColWithScore.default, () => {
       ok
     }
   })
-
-  it('投稿者名欄をクリックするとモーダル発火イベントを起こす', () => {
-    wrapper.find('#contributor_57').trigger('click')
-    const emittedEvent = wrapper.emitted('toggleModal')
-
-    if (emittedEvent) {
-      expect(emittedEvent[0][0]).toBe('57')
-    } else {
-      fail
-    }
-  })
 })

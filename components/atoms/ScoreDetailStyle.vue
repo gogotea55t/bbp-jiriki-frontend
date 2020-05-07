@@ -1,10 +1,11 @@
 <template>
   <div>
     <div style="white-space: nowrap;">
-      <span class="tag color-gold">BEST:&nbsp;{{ max }}</span>
+      <span class="tag">BEST:&nbsp;{{ max }}</span>
       <font-awesome-icon
         v-if="score >= max"
         :icon="['fa', 'medal']"
+        class="color-gold"
       ></font-awesome-icon>
     </div>
     <div style="white-space: nowrap;">
@@ -12,6 +13,7 @@
       <font-awesome-icon
         v-if="score >= average"
         :icon="['fa', 'medal']"
+        class="color-silver"
       ></font-awesome-icon>
     </div>
   </div>
@@ -50,6 +52,6 @@ export default Vue.extend({
   color: #dbb400;
 }
 .color-silver {
-  color: #c9caca;
+  color: #9fa0a0;
 }
 </style>
