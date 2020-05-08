@@ -247,6 +247,9 @@ footer {
 .container .columns {
   margin: 3rem 0;
 }
+.box {
+  overflow-x: scroll;
+}
 .navbar-menu .navbar-item {
   padding: 0 2rem;
 }
