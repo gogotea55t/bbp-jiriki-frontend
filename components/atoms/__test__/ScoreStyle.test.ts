@@ -74,6 +74,8 @@ describe(ScoreStyle.default, () => {
       store
     })
     expect(wrapper.vm.$data.classObject.masakaHonkija).toBe(true)
+    const vueInstance: any = wrapper.vm
+    expect(vueInstance.scoreView).toBe('')
   })
 
   it('88点から90点に更新されたら背景色が変わる', () => {
