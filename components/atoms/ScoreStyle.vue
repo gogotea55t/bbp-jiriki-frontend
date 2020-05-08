@@ -1,6 +1,6 @@
 <template>
   <td align="center">
-    <div v-if="score" class="tag is-large" :class="classObject">
+    <div v-if="edit || score" class="tag is-large" :class="classObject">
       <span v-if="edit" class="control">
         <score-form
           :score="score"
