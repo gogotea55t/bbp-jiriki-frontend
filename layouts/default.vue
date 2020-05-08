@@ -232,6 +232,9 @@ html,
 body {
   background: #f2f6fa;
 }
+th {
+  text-align: center !important;
+}
 footer {
   background-color: #f2f6fa !important;
 }

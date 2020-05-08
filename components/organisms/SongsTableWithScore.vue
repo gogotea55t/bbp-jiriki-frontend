@@ -1,18 +1,10 @@
 <template>
   <table id="score-table">
     <thead>
-      <th align="center">
-        地力
-      </th>
-      <th align="center">
-        楽曲名
-      </th>
-      <th align="center">
-        楽器名
-      </th>
-      <th align="center" colspan="2">
-        得点
-      </th>
+      <th>地力</th>
+      <th>楽曲名</th>
+      <th>楽器名</th>
+      <th colspan="2">得点</th>
     </thead>
     <tbody>
       <SongColWithScore
