@@ -1,0 +1,581 @@
+{
+  "players": [
+    {
+      "userName": "Para",
+      "userId": "u002"
+    },
+    {
+      "userName": "妖精",
+      "userId": "u003"
+    },
+    {
+      "userName": "元連打勢",
+      "userId": "u004"
+    },
+    {
+      "userName": "レイ",
+      "userId": "u005"
+    },
+    {
+      "userName": "estoc",
+      "userId": "u006"
+    },
+    {
+      "userName": "はるかっか",
+      "userId": "u009"
+    },
+    {
+      "userName": "gogo_tea",
+      "userId": "u015"
+    },
+    {
+      "userName": "シン",
+      "userId": "u066"
+    }
+  ],
+  "player": { "userName": "gogo_tea", "userId": "u015" },
+  "auth0": {},
+  "songs": [
+    {
+      "songId": "1",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "CUTIE PANTHER",
+      "contributor": "リガナ",
+      "instrument": "シンセリード①"
+    },
+    {
+      "songId": "2",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "CUTIE PANTHER",
+      "contributor": "リガナ",
+      "instrument": "シンセリード②"
+    },
+    {
+      "songId": "3",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "カミサマネジマキ",
+      "contributor": "ミラ",
+      "instrument": "ロックオルガン"
+    },
+    {
+      "songId": "4",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "みてみて☆こっちっち",
+      "contributor": "エメラル",
+      "instrument": "チェンバロ"
+    },
+    {
+      "songId": "5",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "千年幻想郷 〜 History of the Moon",
+      "contributor": "ばけばけ",
+      "instrument": "ピアノ①"
+    },
+    {
+      "songId": "6",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "大桟橋",
+      "contributor": "DXいしょく@ともゆき",
+      "instrument": "シンセリード①"
+    },
+    {
+      "songId": "7",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "大桟橋",
+      "contributor": "DXいしょく@ともゆき",
+      "instrument": "シンセリード②"
+    },
+    {
+      "songId": "8",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "悠yuu自適",
+      "contributor": "ヤマハ",
+      "instrument": "E・ベース"
+    },
+    {
+      "songId": "9",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "悠yuu自適",
+      "contributor": "ヤマハ",
+      "instrument": "ファットリード"
+    },
+    {
+      "songId": "10",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "恋のヒメヒメ☆ぺったんこ",
+      "contributor": "@そとのしもべ@",
+      "instrument": "ファミコンA"
+    },
+    {
+      "songId": "11",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "ボクにインビテーション",
+      "contributor": "にっきゅう",
+      "instrument": "クラシックギター"
+    },
+    {
+      "songId": "12",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "DRY?",
+      "contributor": "DXいしょく@mametan",
+      "instrument": "OD・ギター"
+    },
+    {
+      "songId": "641",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "CATCH YOU CATCH ME",
+      "contributor": "ほし",
+      "instrument": "ストリングス"
+    },
+    {
+      "songId": "1011",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "CAREZZA",
+      "contributor": "アリス",
+      "instrument": "ピアノ①"
+    },
+    {
+      "songId": "1041",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "SWEET&SWEET HOLIDAY",
+      "contributor": "メガラプソーン",
+      "instrument": "ファミコンB②"
+    },
+    {
+      "songId": "1063",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "vs 妖怪 -2-",
+      "contributor": "タカヒロ",
+      "instrument": "サイン"
+    },
+    {
+      "songId": "1156",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "インフェルノ",
+      "contributor": "コメの",
+      "instrument": "OD・ギター①"
+    },
+    {
+      "songId": "1265",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "カミサマネジマキ",
+      "contributor": "ミラ",
+      "instrument": "ロックギター②"
+    },
+    {
+      "songId": "1266",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "カミサマネジマキ",
+      "contributor": "ミラ",
+      "instrument": "ロックギター③"
+    },
+    {
+      "songId": "1274",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "雪、無音、窓辺にて。",
+      "contributor": "ヤマた",
+      "instrument": "ストリングス①"
+    }
+  ],
+  "song": {
+    "songId": "1",
+    "jirikiRank": "地力Ｓ＋",
+    "songName": "CUTIE PANTHER",
+    "contributor": "リガナ",
+    "instrument": "シンセリード①"
+  },
+  "top": {
+    "top": [
+      {
+        "userId": "u025",
+        "userName": "タクト",
+        "score": 100.0
+      },
+      {
+        "userId": "u066",
+        "userName": "シン",
+        "score": 100.0
+      }
+    ],
+    "second": [
+      {
+        "userId": "u015",
+        "userName": "gogo_tea",
+        "score": 96
+      }
+    ],
+    "third": []
+  },
+  "average": [
+    {
+      "songId": "1",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "CUTIE PANTHER",
+      "contributor": "リガナ",
+      "instrument": "シンセリード①",
+      "score": 85.83
+    },
+    {
+      "songId": "2",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "CUTIE PANTHER",
+      "contributor": "リガナ",
+      "instrument": "シンセリード②",
+      "score": 83.83
+    },
+    {
+      "songId": "3",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "カミサマネジマキ",
+      "contributor": "ミラ",
+      "instrument": "ロックオルガン",
+      "score": 79.63
+    },
+    {
+      "songId": "4",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "みてみて☆こっちっち",
+      "contributor": "エメラル",
+      "instrument": "チェンバロ",
+      "score": 80.88
+    },
+    {
+      "songId": "5",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "千年幻想郷 〜 History of the Moon",
+      "contributor": "ばけばけ",
+      "instrument": "ピアノ①",
+      "score": 85.67
+    },
+    {
+      "songId": "6",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "大桟橋",
+      "contributor": "DXいしょく@ともゆき",
+      "instrument": "シンセリード①",
+      "score": 80.57
+    },
+    {
+      "songId": "7",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "大桟橋",
+      "contributor": "DXいしょく@ともゆき",
+      "instrument": "シンセリード②",
+      "score": 82.29
+    },
+    {
+      "songId": "8",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "悠yuu自適",
+      "contributor": "ヤマハ",
+      "instrument": "E・ベース",
+      "score": 86
+    },
+    {
+      "songId": "9",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "悠yuu自適",
+      "contributor": "ヤマハ",
+      "instrument": "ファットリード",
+      "score": 86
+    },
+    {
+      "songId": "10",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "恋のヒメヒメ☆ぺったんこ",
+      "contributor": "@そとのしもべ@",
+      "instrument": "ファミコンA",
+      "score": 84
+    },
+    {
+      "songId": "11",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "ボクにインビテーション",
+      "contributor": "にっきゅう",
+      "instrument": "クラシックギター",
+      "score": 83.14
+    },
+    {
+      "songId": "12",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "DRY?",
+      "contributor": "DXいしょく@mametan",
+      "instrument": "OD・ギター",
+      "score": 84.29
+    },
+    {
+      "songId": "641",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "CATCH YOU CATCH ME",
+      "contributor": "ほし",
+      "instrument": "ストリングス",
+      "score": 76.57
+    },
+    {
+      "songId": "1011",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "CAREZZA",
+      "contributor": "アリス",
+      "instrument": "ピアノ①",
+      "score": 78.5
+    },
+    {
+      "songId": "1041",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "SWEET&SWEET HOLIDAY",
+      "contributor": "メガラプソーン",
+      "instrument": "ファミコンB②",
+      "score": 77.43
+    },
+    {
+      "songId": "1063",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "vs 妖怪 -2-",
+      "contributor": "タカヒロ",
+      "instrument": "サイン",
+      "score": 74.5
+    },
+    {
+      "songId": "1156",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "インフェルノ",
+      "contributor": "コメの",
+      "instrument": "OD・ギター①",
+      "score": 81.75
+    },
+    {
+      "songId": "1265",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "カミサマネジマキ",
+      "contributor": "ミラ",
+      "instrument": "ロックギター②",
+      "score": 81.29
+    },
+    {
+      "songId": "1266",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "カミサマネジマキ",
+      "contributor": "ミラ",
+      "instrument": "ロックギター③",
+      "score": 80.33
+    },
+    {
+      "songId": "1274",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "雪、無音、窓辺にて。",
+      "contributor": "ヤマた",
+      "instrument": "ストリングス①",
+      "score": 80
+    }
+  ],
+  "playerScores": [
+    {
+      "songId": "1",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "CUTIE PANTHER",
+      "contributor": "リガナ",
+      "average": 84.55,
+      "max": 94,
+      "instrument": "シンセリード①",
+      "score": null
+    },
+    {
+      "songId": "2",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "CUTIE PANTHER",
+      "contributor": "リガナ",
+      "instrument": "シンセリード②",
+      "score": null,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "3",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "カミサマネジマキ",
+      "contributor": "ミラ",
+      "instrument": "ロックオルガン",
+      "score": 84.0,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "4",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "みてみて☆こっちっち",
+      "contributor": "エメラル",
+      "instrument": "チェンバロ",
+      "score": 90.0,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "5",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "千年幻想郷 〜 History of the Moon",
+      "contributor": "ばけばけ",
+      "instrument": "ピアノ①",
+      "score": null,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "6",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "大桟橋",
+      "contributor": "DXいしょく@ともゆき",
+      "instrument": "シンセリード①",
+      "score": null,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "7",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "大桟橋",
+      "contributor": "DXいしょく@ともゆき",
+      "instrument": "シンセリード②",
+      "score": null,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "8",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "悠yuu自適",
+      "contributor": "ヤマハ",
+      "instrument": "E・ベース",
+      "score": null,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "9",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "悠yuu自適",
+      "contributor": "ヤマハ",
+      "instrument": "ファットリード",
+      "score": null,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "10",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "恋のヒメヒメ☆ぺったんこ",
+      "contributor": "@そとのしもべ@",
+      "instrument": "ファミコンA",
+      "score": null,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "11",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "ボクにインビテーション",
+      "contributor": "にっきゅう",
+      "instrument": "クラシックギター",
+      "score": 90.0,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "12",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "DRY?",
+      "contributor": "DXいしょく@mametan",
+      "instrument": "OD・ギター",
+      "score": null,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "641",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "CATCH YOU CATCH ME",
+      "contributor": "ほし",
+      "instrument": "ストリングス",
+      "score": 82.0,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "1011",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "CAREZZA",
+      "contributor": "アリス",
+      "instrument": "ピアノ①",
+      "score": 80.0,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "1041",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "SWEET&SWEET HOLIDAY",
+      "contributor": "メガラプソーン",
+      "instrument": "ファミコンB②",
+      "score": 56.0,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "1063",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "vs 妖怪 -2-",
+      "contributor": "タカヒロ",
+      "instrument": "サイン",
+      "score": null,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "1156",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "インフェルノ",
+      "contributor": "コメの",
+      "instrument": "OD・ギター①",
+      "score": null,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "1265",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "カミサマネジマキ",
+      "contributor": "ミラ",
+      "instrument": "ロックギター②",
+      "score": 82.0,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "1266",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "カミサマネジマキ",
+      "contributor": "ミラ",
+      "instrument": "ロックギター③",
+      "score": null,
+      "average": 84.55,
+      "max": 94
+    },
+    {
+      "songId": "1274",
+      "jirikiRank": "地力Ｓ＋",
+      "songName": "雪、無音、窓辺にて。",
+      "contributor": "ヤマた",
+      "instrument": "ストリングス①",
+      "score": null,
+      "average": 84.55,
+      "max": 94
+    }
+  ],
+  "songScores": [
+    { "userId": "u002", "userName": "Para", "score": 93.0 },
+    { "userId": "u066", "userName": "シン", "score": 92.0 },
+    { "userId": "u006", "userName": "estoc", "score": 89.0 },
+    { "userId": "u003", "userName": "妖精", "score": 87.0 },
+    { "userId": "u009", "userName": "はるかっか", "score": 80.0 },
+    { "userId": "u005", "userName": "レイ", "score": 74.0 }
+  ]
+}
