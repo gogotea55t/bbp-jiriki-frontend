@@ -12,7 +12,9 @@ const sampleSongs = {
       songName: 'OTEMBA-Girls-Celebration!(エレクトリカルひなまつり受賞曲)',
       contributor: 'さんだ',
       instrument: 'E・ベース',
-      score: 10
+      score: 10,
+      max: 100,
+      average: 50
     },
     {
       songId: '529',
@@ -20,7 +22,9 @@ const sampleSongs = {
       songName: '猿の入った温泉はとてもヤバい',
       contributor: 'へいおまち',
       instrument: 'D・ギター①',
-      score: 100
+      score: 100,
+      max: 99,
+      average: 60
     },
     {
       songId: '96',
@@ -28,7 +32,9 @@ const sampleSongs = {
       songName: 'NYANYANYANYANYANYANYA!',
       contributor: 'わさお',
       instrument: 'チェンバロ',
-      score: 30
+      score: 30,
+      max: 80,
+      average: 50.5
     },
     {
       songId: '466',
@@ -36,7 +42,9 @@ const sampleSongs = {
       songName: 'クラクション・ラヴ',
       contributor: 'よりねえトップ',
       instrument: 'ピックベース',
-      score: 100
+      score: 100,
+      max: 99,
+      average: 88.88
     },
     {
       songId: '94',
@@ -44,7 +52,9 @@ const sampleSongs = {
       songName: '脳漿炸裂ガール',
       contributor: 'カレーおうじ',
       instrument: 'ピアノ',
-      score: 50
+      score: 50,
+      max: 99,
+      average: 50
     },
     {
       songId: '365',
@@ -52,7 +62,9 @@ const sampleSongs = {
       songName: 'CAGAYAKE!GIRLS',
       contributor: 'もっちゃん',
       instrument: 'ピックベース',
-      score: 98
+      score: 98,
+      max: 99,
+      average: 50
     },
     {
       songId: '92',
@@ -60,7 +72,9 @@ const sampleSongs = {
       songName: '初音ミクの戸惑',
       contributor: 'こくみん',
       instrument: 'スクエアリード',
-      score: 70
+      score: 70,
+      max: 99,
+      average: 50
     },
     {
       songId: '523',
@@ -68,7 +82,9 @@ const sampleSongs = {
       songName: '恋は渾沌の隷也',
       contributor: 'ヤマた',
       instrument: 'スラップベース',
-      score: 80
+      score: 80,
+      max: 99,
+      average: 50
     },
     {
       songId: '277',
@@ -76,7 +92,9 @@ const sampleSongs = {
       songName: "Jack-o'-Lantern said…",
       contributor: 'HT',
       instrument: 'オルゴール①',
-      score: 95
+      score: 95,
+      max: 99,
+      average: 50
     },
     {
       songId: '1108',
@@ -84,7 +102,9 @@ const sampleSongs = {
       songName: "SISTER'S NOISE",
       contributor: 'サマフ',
       instrument: 'E・ベース',
-      score: 98
+      score: 98,
+      max: 99,
+      average: 50
     },
     {
       songId: '338',
@@ -92,7 +112,9 @@ const sampleSongs = {
       songName: 'スリル',
       contributor: 'ルイ',
       instrument: 'サイン',
-      score: 92
+      score: 92,
+      max: 99,
+      average: 50
     },
     {
       songId: '197',
@@ -100,7 +122,9 @@ const sampleSongs = {
       songName: 'BABEL～GRAND STORY～',
       contributor: 'DXいしょく@Arinuco',
       instrument: 'シンセリード',
-      score: 93
+      score: 93,
+      max: 99,
+      average: 50
     },
     {
       songId: '195',
@@ -108,7 +132,9 @@ const sampleSongs = {
       songName: '邪悪なる飛翔',
       contributor: 'しはす',
       instrument: 'ピアノ',
-      score: 94
+      score: 94,
+      max: 99,
+      average: 50
     },
     {
       songId: '37',
@@ -116,7 +142,9 @@ const sampleSongs = {
       songName: 'WONDERFUL RUSH',
       contributor: 'ラブライバー',
       instrument: 'ファットリード',
-      score: 95
+      score: 95,
+      max: 99,
+      average: 50
     },
     {
       songId: '550',
@@ -124,7 +152,9 @@ const sampleSongs = {
       songName: 'マリオ絵描き歌',
       contributor: 'Nintendo',
       instrument: 'ファミコンA②',
-      score: 96
+      score: 96,
+      max: 99,
+      average: 50
     },
     {
       songId: '544',
@@ -132,7 +162,9 @@ const sampleSongs = {
       songName: 'ミラクルペイント',
       contributor: 'タタナミ',
       instrument: 'A・ベース',
-      score: 97
+      score: 97,
+      max: 99,
+      average: 50
     },
     {
       songId: '192',
@@ -140,7 +172,9 @@ const sampleSongs = {
       songName: '大迷惑',
       contributor: 'よりねえトップ',
       instrument: 'OD・ギター',
-      score: 98
+      score: 98,
+      max: 99,
+      average: 50
     },
     {
       songId: '381',
@@ -148,7 +182,9 @@ const sampleSongs = {
       songName: 'ARK',
       contributor: 'ごごのこうちゃ',
       instrument: 'サイン',
-      score: 99
+      score: 99,
+      max: 99,
+      average: 50
     },
     {
       songId: '190',
@@ -156,7 +192,9 @@ const sampleSongs = {
       songName: '光の戦士たち',
       contributor: 'なるるん',
       instrument: 'ピックベース',
-      score: 100
+      score: 100,
+      max: 99,
+      average: 50
     },
     {
       songId: '89',
@@ -164,7 +202,9 @@ const sampleSongs = {
       songName: 'パーティゲーム(架空のゲームソング受賞曲)',
       contributor: 'とらいじん',
       instrument: 'マリンバ',
-      score: 99
+      score: 99,
+      max: 99,
+      average: 50
     }
   ]
 }
@@ -177,7 +217,9 @@ const sampleSongsPage2 = {
       songName: 'こんなのあったっけ',
       contributor: 'サンプル',
       instrument: 'マリンバ',
-      score: 99
+      score: 99,
+      max: 99,
+      average: 50
     },
     {
       songId: '1453',
@@ -185,7 +227,9 @@ const sampleSongsPage2 = {
       songName: 'QUATRE MAINS(A QUATRE MAINS)=3EM16=',
       contributor: 'たいちょー',
       instrument: 'ピアノ①',
-      score: null
+      score: null,
+      max: 99,
+      average: 50
     },
     {
       songId: '1120',
@@ -193,7 +237,9 @@ const sampleSongsPage2 = {
       songName: '傷だらけの天使',
       contributor: 'なるるん',
       instrument: 'アルトサックス',
-      score: 89
+      score: 89,
+      max: 99,
+      average: 50
     },
     {
       songId: '49',
@@ -201,7 +247,9 @@ const sampleSongsPage2 = {
       songName: 'LEVEL∞',
       contributor: 'ぜったいれいど',
       instrument: 'ファミコンベース',
-      score: 89
+      score: 89,
+      max: 99,
+      average: 50
     },
     {
       songId: '120',
@@ -209,7 +257,9 @@ const sampleSongsPage2 = {
       songName: 'GO!GO!MANIAC',
       contributor: 'キュウイレブン',
       instrument: 'スクエアリード',
-      score: 98
+      score: 98,
+      max: 99,
+      average: 50
     }
   ]
 }
@@ -219,10 +269,10 @@ jest.setTimeout(20000)
 const mock = new MockAdapter(axios)
 const apiBaseUrl: string = process.env.apiBaseUrl || 'http://localhost:8080'
 mock
-  .onGet(apiBaseUrl + '/v1' + '/players/u001/scores')
+  .onGet(apiBaseUrl + '/v2' + '/players/u001/scores')
   .reply(200, sampleSongs.data)
 mock
-  .onGet(apiBaseUrl + '/v1' + '/players/u001/scores?page=2')
+  .onGet(apiBaseUrl + '/v2' + '/players/u001/scores?page=2')
   .reply(200, sampleSongsPage2.data)
 
 const localVue = createLocalVue()

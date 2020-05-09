@@ -232,6 +232,9 @@ html,
 body {
   background: #f2f6fa;
 }
+th {
+  text-align: center !important;
+}
 footer {
   background-color: #f2f6fa !important;
 }
@@ -243,6 +246,9 @@ footer {
 }
 .container .columns {
   margin: 3rem 0;
+}
+.box {
+  overflow-x: scroll;
 }
 .navbar-menu .navbar-item {
   padding: 0 2rem;
