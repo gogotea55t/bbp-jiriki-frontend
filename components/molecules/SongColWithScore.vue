@@ -14,11 +14,12 @@
       {{ song.instrument }}
     </td>
     <td>
-      <ScoreDetailStyle
+      <ScoreInfo
+        :song-id="song.songId"
         :score="song.score"
         :max="song.max"
         :average="song.average"
-      ></ScoreDetailStyle>
+      ></ScoreInfo>
     </td>
     <ScoreStyle
       :id="'score_' + song.songId"
@@ -37,11 +38,11 @@ import Vue from 'vue'
 import SongsWithScore from '../types/SongsWithScore'
 import JirikiRank from '../atoms/JirikiRank.vue'
 import ScoreStyle from '../atoms/ScoreStyle.vue'
-import ScoreDetailStyle from '../atoms/ScoreDetailStyle.vue'
+import ScoreInfo from '../atoms/ScoreInfo.vue'
 
 export default Vue.extend({
   name: 'SongColWithScore',
-  components: { JirikiRank, ScoreStyle, ScoreDetailStyle },
+  components: { JirikiRank, ScoreStyle, ScoreInfo },
   props: {
     song: {
       type: SongsWithScore,
