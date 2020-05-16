@@ -81,7 +81,7 @@ export default Vue.extend({
 })
 </script>
 <style scoped>
-.loadding-text {
+.loading-text {
   color: white;
 }
 </style>
