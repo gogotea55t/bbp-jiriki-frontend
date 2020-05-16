@@ -63,9 +63,9 @@ export default Vue.extend({
     }
   },
   methods: {
-    loadInfo(id) {
+    async loadInfo(id) {
       try {
-        let topsResponse = axios
+        let topsResponse = await axios
           .get(process.env.apiBaseUrl + '/v2' + '/songs/' + id + '/top')
           .then(response => {
             console.log(response.data)
