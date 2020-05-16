@@ -2,10 +2,9 @@
   <div>
     <v-popover
       trigger="hover"
-      id="popover_"
+      popover-class="tooltip"
       @show="changeTooltip(true)"
       @hide="changeTooltip(false)"
-      popoverClass="tooltip"
     >
       <div style="white-space: nowrap;">
         <span class="tag">BEST:&nbsp;{{ max }}</span>
@@ -38,12 +37,13 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faMedal } from '@fortawesome/free-solid-svg-icons'
 import VTooltip from 'v-tooltip'
 import Tops from '../atoms/Tops.vue'
+import { VPopover } from 'v-tooltip'
 
 library.add(faMedal)
 
 export default Vue.extend({
   name: 'ScoreInfo',
-  components: { FontAwesomeIcon, Tops },
+  components: { FontAwesomeIcon, Tops, VPopover },
   props: {
     songId: {
       type: String,
