@@ -18,7 +18,7 @@
       <div v-for="third in tops.third" :key="third.userId">
         <font-awesome-icon
           :icon="['fa', 'crown']"
-          class="color-cooper"
+          class="color-copper"
         ></font-awesome-icon>
         {{ third.score }} {{ third.userName }}
       </div>
