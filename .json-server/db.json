@@ -213,7 +213,9 @@
       "songName": "CUTIE PANTHER",
       "contributor": "リガナ",
       "instrument": "シンセリード①",
-      "score": 85.83
+      "score": null,
+      "average": 85.83,
+      "max": 93.0
     },
     {
       "songId": "2",
@@ -221,7 +223,9 @@
       "songName": "CUTIE PANTHER",
       "contributor": "リガナ",
       "instrument": "シンセリード②",
-      "score": 83.83
+      "score": null,
+      "average": 83.83,
+      "max": 91.0
     },
     {
       "songId": "3",
@@ -229,7 +233,9 @@
       "songName": "カミサマネジマキ",
       "contributor": "ミラ",
       "instrument": "ロックオルガン",
-      "score": 79.63
+      "score": null,
+      "average": 79.63,
+      "max": 93.0
     },
     {
       "songId": "4",
@@ -237,7 +243,9 @@
       "songName": "みてみて☆こっちっち",
       "contributor": "エメラル",
       "instrument": "チェンバロ",
-      "score": 80.88
+      "score": null,
+      "average": 80.88,
+      "max": 92.0
     },
     {
       "songId": "5",
@@ -245,7 +253,9 @@
       "songName": "千年幻想郷 〜 History of the Moon",
       "contributor": "ばけばけ",
       "instrument": "ピアノ①",
-      "score": 85.67
+      "score": null,
+      "average": 85.67,
+      "max": 93.0
     },
     {
       "songId": "6",
@@ -253,7 +263,9 @@
       "songName": "大桟橋",
       "contributor": "DXいしょく@ともゆき",
       "instrument": "シンセリード①",
-      "score": 80.57
+      "score": null,
+      "average": 80.57,
+      "max": 93.0
     },
     {
       "songId": "7",
@@ -261,7 +273,9 @@
       "songName": "大桟橋",
       "contributor": "DXいしょく@ともゆき",
       "instrument": "シンセリード②",
-      "score": 82.29
+      "score": null,
+      "average": 82.29,
+      "max": 90.0
     },
     {
       "songId": "8",
@@ -269,7 +283,9 @@
       "songName": "悠yuu自適",
       "contributor": "ヤマハ",
       "instrument": "E・ベース",
-      "score": 86
+      "score": null,
+      "average": 81.57,
+      "max": 97.0
     },
     {
       "songId": "9",
@@ -277,7 +293,9 @@
       "songName": "悠yuu自適",
       "contributor": "ヤマハ",
       "instrument": "ファットリード",
-      "score": 86
+      "score": null,
+      "average": 86.0,
+      "max": 93.0
     },
     {
       "songId": "10",
@@ -285,7 +303,9 @@
       "songName": "恋のヒメヒメ☆ぺったんこ",
       "contributor": "@そとのしもべ@",
       "instrument": "ファミコンA",
-      "score": 84
+      "score": null,
+      "average": 84.0,
+      "max": 91.0
     },
     {
       "songId": "11",
@@ -293,7 +313,9 @@
       "songName": "ボクにインビテーション",
       "contributor": "にっきゅう",
       "instrument": "クラシックギター",
-      "score": 83.14
+      "score": null,
+      "average": 83.14,
+      "max": 94.0
     },
     {
       "songId": "12",
@@ -301,7 +323,9 @@
       "songName": "DRY?",
       "contributor": "DXいしょく@mametan",
       "instrument": "OD・ギター",
-      "score": 84.29
+      "score": null,
+      "average": 84.29,
+      "max": 91.0
     },
     {
       "songId": "641",
@@ -309,7 +333,9 @@
       "songName": "CATCH YOU CATCH ME",
       "contributor": "ほし",
       "instrument": "ストリングス",
-      "score": 76.57
+      "score": null,
+      "average": 76.57,
+      "max": 87.0
     },
     {
       "songId": "1011",
@@ -317,7 +343,9 @@
       "songName": "CAREZZA",
       "contributor": "アリス",
       "instrument": "ピアノ①",
-      "score": 78.5
+      "score": null,
+      "average": 78.5,
+      "max": 90.0
     },
     {
       "songId": "1041",
@@ -325,7 +353,9 @@
       "songName": "SWEET&SWEET HOLIDAY",
       "contributor": "メガラプソーン",
       "instrument": "ファミコンB②",
-      "score": 77.43
+      "score": null,
+      "average": 77.43,
+      "max": 89.0
     },
     {
       "songId": "1063",
@@ -333,7 +363,9 @@
       "songName": "vs 妖怪 -2-",
       "contributor": "タカヒロ",
       "instrument": "サイン",
-      "score": 74.5
+      "score": null,
+      "average": 74.5,
+      "max": 86.0
     },
     {
       "songId": "1156",
@@ -341,7 +373,9 @@
       "songName": "インフェルノ",
       "contributor": "コメの",
       "instrument": "OD・ギター①",
-      "score": 81.75
+      "score": null,
+      "average": 81.75,
+      "max": 93.0
     },
     {
       "songId": "1265",
@@ -349,7 +383,9 @@
       "songName": "カミサマネジマキ",
       "contributor": "ミラ",
       "instrument": "ロックギター②",
-      "score": 81.29
+      "score": null,
+      "average": 81.29,
+      "max": 90.0
     },
     {
       "songId": "1266",
@@ -357,7 +393,9 @@
       "songName": "カミサマネジマキ",
       "contributor": "ミラ",
       "instrument": "ロックギター③",
-      "score": 80.33
+      "score": null,
+      "average": 80.33,
+      "max": 90.0
     },
     {
       "songId": "1274",
@@ -365,7 +403,9 @@
       "songName": "雪、無音、窓辺にて。",
       "contributor": "ヤマた",
       "instrument": "ストリングス①",
-      "score": 80
+      "score": null,
+      "average": 80.0,
+      "max": 91.0
     }
   ],
   "playerScores": [
