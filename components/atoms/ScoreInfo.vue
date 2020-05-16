@@ -2,7 +2,7 @@
   <div>
     <v-popover
       trigger="hover"
-      :id="songId + '_popover'"
+      id="popover_"
       @show="changeTooltip(true)"
       @hide="changeTooltip(false)"
       popoverClass="tooltip"

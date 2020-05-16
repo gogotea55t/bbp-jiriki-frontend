@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="tops" class="tooltip-content">
+    <div v-if="!tops.empty" class="tooltip-content">
       <div v-for="first in tops.top" :key="first.userId">
         <font-awesome-icon
           :icon="['fa', 'crown']"
@@ -34,6 +34,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faCrown } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
+import Tops from '../types/Tops'
+import PlayerScore from '../types/PlayerScore'
 
 library.add(faCrown)
 
@@ -52,7 +54,7 @@ export default Vue.extend({
   },
   data: function() {
     return {
-      tops: null
+      tops: new Tops([], [], [])
     }
   },
   watch: {
@@ -68,8 +70,8 @@ export default Vue.extend({
         let topsResponse = await axios
           .get(process.env.apiBaseUrl + '/v2' + '/songs/' + id + '/top')
           .then(response => {
-            console.log(response.data)
-            this.$data.tops = response.data
+            const topData: Tops = response.data
+            this.$data.tops = topData
             return
           })
       } catch (error) {

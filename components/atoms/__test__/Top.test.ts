@@ -1,8 +1,9 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils'
-import * as Tops from '../Tops.vue'
-import Vue from 'vue'
+import * as TopsVue from '../Tops.vue'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
+import Tops from '../../../components/types/Tops'
+import PlayerScore from '../../../components/types/PlayerScore'
 
 const mock = new MockAdapter(axios)
 mock.onGet(process.env.apiBaseUrl + '/v2/songs/33/top').reply(200, {
@@ -15,9 +16,9 @@ mock.onGet(process.env.apiBaseUrl + '/v2/songs/33/top').reply(200, {
 })
 
 mock.onGet(process.env.apiBaseUrl + '/v2/songs/34/top').reply(500, {})
-describe(Tops.default, () => {
+describe(TopsVue.default, () => {
   it('まずは表示できる', done => {
-    const wrapper = shallowMount(Tops.default, {
+    const wrapper = shallowMount(TopsVue.default, {
       mocks: {
         mock,
         $nuxt: { error: () => {} }
@@ -38,7 +39,7 @@ describe(Tops.default, () => {
   })
 
   it('エラーが起きたらエラーページに飛ぶ', done => {
-    const wrapper = shallowMount(Tops.default, {
+    const wrapper = shallowMount(TopsVue.default, {
       mocks: {
         mock,
         $nuxt: { error: () => {} }
@@ -54,5 +55,20 @@ describe(Tops.default, () => {
       done()
       done2
     }, 500)
+  })
+
+  it('Topsの型に関するテスト', () => {
+    const testTops: Tops = new Tops([], [], [])
+    expect(testTops.empty()).toBe(true)
+
+    const testTops2: Tops = new Tops(
+      [
+        new PlayerScore('u001', '妖怪A', 98),
+        new PlayerScore('u005', '妖怪E', 98)
+      ],
+      [new PlayerScore('u003', '妖怪C', 97)],
+      []
+    )
+    expect(testTops2.empty()).toBe(false)
   })
 })
