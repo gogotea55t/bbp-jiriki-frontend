@@ -25,7 +25,11 @@
       "avatar_url": "https://avatars0.githubusercontent.com/u/38287738?v=4",
       "profile": "https://github.com/ashcolor",
       "contributions": [
-        "design"
+        "design",
+        "bug",
+        "code",
+        "ideas",
+        "test"
       ]
     }
   ],

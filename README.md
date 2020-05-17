@@ -128,7 +128,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/gogotea55t"><img src="https://avatars1.githubusercontent.com/u/38799008?v=4" width="100px;" alt=""/><br /><sub><b>gogotea55t</b></sub></a><br /><a href="#design-gogotea55t" title="Design">🎨</a> <a href="#projectManagement-gogotea55t" title="Project Management">📆</a> <a href="https://github.com/gogotea55t/bbp-jiriki-frontend/commits?author=gogotea55t" title="Code">💻</a> <a href="#infra-gogotea55t" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-gogotea55t" title="Maintenance">🚧</a> <a href="https://github.com/gogotea55t/bbp-jiriki-frontend/commits?author=gogotea55t" title="Tests">⚠️</a></td>
-    <td align="center"><a href="https://github.com/ashcolor"><img src="https://avatars0.githubusercontent.com/u/38287738?v=4" width="100px;" alt=""/><br /><sub><b>あっしゅからー</b></sub></a><br /><a href="#design-ashcolor" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/ashcolor"><img src="https://avatars0.githubusercontent.com/u/38287738?v=4" width="100px;" alt=""/><br /><sub><b>あっしゅからー</b></sub></a><br /><a href="#design-ashcolor" title="Design">🎨</a> <a href="https://github.com/gogotea55t/bbp-jiriki-frontend/issues?q=author%3Aashcolor" title="Bug reports">🐛</a> <a href="https://github.com/gogotea55t/bbp-jiriki-frontend/commits?author=ashcolor" title="Code">💻</a> <a href="#ideas-ashcolor" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/gogotea55t/bbp-jiriki-frontend/commits?author=ashcolor" title="Tests">⚠️</a></td>
   </tr>
 </table>
 
