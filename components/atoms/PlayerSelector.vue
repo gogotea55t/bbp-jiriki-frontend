@@ -3,10 +3,7 @@
     <div class="select is-fullwidth">
       <select v-model="playerId" @change="selectChanged">
         <option v-if="!playerOnly" value="average">
-          平均
-        </option>
-        <option v-if="!playerOnly" disabled>
-          ---------
+          プレイヤーを選択してください
         </option>
         <option
           v-for="player in players"

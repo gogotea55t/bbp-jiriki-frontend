@@ -20,6 +20,9 @@ $ yarn start
 
 # generate static project
 $ yarn run generate
+
+# up json-server
+$ yarn json-server
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).

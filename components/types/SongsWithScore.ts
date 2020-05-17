@@ -1,5 +1,4 @@
 import Songs from './Songs'
-import { AuthServiceStub } from '~/pages/__stubs__/AuthServiceMock'
 
 export default class SongsWithScore extends Songs {
   score: Number
