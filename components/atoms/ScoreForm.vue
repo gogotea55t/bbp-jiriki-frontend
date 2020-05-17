@@ -116,7 +116,7 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style>
 .smallinput {
   width: 45px;
   height: 2em;
