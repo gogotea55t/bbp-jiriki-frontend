@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "gogotea55t",
+      "name": "gogotea55t",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/38799008?v=4",
+      "profile": "https://github.com/gogotea55t",
+      "contributions": [
+        "design",
+        "projectManagement"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "bbp-jiriki-frontend",
+  "projectOwner": "gogotea55t",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
