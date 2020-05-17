@@ -12,7 +12,11 @@
       "profile": "https://github.com/gogotea55t",
       "contributions": [
         "design",
-        "projectManagement"
+        "projectManagement",
+        "code",
+        "infra",
+        "maintenance",
+        "test"
       ]
     },
     {
