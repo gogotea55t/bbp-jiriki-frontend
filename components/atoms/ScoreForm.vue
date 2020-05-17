@@ -122,7 +122,7 @@ export default Vue.extend({
   height: 2em;
   float: right;
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .tooltip {
