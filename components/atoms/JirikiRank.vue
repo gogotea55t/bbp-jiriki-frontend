@@ -121,6 +121,11 @@ export default Vue.extend({
       classObj: new JirikiRankStyleClassObject('地力Ｓ＋')
     }
   },
+  watch: {
+    jirikiRank() {
+      this.classObj = new JirikiRankStyleClassObject(this.jirikiRank)
+    }
+  },
   mounted() {
     this.classObj = new JirikiRankStyleClassObject(this.jirikiRank)
   }
