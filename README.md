@@ -1,4 +1,7 @@
 # bbp-jiriki-frontend
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ![](https://travis-ci.com/gogotea55t/bbp-jiriki-frontend.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/gogotea55t/bbp-jiriki-frontend/badge.svg?branch=master)](https://coveralls.io/github/gogotea55t/bbp-jiriki-frontend?branch=master)
@@ -114,3 +117,23 @@ Phase3 よりも優先させるかも
 ## 期限
 
 大合奏!バンドブラザーズの次回作の発売日までに Phase5 に到達させる。
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/gogotea55t"><img src="https://avatars1.githubusercontent.com/u/38799008?v=4" width="100px;" alt=""/><br /><sub><b>gogotea55t</b></sub></a><br /><a href="#design-gogotea55t" title="Design">🎨</a> <a href="#projectManagement-gogotea55t" title="Project Management">📆</a> <a href="https://github.com/gogotea55t/bbp-jiriki-frontend/commits?author=gogotea55t" title="Code">💻</a> <a href="#infra-gogotea55t" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-gogotea55t" title="Maintenance">🚧</a> <a href="https://github.com/gogotea55t/bbp-jiriki-frontend/commits?author=gogotea55t" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/ashcolor"><img src="https://avatars0.githubusercontent.com/u/38287738?v=4" width="100px;" alt=""/><br /><sub><b>あっしゅからー</b></sub></a><br /><a href="#design-ashcolor" title="Design">🎨</a> <a href="https://github.com/gogotea55t/bbp-jiriki-frontend/issues?q=author%3Aashcolor" title="Bug reports">🐛</a> <a href="https://github.com/gogotea55t/bbp-jiriki-frontend/commits?author=ashcolor" title="Code">💻</a> <a href="#ideas-ashcolor" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/gogotea55t/bbp-jiriki-frontend/commits?author=ashcolor" title="Tests">⚠️</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

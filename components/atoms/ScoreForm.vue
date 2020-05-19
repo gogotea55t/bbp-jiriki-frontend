@@ -116,13 +116,13 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style>
 .smallinput {
   width: 45px;
   height: 2em;
   float: right;
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .tooltip {

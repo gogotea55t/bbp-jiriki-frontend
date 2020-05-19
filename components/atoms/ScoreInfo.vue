@@ -131,6 +131,8 @@ export default Vue.extend({
   margin-bottom: 0;
 }
 .tooltip.popover .popover-inner {
+  background-color: black;
+  color: white;
   padding: 24px;
   border-radius: 5px;
   box-shadow: 0 5px 30px rgba(black, 0.1);

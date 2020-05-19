@@ -1,0 +1,42 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "gogotea55t",
+      "name": "gogotea55t",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/38799008?v=4",
+      "profile": "https://github.com/gogotea55t",
+      "contributions": [
+        "design",
+        "projectManagement",
+        "code",
+        "infra",
+        "maintenance",
+        "test"
+      ]
+    },
+    {
+      "login": "ashcolor",
+      "name": "あっしゅからー",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/38287738?v=4",
+      "profile": "https://github.com/ashcolor",
+      "contributions": [
+        "design",
+        "bug",
+        "code",
+        "ideas",
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "bbp-jiriki-frontend",
+  "projectOwner": "gogotea55t",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

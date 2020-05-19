@@ -4,7 +4,10 @@
       <div class="container">
         <div class="navbar-brand">
           <nuxt-link class="navbar-item" to="/">
-            <img src="favicon.ico" />大合奏！バンドブラザーズP☆10 地力表
+            <img
+              src="favicon.ico"
+              alt="地力表ページのアイコン"
+            />大合奏！バンドブラザーズP☆10 地力表
           </nuxt-link>
           <div class="navbar-burger burger" data-target="topNav">
             <span></span>
@@ -112,7 +115,7 @@
                 </a>
               </div>
               <div class="control">
-                <nuxt-link to="/privacy" class="tag is-info">
+                <nuxt-link to="/privacy" class="tag is-success">
                   プライバシーポリシー
                 </nuxt-link>
               </div>
@@ -122,7 +125,7 @@
             <div class="columns is-mobile is-centered">
               <div class="field is-grouped is-grouped-multiline">
                 <div class="control">
-                  (c)2018-2020 gogotea55t bbp10-jiriki-ver0.2.0
+                  (c)2018-2020 gogotea55t bbp10-jiriki-ver0.2.1
                 </div>
               </div>
             </div>
