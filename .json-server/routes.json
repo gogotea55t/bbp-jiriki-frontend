@@ -1,0 +1,13 @@
+{
+  "/v1/players": "/players",
+  "/v1/players/:id": "/player",
+  "/v1/players/auth0": "/auth0",
+  "/v1/songs?page=": "/songs",
+  "/v1/songs?page=:page": "/songs",
+  "/v1/songs/:id": "/song",
+  "/v2/songs/:id/top": "/top",
+  "/v2/players/average/scores?page=": "/average",
+  "/v2/players/:id/scores?page=": "/playerScores",
+  "/v2/players/:id/scores?page=:page": "/playerScores",
+  "/v2/songs/:id/scores?page=:page": "/songScores"
+}

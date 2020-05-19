@@ -1,6 +1,6 @@
 <template>
-  <td :class="classObj">
-    {{ jirikiRank }}
+  <td align="center">
+    <span class="tag is-medium" :class="classObj">{{ jirikiRank }}</span>
   </td>
 </template>
 
@@ -121,6 +121,11 @@ export default Vue.extend({
       classObj: new JirikiRankStyleClassObject('地力Ｓ＋')
     }
   },
+  watch: {
+    jirikiRank() {
+      this.classObj = new JirikiRankStyleClassObject(this.jirikiRank)
+    }
+  },
   mounted() {
     this.classObj = new JirikiRankStyleClassObject(this.jirikiRank)
   }
@@ -129,60 +134,60 @@ export default Vue.extend({
 
 <style>
 .red {
-  color: crimson;
+  color: crimson !important;
 }
 
 .white {
-  color: white;
+  color: white !important;
 }
 
 .splus {
-  background-color: black;
-  font-weight: bold;
+  background-color: black !important;
+  font-weight: bold !important;
 }
 
 .sn {
-  background-color: black;
-  font-weight: bold;
+  background-color: black !important;
+  font-weight: bold !important;
 }
 
 .aplus {
-  background-color: #333333;
+  background-color: #333333 !important;
 }
 
 .an {
-  background-color: #3f3f3f;
+  background-color: #3f3f3f !important;
 }
 
 .bplus {
-  background-color: #5f5f5f;
+  background-color: #5f5f5f !important;
 }
 
 .bn {
-  background-color: #7f7f7f;
+  background-color: #7f7f7f !important;
 }
 
 .cn {
-  background-color: #9f9f9f;
+  background-color: #9f9f9f !important;
 }
 
 .dn {
-  background-color: #bfbfbf;
+  background-color: #bfbfbf !important;
 }
 
 .en {
-  background-color: #efefef;
+  background-color: #efefef !important;
 }
 
 .fn {
-  background-color: #cfdfe6;
+  background-color: #cfdfe6 !important;
 }
 
 .unaccomplished {
-  background-color: orange;
+  background-color: orange !important;
 }
 
 .default-jiriki {
-  background-color: white;
+  background-color: white !important;
 }
 </style>

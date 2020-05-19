@@ -119,7 +119,10 @@ export default Vue.extend({
 <style>
 .smallinput {
   width: 45px;
+  height: 2em;
   float: right;
+  text-align: center;
+  font-size: 1rem;
 }
 
 .tooltip {

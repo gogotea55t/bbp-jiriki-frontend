@@ -10,7 +10,9 @@ describe(SongColWithScore.default, () => {
     'あれ',
     'それ',
     'シンセリード',
-    76
+    76,
+    80,
+    99
   )
 
   const wrapper = shallowMount(SongColWithScore.default, {
@@ -64,17 +66,6 @@ describe(SongColWithScore.default, () => {
       fail
     } else {
       ok
-    }
-  })
-
-  it('投稿者名欄をクリックするとモーダル発火イベントを起こす', () => {
-    wrapper.find('#contributor_57').trigger('click')
-    const emittedEvent = wrapper.emitted('toggleModal')
-
-    if (emittedEvent) {
-      expect(emittedEvent[0][0]).toBe('57')
-    } else {
-      fail
     }
   })
 })
