@@ -71,7 +71,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/AuthPlugin'],
+  plugins: ['~/plugins/AuthPlugin', '~/plugins/vue-chartjs'],
 
   /**
    * From Nuxt 2.10

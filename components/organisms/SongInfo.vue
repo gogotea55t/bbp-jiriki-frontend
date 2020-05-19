@@ -27,6 +27,8 @@
         />
       </tr>
     </table>
+
+    <PieChart v-if="graphLoaded" :chartData="chartData" />
   </div>
 </template>
 
@@ -34,11 +36,13 @@
 import Vue from 'vue'
 import SongCol from '../molecules/SongCol.vue'
 import ScoreStyle from '../atoms/ScoreStyle.vue'
+import PieChart from '../atoms/PieChart.vue'
 import Songs from '../types/Songs'
 import axios from 'axios'
+import Stats from '../types/Stats'
 
 export default Vue.extend({
-  components: { SongCol, ScoreStyle },
+  components: { SongCol, ScoreStyle, PieChart },
   props: {
     songId: {
       type: String,
@@ -48,7 +52,9 @@ export default Vue.extend({
   data: function() {
     return {
       song: new Songs(this.songId, '', '', '', ''),
-      scores: []
+      scores: [],
+      graphLoaded: false,
+      chartData: new ChartData([], [])
     }
   },
   watch: {
@@ -86,6 +92,37 @@ export default Vue.extend({
             return response.data
           })
 
+        let scoreStat: Stats = await axios
+          .get(process.env.apiBaseUrl + '/v1' + '/songs/' + id + '/stats')
+          .then(response => {
+            const respData: Stats = response.data
+            this.$data.chartData = new ChartData(
+              [
+                {
+                  data: [
+                    respData.gold,
+                    respData.silver,
+                    respData.bronze,
+                    respData.blue,
+                    respData.gray,
+                    respData.none
+                  ],
+                  backgroundColor: [
+                    'gold',
+                    '#cccccc',
+                    '#ea9999',
+                    '#a4c2ea',
+                    '#efefef',
+                    'white'
+                  ]
+                }
+              ],
+              ['100', '99~90', '89~80', '79~50', '50~0', 'no entry']
+            )
+            this.graphLoaded = true
+            return response.data
+          })
+
         this.$data.song = songResponse
         this.$data.scores = scoreResponse
         this.$emit(
@@ -108,4 +145,13 @@ export default Vue.extend({
     }
   }
 })
+
+class ChartData {
+  datasets: Array<Object>
+  labels: String[]
+  constructor(datasets: Array<Object>, labels: String[]) {
+    this.datasets = datasets
+    this.labels = labels
+  }
+}
 </script>

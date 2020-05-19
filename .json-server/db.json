@@ -206,6 +206,14 @@
     ],
     "third": []
   },
+  "stats": {
+    "gold": 1,
+    "silver": 3,
+    "bronze": 2,
+    "blue": 2,
+    "gray": 1,
+    "none": 1
+  },
   "average": [
     {
       "songId": "1",

@@ -6,6 +6,7 @@
   "/v1/songs?page=:page": "/songs",
   "/v1/songs/:id": "/song",
   "/v2/songs/:id/top": "/top",
+  "/v2/songs/:id/stats": "/stats",
   "/v2/players/average/scores?page=": "/average",
   "/v2/players/:id/scores?page=": "/playerScores",
   "/v2/players/:id/scores?page=:page": "/playerScores",
