@@ -21,15 +21,4 @@ export default class Stats {
     this.gray = gray
     this.none = none
   }
-
-  toArray(): number[] {
-    return [
-      this.gold,
-      this.silver,
-      this.bronze,
-      this.blue,
-      this.gray,
-      this.none
-    ]
-  }
 }

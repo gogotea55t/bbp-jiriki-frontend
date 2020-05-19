@@ -135,7 +135,6 @@ export default Vue.extend({
             ')'
         )
       } catch (error) {
-        console.error(error)
         const errMsg = 'サーバーとの通信に失敗しました'
         this.$nuxt.error({ statusCode: 500, message: errMsg })
       }
