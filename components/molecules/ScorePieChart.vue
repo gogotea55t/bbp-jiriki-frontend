@@ -10,7 +10,8 @@ import PieChartWrapper from '../atoms/PieChartWrapper.vue'
 export default Vue.extend({
   components: { PieChartWrapper },
   props: {
-    stats: { type: Stats }
+    stats: { type: Stats },
+    showNone: { type: Boolean, default: false }
   },
   data() {
     return {
@@ -19,33 +20,60 @@ export default Vue.extend({
   },
   methods: {
     renderGraph() {
-      this.$data.chartData = new ChartData(
-        [
-          {
-            data: [
-              this.stats.gold,
-              this.stats.silver,
-              this.stats.bronze,
-              this.stats.blue,
-              this.stats.gray,
-              this.stats.none
-            ],
-            backgroundColor: [
-              'gold',
-              '#cccccc',
-              '#ea9999',
-              '#a4c2ea',
-              '#efefef',
-              'white'
-            ]
-          }
-        ],
-        ['100', '99~90', '89~80', '79~50', '50~0', 'no entry']
-      )
+      if (this.showNone) {
+        this.$data.chartData = new ChartData(
+          [
+            {
+              data: [
+                this.stats.gold,
+                this.stats.silver,
+                this.stats.bronze,
+                this.stats.blue,
+                this.stats.gray,
+                this.stats.none
+              ],
+              backgroundColor: [
+                'gold',
+                '#cccccc',
+                '#ea9999',
+                '#a4c2ea',
+                '#efefef',
+                'white'
+              ]
+            }
+          ],
+          ['100', '99~90', '89~80', '79~50', '50~0', 'no entry']
+        )
+      } else {
+        this.$data.chartData = new ChartData(
+          [
+            {
+              data: [
+                this.stats.gold,
+                this.stats.silver,
+                this.stats.bronze,
+                this.stats.blue,
+                this.stats.gray
+              ],
+              backgroundColor: [
+                'gold',
+                '#cccccc',
+                '#ea9999',
+                '#a4c2ea',
+                '#efefef'
+              ]
+            }
+          ],
+          ['100', '99~90', '89~80', '79~50', '50~0']
+        )
+      }
     }
   },
   watch: {
     stats() {
+      this.renderGraph()
+    },
+    showNone() {
       this.renderGraph()
     }
   },

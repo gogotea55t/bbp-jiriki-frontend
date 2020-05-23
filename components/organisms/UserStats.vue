@@ -1,6 +1,11 @@
 <template>
   <div>
-    <ScorePieChart v-if="graphLoaded" :stats="stats" />
+    <p>登録済み曲数：{{ totalPlayed }} 曲</p>
+    <label class="checkbox">
+      <input type="checkbox" v-model="showNone" />
+      未プレイのものを含む
+    </label>
+    <ScorePieChart v-if="graphLoaded" :stats="stats" :show-none="showNone" />
   </div>
 </template>
 
@@ -16,7 +21,19 @@ export default Vue.extend({
   data() {
     return {
       stats: new Stats(0, 0, 0, 0, 0, 0),
-      graphLoaded: false
+      graphLoaded: false,
+      showNone: false
+    }
+  },
+  computed: {
+    totalPlayed() {
+      return (
+        this.$data.stats.gold +
+        this.$data.stats.silver +
+        this.$data.stats.bronze +
+        this.$data.stats.blue +
+        this.$data.stats.gray
+      )
     }
   },
   async mounted() {
