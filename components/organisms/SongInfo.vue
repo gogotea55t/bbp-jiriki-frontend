@@ -97,7 +97,7 @@ export default Vue.extend({
           .get(process.env.apiBaseUrl + '/v1' + '/songs/' + id + '/stats')
           .then(response => {
             const respData: Stats = response.data
-            this.$data.stats = respData
+            this.stats = respData
             this.graphLoaded = true
             return response.data
           })

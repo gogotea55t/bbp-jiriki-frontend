@@ -10,7 +10,7 @@ import PieChartWrapper from '../atoms/PieChartWrapper.vue'
 export default Vue.extend({
   components: { PieChartWrapper },
   props: {
-    stats: { type: Object }
+    stats: { type: Stats }
   },
   data() {
     return {
