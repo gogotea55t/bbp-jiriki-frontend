@@ -1,5 +1,13 @@
 <template>
-  <PieChartWrapper :chartData="chartData" />
+  <div>
+    <h3 v-if="header" class="centerize">
+      {{ header }}
+    </h3>
+    <div v-if="total === 0">
+      1曲も登録されていません
+    </div>
+    <PieChartWrapper v-else :chart-data="chartData" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -10,13 +18,36 @@ import PieChartWrapper from '../atoms/PieChartWrapper.vue'
 export default Vue.extend({
   components: { PieChartWrapper },
   props: {
-    stats: { type: Stats },
+    header: { type: String, default: '' },
+    stats: { type: Object, default: new Stats(0, 0, 0, 0, 0, 0) },
     showNone: { type: Boolean, default: false }
   },
   data() {
     return {
       chartData: new ChartData([], [])
     }
+  },
+  computed: {
+    total(): number {
+      return (
+        this.stats.gold +
+        this.stats.silver +
+        this.stats.bronze +
+        this.stats.blue +
+        this.stats.gray
+      )
+    }
+  },
+  watch: {
+    stats() {
+      this.renderGraph()
+    },
+    showNone() {
+      this.renderGraph()
+    }
+  },
+  mounted() {
+    this.renderGraph()
   },
   methods: {
     renderGraph() {
@@ -68,17 +99,11 @@ export default Vue.extend({
         )
       }
     }
-  },
-  watch: {
-    stats() {
-      this.renderGraph()
-    },
-    showNone() {
-      this.renderGraph()
-    }
-  },
-  mounted() {
-    this.renderGraph()
   }
 })
 </script>
+<style>
+.centerize {
+  text-align: center;
+}
+</style>

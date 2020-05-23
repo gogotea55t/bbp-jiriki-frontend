@@ -2,10 +2,38 @@
   <div>
     <p>登録済み曲数：{{ totalPlayed }} 曲</p>
     <label class="checkbox">
-      <input type="checkbox" v-model="showNone" />
+      <input v-model="showNone" type="checkbox" />
       未プレイのものを含む
     </label>
-    <ScorePieChart v-if="graphLoaded" :stats="stats" :show-none="showNone" />
+    <ScorePieChart
+      v-if="graphLoaded"
+      :stats="stats"
+      :show-none="showNone"
+      :header="'全曲'"
+    />
+    <button class="button" @click="toggleDetail()">
+      地力別に表示する
+    </button>
+    <div v-if="showDetail" class="columns is-multiline">
+      <div
+        v-for="detail of detailedStats"
+        :key="detail.jirikiRank"
+        class="column is-half"
+      >
+        <score-pie-chart
+          :stats="{
+            gold: detail.gold,
+            silver: detail.silver,
+            bronze: detail.bronze,
+            blue: detail.blue,
+            gray: detail.gray,
+            none: detail.none
+          }"
+          :header="detail.jirikiRank"
+          :show-none="showNone"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,16 +41,19 @@
 import Vue from 'vue'
 import ScorePieChart from '../molecules/ScorePieChart.vue'
 import axios from 'axios'
-import Stats from '../types/Stats'
+import StatsWithJiriki from '../types/StatsWithJiriki'
 import ChartData from '../types/ChartData'
+import Stats from '../types/Stats'
 
 export default Vue.extend({
   components: { ScorePieChart },
   data() {
     return {
-      stats: new Stats(0, 0, 0, 0, 0, 0),
+      stats: new StatsWithJiriki(0, 0, 0, 0, 0, 0, ''),
+      detailedStats: new Array<StatsWithJiriki>(),
       graphLoaded: false,
-      showNone: false
+      showNone: false,
+      showDetail: false
     }
   },
   computed: {
@@ -55,12 +86,35 @@ export default Vue.extend({
               '/stats'
           )
           .then(response => {
-            const respData: Stats = response.data
+            const respData: StatsWithJiriki = response.data
             this.stats = respData
             this.graphLoaded = true
           })
       } catch (error) {
         this.$nuxt.error(error)
+      }
+    },
+    async loadDetailedStats() {
+      try {
+        await axios
+          .get(
+            process.env.apiBaseUrl +
+              '/v1/players/' +
+              this.$store.state.auth.loginUserId +
+              '/stats/detail'
+          )
+          .then(response => {
+            const respData: Array<StatsWithJiriki> = response.data
+            this.detailedStats = respData
+          })
+      } catch (error) {
+        this.$nuxt.error(error)
+      }
+    },
+    toggleDetail() {
+      this.showDetail = !this.showDetail
+      if (this.showDetail && this.detailedStats.length === 0) {
+        this.loadDetailedStats()
       }
     }
   }
