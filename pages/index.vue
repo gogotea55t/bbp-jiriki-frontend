@@ -2,7 +2,7 @@
   <section>
     <article class="post">
       <div class="content">
-        <h2>大合奏！バンドブラザーズＰ☆10地力表</h2>
+        <h1>大合奏！バンドブラザーズＰ☆10地力表</h1>
         <ul>
           <li>☆10において90点を取る難易度を評価します。</li>
           <li>
