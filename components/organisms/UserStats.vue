@@ -1,16 +1,21 @@
 <template>
   <div>
-    <p>登録済み曲数：{{ totalPlayed }} 曲</p>
     <label class="checkbox">
       <input v-model="showNone" type="checkbox" />
       未プレイのものを含む
     </label>
-    <ScorePieChart
-      v-if="graphLoaded"
-      :stats="stats"
-      :show-none="showNone"
-      :header="'全曲'"
-    />
+    <div class="columns">
+      <div class="column is-quarter"></div>
+      <div class="clumn is-half">
+        <ScorePieChart
+          v-if="graphLoaded"
+          :stats="stats"
+          :show-none="showNone"
+          :header="'全曲'"
+        />
+      </div>
+      <div class="column is-quarter"></div>
+    </div>
     <button class="button" @click="toggleDetail()">
       地力別に表示する
     </button>
@@ -54,17 +59,6 @@ export default Vue.extend({
       graphLoaded: false,
       showNone: false,
       showDetail: false
-    }
-  },
-  computed: {
-    totalPlayed() {
-      return (
-        this.$data.stats.gold +
-        this.$data.stats.silver +
-        this.$data.stats.bronze +
-        this.$data.stats.blue +
-        this.$data.stats.gray
-      )
     }
   },
   async mounted() {

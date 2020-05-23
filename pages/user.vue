@@ -12,6 +12,7 @@
       <h3>統計情報</h3>
       <user-stats />
     </article>
+    <hr />
     <article>
       <h2>プレイヤーの選択</h2>
       <player-linkage />

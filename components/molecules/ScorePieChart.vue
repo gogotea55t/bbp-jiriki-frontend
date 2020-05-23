@@ -1,12 +1,15 @@
 <template>
-  <div>
+  <div class="box">
     <h3 v-if="header" class="centerize">
       {{ header }}
     </h3>
-    <div v-if="total === 0">
-      1曲も登録されていません
+    <div v-if="total === 0" class="centerize">
+      1曲も登録されていません😭
     </div>
-    <PieChartWrapper v-else :chart-data="chartData" />
+    <div v-else>
+      <p class="centerize">登録総数：{{ total }}</p>
+      <PieChartWrapper :chart-data="chartData" />
+    </div>
   </div>
 </template>
 
