@@ -8,7 +8,7 @@
         <h2>{{ profile.name }}</h2>
       </div>
     </div>
-    <article>
+    <article v-if="this.$store.state.auth.loginUserId">
       <h3>統計情報</h3>
       <user-stats />
     </article>
