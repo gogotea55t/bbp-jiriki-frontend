@@ -6,12 +6,13 @@
     </label>
     <div class="columns">
       <div class="column is-quarter"></div>
-      <div class="clumn is-half">
+      <div class="column is-half">
         <ScorePieChart
           v-if="graphLoaded"
           :stats="stats"
           :show-none="showNone"
           :header="'全曲'"
+          id="user_stats_graph"
         />
       </div>
       <div class="column is-quarter"></div>
@@ -24,6 +25,7 @@
         v-for="detail of detailedStats"
         :key="detail.jirikiRank"
         class="column is-half"
+        id="user_stats_detailed_graphs"
       >
         <score-pie-chart
           :stats="detail.stats"
@@ -50,17 +52,13 @@ export default Vue.extend({
       stats: new StatsWithJiriki(0, 0, 0, 0, 0, 0, ''),
       detailedStats: new Array<StatsWithJiriki>(),
       graphLoaded: false,
+      detailIsLoading: false,
       showNone: false,
       showDetail: false
     }
   },
   async mounted() {
     await this.loadStats()
-  },
-  watch: {
-    chartData() {
-      this.loadStats()
-    }
   },
   methods: {
     async loadStats() {
@@ -83,6 +81,7 @@ export default Vue.extend({
     },
     async loadDetailedStats() {
       try {
+        this.detailIsLoading = true
         await axios
           .get(
             process.env.apiBaseUrl +
@@ -93,6 +92,7 @@ export default Vue.extend({
           .then(response => {
             const respData: Array<StatsWithJiriki> = response.data.detail
             this.detailedStats = respData
+            this.detailIsLoading = false
           })
       } catch (error) {
         this.$nuxt.error(error)
@@ -100,7 +100,11 @@ export default Vue.extend({
     },
     toggleDetail() {
       this.showDetail = !this.showDetail
-      if (this.showDetail && this.detailedStats.length === 0) {
+      if (
+        this.showDetail &&
+        !this.detailIsLoading &&
+        this.detailedStats.length === 0
+      ) {
         this.loadDetailedStats()
       }
     }

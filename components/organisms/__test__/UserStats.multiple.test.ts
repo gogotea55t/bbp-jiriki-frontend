@@ -13,15 +13,15 @@ describe(UserStats.default, () => {
   const store = new Vuex.Store({
     state: {
       auth: {
-        loginUserId: 'u015'
+        loginUserId: 'u018'
       }
     }
   })
   mock
-    .onGet(process.env.apiBaseUrl + '/v1/players/u015/stats')
+    .onGet(process.env.apiBaseUrl + '/v1/players/u018/stats')
     .reply(200, { gold: 1, silver: 3, bronze: 2, blue: 2, gray: 1, none: 1 })
   mock
-    .onGet(process.env.apiBaseUrl + '/v1/players/u015/stats/detail')
+    .onGet(process.env.apiBaseUrl + '/v1/players/u018/stats/detail')
     .reply(200, {
       detail: [
         {
@@ -55,24 +55,31 @@ describe(UserStats.default, () => {
     store
   })
 
-  it('初期状態では全体のグラフだけしか出ない', done => {
-    setTimeout(done2 => {
-      expect(wrapper.find('#user_stats_graph').isVisible()).toBeTruthy()
-      expect(wrapper.find('#user_stats_detailed_graphs').exists()).toBeFalsy()
-      done()
-      done2
-    }, 300)
-  })
-
-  it('地力別に表示するボタンを押すとサーバと通信して詳細情報を出す', done => {
+  it('地力別に表示するボタンを何度も押しても通信は1回だけ', done => {
+    mock.resetHistory()
     const vueInstance: any = wrapper.vm
+    wrapper.setData({
+      showDetail: false,
+      detailedStats: new Array<StatsWithJiriki>()
+    })
+    // 読み込みが終わる前にひたすらクリック連打
+    vueInstance.toggleDetail()
+    vueInstance.toggleDetail()
+    vueInstance.toggleDetail()
+    vueInstance.toggleDetail()
     vueInstance.toggleDetail()
     setTimeout(done2 => {
-      expect(wrapper.find('#user_stats_graph').isVisible()).toBeTruthy()
+      // 読み込みがたぶん終わったであろうタイミングでもクリック連打
+      vueInstance.toggleDetail()
+      vueInstance.toggleDetail()
+      done2
+    }, 200)
+    setTimeout(done2 => {
       expect(wrapper.vm.$data.showDetail).toBeTruthy()
       expect(
         wrapper.find('#user_stats_detailed_graphs').isVisible()
       ).toBeTruthy()
+      expect(mock.history.get.length).toBeLessThan(2)
       done()
       done2
     }, 400)
