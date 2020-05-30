@@ -1,7 +1,8 @@
 import Stats from './Stats'
 
-export default class StatsWithJiriki extends Stats {
+export default class StatsWithJiriki {
   jirikiRank: string
+  stats: Stats
   constructor(
     gold: number,
     silver: number,
@@ -11,7 +12,7 @@ export default class StatsWithJiriki extends Stats {
     none: number,
     jirikiRank: string
   ) {
-    super(gold, silver, bronze, blue, gray, none)
+    this.stats = new Stats(gold, silver, bronze, blue, gray, none)
     this.jirikiRank = jirikiRank
   }
 }

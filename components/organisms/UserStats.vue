@@ -26,14 +26,7 @@
         class="column is-half"
       >
         <score-pie-chart
-          :stats="{
-            gold: detail.gold,
-            silver: detail.silver,
-            bronze: detail.bronze,
-            blue: detail.blue,
-            gray: detail.gray,
-            none: detail.none
-          }"
+          :stats="detail.stats"
           :header="detail.jirikiRank"
           :show-none="showNone"
         />
@@ -98,7 +91,7 @@ export default Vue.extend({
               '/stats/detail'
           )
           .then(response => {
-            const respData: Array<StatsWithJiriki> = response.data
+            const respData: Array<StatsWithJiriki> = response.data.detail
             this.detailedStats = respData
           })
       } catch (error) {
