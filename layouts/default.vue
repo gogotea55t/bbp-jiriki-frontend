@@ -74,7 +74,7 @@
           </aside>
         </div>
         <div class="column is-9">
-          <div class="box content">
+          <div class="box content scrollable">
             <nuxt />
           </div>
         </div>
@@ -250,7 +250,7 @@ footer {
 .container .columns {
   margin: 3rem 0;
 }
-.box {
+.scrollable {
   overflow-x: scroll;
 }
 .navbar-menu .navbar-item {

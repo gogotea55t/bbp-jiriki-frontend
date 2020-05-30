@@ -214,6 +214,241 @@
     "gray": 1,
     "none": 1
   },
+  "statsDetail": {
+    "detail": [
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 4,
+          "bronze": 4,
+          "blue": 2,
+          "gray": 1,
+          "none": 9
+        },
+        "jirikiRank": "地力Ｓ＋"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 6
+        },
+        "jirikiRank": "地力Ｓ"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 7
+        },
+        "jirikiRank": "個人差Ｓ"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 1
+        },
+        "jirikiRank": "地力Ａ＋"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 1,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 1
+        },
+        "jirikiRank": "個人差Ａ＋"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 2
+        },
+        "jirikiRank": "地力Ａ"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 2
+        },
+        "jirikiRank": "個人差Ａ"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 1
+        },
+        "jirikiRank": "地力Ｂ＋"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 2
+        },
+        "jirikiRank": "個人差Ｂ＋"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 1
+        },
+        "jirikiRank": "地力Ｂ"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 2
+        },
+        "jirikiRank": "個人差Ｂ"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 1
+        },
+        "jirikiRank": "地力Ｃ"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 2
+        },
+        "jirikiRank": "個人差Ｃ"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 1
+        },
+        "jirikiRank": "地力Ｄ"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 1
+        },
+        "jirikiRank": "個人差Ｄ"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 1
+        },
+        "jirikiRank": "地力Ｅ"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 1
+        },
+        "jirikiRank": "個人差Ｅ"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 2
+        },
+        "jirikiRank": "地力Ｆ"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 3
+        },
+        "jirikiRank": "個人差Ｆ"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 4
+        },
+        "jirikiRank": "求90"
+      },
+      {
+        "stats": {
+          "gold": 0,
+          "silver": 0,
+          "bronze": 0,
+          "blue": 0,
+          "gray": 0,
+          "none": 8
+        },
+        "jirikiRank": "未決定"
+      }
+    ]
+  },
   "average": [
     {
       "songId": "1",
