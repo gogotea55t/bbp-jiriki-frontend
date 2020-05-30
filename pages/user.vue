@@ -13,7 +13,7 @@
       <user-stats />
     </article>
     <hr />
-    <article>
+    <article v-if="!this.$store.state.auth.loginUserId">
       <h2>プレイヤーの選択</h2>
       <player-linkage />
     </article>
