@@ -1,11 +1,18 @@
 <template>
   <div v-if="profile">
-    <div>
-      <div>
-        <img :src="profile.picture" />
-      </div>
-      <div>
-        <h2>{{ profile.name }}</h2>
+    <h1>ユーザー情報</h1>
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <img :src="profile.picture" />
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4">{{ profile.name }}</p>
+          </div>
+        </div>
       </div>
     </div>
     <article v-if="this.$store.state.auth.loginUserId">

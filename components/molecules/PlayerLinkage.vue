@@ -6,8 +6,7 @@
     ></player-selector>
     <section class="section">
       地力表のスプレッドシート上のユーザー名を選んでください。<br />
-      今後ログインした時、このユーザーの情報が最初に表示されるようになります。<br />
-      この選択は後でも行えます。
+      登録がない場合、「今は紐づけない」を選んで、スプレッドシートからユーザを登録してください。
     </section>
     <div class="buttons is-centered">
       <button v-if="enableCancelButton" class="button" @click="cancel">
