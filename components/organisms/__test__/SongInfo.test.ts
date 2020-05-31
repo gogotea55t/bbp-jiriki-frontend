@@ -23,8 +23,11 @@ const sampleScores = [
   { userId: 'u005', userName: '人間', score: 64 }
 ]
 
+const sampleStats = { gold: 0, silver: 3, bronze: 2, blue: 2, gray: 1, none: 0 }
+
 mock.onGet(apiBaseUrl + '/v1' + '/songs/200').reply(200, sampleSong)
 mock.onGet(apiBaseUrl + '/v2' + '/songs/200/scores').reply(200, sampleScores)
+mock.onGet(apiBaseUrl + '/v1' + '/songs/200/stats').reply(200, sampleStats)
 describe(SongInfo.default, () => {
   it('初期状態では何も読み込まない', done => {
     const wrapper = shallowMount(SongInfo.default, {
@@ -106,8 +109,12 @@ describe(SongInfo.default, () => {
     const mockWhenNetWorkError = new MockAdapter(axios)
     mockWhenNetWorkError.onGet(apiBaseUrl + '/v1' + '/songs/202').networkError
     mockWhenNetWorkError
-      .onGet(apiBaseUrl + '/v1/songs/202/scores')
+      .onGet(apiBaseUrl + '/v2/songs/202/scores')
       .reply(200, sampleScores)
+
+    mockWhenNetWorkError
+      .onGet(apiBaseUrl + '/v1/songs/202/stats')
+      .reply(200, sampleStats)
 
     const wrapperWhenNetworkError = shallowMount(SongInfo.default, {
       mocks: {

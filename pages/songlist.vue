@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>登録楽曲一覧</h1>
     <section class="section">
       <search-window @search-emit="search" />
     </section>

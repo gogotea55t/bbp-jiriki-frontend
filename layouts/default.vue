@@ -74,7 +74,7 @@
           </aside>
         </div>
         <div class="column is-9">
-          <div class="box content">
+          <div class="box content scrollable">
             <nuxt />
           </div>
         </div>
@@ -125,7 +125,7 @@
             <div class="columns is-mobile is-centered">
               <div class="field is-grouped is-grouped-multiline">
                 <div class="control">
-                  (c)2018-2020 gogotea55t bbp10-jiriki-ver0.2.1
+                  (c)2018-2020 gogotea55t bbp10-jiriki-ver0.2.2
                 </div>
               </div>
             </div>
@@ -250,7 +250,7 @@ footer {
 .container .columns {
   margin: 3rem 0;
 }
-.box {
+.scrollable {
   overflow-x: scroll;
 }
 .navbar-menu .navbar-item {

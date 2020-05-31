@@ -6,8 +6,11 @@
   "/v1/songs?page=:page": "/songs",
   "/v1/songs/:id": "/song",
   "/v2/songs/:id/top": "/top",
+  "/v1/songs/:id/stats": "/stats",
   "/v2/players/average/scores?page=": "/average",
   "/v2/players/:id/scores?page=": "/playerScores",
   "/v2/players/:id/scores?page=:page": "/playerScores",
-  "/v2/songs/:id/scores?page=:page": "/songScores"
+  "/v1/players/:id/stats": "/stats",
+  "/v1/players/:id/stats/detail": "/statsDetail",
+  "/v2/songs/:id/scores": "/songScores"
 }

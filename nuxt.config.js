@@ -15,6 +15,9 @@ module.exports = {
    */
   head: {
     title: '大合奏！バンドブラザーズP☆10地力表',
+    htmlAttrs: {
+      lang: 'ja'
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -71,7 +74,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/AuthPlugin'],
+  plugins: ['~/plugins/AuthPlugin', '~/plugins/vue-chartjs'],
 
   /**
    * From Nuxt 2.10

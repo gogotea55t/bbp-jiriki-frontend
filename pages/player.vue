@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>得点一覧</h1>
     <section class="section">
       <PlayerSelector @player-selected="playerIdChanged"></PlayerSelector>
       <SearchWindow @search-emit="searchSongs"></SearchWindow>

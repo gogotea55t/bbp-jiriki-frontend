@@ -27,6 +27,8 @@
         />
       </tr>
     </table>
+
+    <ScorePieChart v-if="graphLoaded" :stats="stats" />
   </div>
 </template>
 
@@ -34,11 +36,14 @@
 import Vue from 'vue'
 import SongCol from '../molecules/SongCol.vue'
 import ScoreStyle from '../atoms/ScoreStyle.vue'
+import ScorePieChart from '../molecules/ScorePieChart.vue'
 import Songs from '../types/Songs'
 import axios from 'axios'
+import Stats from '../types/Stats'
+import ChartData from '../types/ChartData'
 
 export default Vue.extend({
-  components: { SongCol, ScoreStyle },
+  components: { SongCol, ScoreStyle, ScorePieChart },
   props: {
     songId: {
       type: String,
@@ -48,7 +53,9 @@ export default Vue.extend({
   data: function() {
     return {
       song: new Songs(this.songId, '', '', '', ''),
-      scores: []
+      scores: [],
+      graphLoaded: false,
+      stats: new Stats(0, 0, 0, 0, 0, 0)
     }
   },
   watch: {
@@ -83,6 +90,15 @@ export default Vue.extend({
         let scoreResponse = await axios
           .get(process.env.apiBaseUrl + '/v2' + '/songs/' + id + '/scores')
           .then(response => {
+            return response.data
+          })
+
+        let scoreStat: Stats = await axios
+          .get(process.env.apiBaseUrl + '/v1' + '/songs/' + id + '/stats')
+          .then(response => {
+            const respData: Stats = response.data
+            this.stats = respData
+            this.graphLoaded = true
             return response.data
           })
 
