@@ -1,79 +1,81 @@
 <template>
-  <div>
-    <h2>スコア計算機</h2>
-    <div class="field is-horizontal control">
-      <label class="field-label best">
-        BEST
-      </label>
-      <input
-        v-model.number="best"
-        class="field-body input"
-        type="number"
-        max="10000"
-        min="0"
-      />
-    </div>
-    <div class="field is-horizontal">
-      <label class="field-label good">
-        GOOD
-      </label>
-      <input
-        v-model.number="good"
-        class="field-body input"
-        type="number"
-        max="10000"
-        min="0"
-      />
-    </div>
-    <div class="field is-horizontal">
-      <label class="field-label bad">
-        BAD
-      </label>
-      <input
-        v-model.number="bad"
-        class="field-body input"
-        type="number"
-        max="10000"
-        min="0"
-      />
-    </div>
-    <div class="field is-horizontal">
-      <label class="field-label miss">
-        MISS
-      </label>
-      <input
-        v-model.number="miss"
-        class="field-body input"
-        type="number"
-        max="10000"
-        min="0"
-      />
-    </div>
-    <div class="field is-horizontal">
-      <label class="field-label miss">
-        TAIL MISS
-      </label>
-      <input
-        v-model.number="tailMiss"
-        class="field-body input"
-        type="number"
-        max="10000"
-        min="0"
-      />
-    </div>
-    <div class="field is-horizontal">
-      <label class="field-label total">
-        TOTAL NOTES
-      </label>
-      <input
-        v-model.number="total"
-        id="total_notes"
-        class="field-body input"
-        type="number"
-        readonly
-      />
-    </div>
-    <article v-if="isValid" id="score-result">
+  <section>
+    <h1>スコア計算機</h1>
+    <article class="post">
+      <div class="field is-horizontal control">
+        <label class="field-label best">
+          BEST
+        </label>
+        <input
+          v-model.number="best"
+          class="field-body input"
+          type="number"
+          max="10000"
+          min="0"
+        />
+      </div>
+      <div class="field is-horizontal">
+        <label class="field-label good">
+          GOOD
+        </label>
+        <input
+          v-model.number="good"
+          class="field-body input"
+          type="number"
+          max="10000"
+          min="0"
+        />
+      </div>
+      <div class="field is-horizontal">
+        <label class="field-label bad">
+          BAD
+        </label>
+        <input
+          v-model.number="bad"
+          class="field-body input"
+          type="number"
+          max="10000"
+          min="0"
+        />
+      </div>
+      <div class="field is-horizontal">
+        <label class="field-label miss">
+          MISS
+        </label>
+        <input
+          v-model.number="miss"
+          class="field-body input"
+          type="number"
+          max="10000"
+          min="0"
+        />
+      </div>
+      <div class="field is-horizontal">
+        <label class="field-label miss">
+          TAIL MISS
+        </label>
+        <input
+          v-model.number="tailMiss"
+          class="field-body input"
+          type="number"
+          max="10000"
+          min="0"
+        />
+      </div>
+      <div class="field is-horizontal">
+        <label class="field-label total">
+          TOTAL NOTES
+        </label>
+        <input
+          v-model.number="total"
+          id="total_notes"
+          class="field-body input"
+          type="number"
+          readonly
+        />
+      </div>
+    </article>
+    <article v-if="isValid" id="score-result" class="post">
       得点は
       <span id="score-numeral-part" class="numeral">
         {{ scoreView }}
@@ -84,10 +86,10 @@
       </span>
       点です。
     </article>
-    <article v-else id="score-invalid-angry">
+    <article v-else id="score-invalid-angry" class="post">
       コラコラコラコラ～ッ！(`o´)
     </article>
-    <article v-if="isValid">
+    <article v-if="isValid" class="post">
       <div v-if="lossByGood > 0" id="score-loss-by-good">
         GOODでの失点は{{ lossByGood.toFixed(2) }}点です。
       </div>
@@ -101,7 +103,7 @@
         TAIL MISSでの失点は{{ lossByTailMiss.toFixed(2) }}点です。
       </div>
     </article>
-    <article>
+    <article class="post">
       <h3 id="furtherOptionButton" @click="furtherOption = !furtherOption">
         <span v-if="furtherOption">▼</span>
         <span v-else>▶</span>
@@ -150,12 +152,17 @@
         </ul>
       </div>
     </article>
-  </div>
+  </section>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
+  head() {
+    return {
+      title: '得点計算機 - 大合奏！バンドブラザーズP☆10地力表'
+    }
+  },
   data() {
     return {
       best: 1,
