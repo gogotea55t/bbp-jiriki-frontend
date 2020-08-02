@@ -7,7 +7,7 @@ import Vue from 'vue'
 export default Vue.extend({
   name: 'SongInfoModal',
   methods: {
-    toggleModal() {}
-  }
+    toggleModal() {},
+  },
 })
 </script>

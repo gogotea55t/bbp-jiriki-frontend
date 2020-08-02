@@ -23,11 +23,11 @@ export default Vue.extend({
   props: {
     header: { type: String, default: '' },
     stats: { type: Object, default: new Stats(0, 0, 0, 0, 0, 0) },
-    showNone: { type: Boolean, default: false }
+    showNone: { type: Boolean, default: false },
   },
   data() {
     return {
-      chartData: new ChartData([], [])
+      chartData: new ChartData([], []),
     }
   },
   computed: {
@@ -39,7 +39,7 @@ export default Vue.extend({
         this.stats.blue +
         this.stats.gray
       )
-    }
+    },
   },
   watch: {
     stats() {
@@ -47,7 +47,7 @@ export default Vue.extend({
     },
     showNone() {
       this.renderGraph()
-    }
+    },
   },
   mounted() {
     this.renderGraph()
@@ -64,7 +64,7 @@ export default Vue.extend({
                 this.stats.bronze,
                 this.stats.blue,
                 this.stats.gray,
-                this.stats.none
+                this.stats.none,
               ],
               backgroundColor: [
                 'gold',
@@ -72,9 +72,9 @@ export default Vue.extend({
                 '#ea9999',
                 '#a4c2ea',
                 '#efefef',
-                'white'
-              ]
-            }
+                'white',
+              ],
+            },
           ],
           ['100', '99~90', '89~80', '79~50', '50~0', 'no entry']
         )
@@ -87,22 +87,22 @@ export default Vue.extend({
                 this.stats.silver,
                 this.stats.bronze,
                 this.stats.blue,
-                this.stats.gray
+                this.stats.gray,
               ],
               backgroundColor: [
                 'gold',
                 '#cccccc',
                 '#ea9999',
                 '#a4c2ea',
-                '#efefef'
-              ]
-            }
+                '#efefef',
+              ],
+            },
           ],
           ['100', '99~90', '89~80', '79~50', '50~0']
         )
       }
-    }
-  }
+    },
+  },
 })
 </script>
 <style>

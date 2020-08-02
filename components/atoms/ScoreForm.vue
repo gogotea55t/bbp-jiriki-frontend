@@ -5,7 +5,7 @@
       v-tooltip="{
         content: tooltipMsg,
         show: showTooltip,
-        trigger: 'manual'
+        trigger: 'manual',
       }"
       class="input smallinput"
       type="text"
@@ -26,7 +26,7 @@ export default Vue.extend({
   props: {
     score: { default: null, type: Number },
     songId: { default: null, type: String },
-    userId: { default: null, type: String }
+    userId: { default: null, type: String },
   },
   data() {
     return {
@@ -35,7 +35,7 @@ export default Vue.extend({
        * propsを直接触らないようにするために設定
        */
       scoreForm: this.score,
-      submitMsg: ''
+      submitMsg: '',
     }
   },
   computed: {
@@ -61,7 +61,7 @@ export default Vue.extend({
       } else {
         return false
       }
-    }
+    },
   },
   methods: {
     async submitScore(): Promise<void> {
@@ -70,40 +70,40 @@ export default Vue.extend({
         const body = {
           userId: this.userId,
           songId: this.songId,
-          score: this.scoreForm
+          score: this.scoreForm,
         }
         await axios
           .put(process.env.apiBaseUrl + '/v1/scores', body, {
             headers: {
               Authorization: `Bearer ${token}`,
-              'content-type': 'application/json'
-            }
+              'content-type': 'application/json',
+            },
           })
-          .then(response => {
+          .then((response) => {
             this.submitMsg = '登録OK！'
             this.$emit('score-submitted', this.scoreForm)
           })
-          .catch(error => {
+          .catch((error) => {
             this.submitMsg = '登録失敗です。。。'
           })
       } else if (!this.scoreForm || this.scoreForm.toString() === '') {
         const body = {
           userId: this.userId,
-          songId: this.songId
+          songId: this.songId,
         }
         await axios
           .delete(process.env.apiBaseUrl + '/v1/scores', {
             data: body,
             headers: {
               Authorization: `Bearer ${token}`,
-              'content-type': 'application/json'
-            }
+              'content-type': 'application/json',
+            },
           })
-          .then(response => {
+          .then((response) => {
             this.submitMsg = '登録を削除しました'
             this.$emit('score-submitted', this.scoreForm)
           })
-          .catch(error => {
+          .catch((error) => {
             this.submitMsg = '削除失敗または削除済です'
           })
       }
@@ -111,8 +111,8 @@ export default Vue.extend({
     triggerTooltip(): void {
       this.showTooltip = !this.showTooltip
       this.submitMsg = ''
-    }
-  }
+    },
+  },
 })
 </script>
 

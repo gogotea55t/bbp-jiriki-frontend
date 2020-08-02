@@ -13,6 +13,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(faUser)
 export default Vue.extend({
   name: 'LoginButton',
-  components: { FontAwesomeIcon }
+  components: { FontAwesomeIcon },
 })
 </script>

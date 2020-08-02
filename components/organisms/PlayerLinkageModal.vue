@@ -30,9 +30,9 @@ import ModalClassObj from '../atoms/ModalClassObj'
 
 export default Vue.extend({
   components: { PlayerLinkage },
-  data: function() {
+  data: function () {
     return {
-      modal: new ModalClassObj()
+      modal: new ModalClassObj(),
     }
   },
   methods: {
@@ -47,7 +47,7 @@ export default Vue.extend({
     },
     untoggleModal() {
       this.modal['is-active'] = false
-    }
-  }
+    },
+  },
 })
 </script>

@@ -30,19 +30,19 @@ export default Vue.extend({
   props: {
     songId: {
       type: String,
-      default: ''
+      default: '',
     },
     songIdentifier: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   computed: {
-    buttonIsVisible: function() {
+    buttonIsVisible: function () {
       // 楽曲情報の読み込みが終わってからボタンを表示したい
       return this.songIdentifier !== ''
-    }
-  }
+    },
+  },
 })
 </script>
 

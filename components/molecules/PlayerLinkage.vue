@@ -29,12 +29,12 @@ export default Vue.extend({
   props: {
     enableCancelButton: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data: function() {
+  data: function () {
     return {
-      playerId: 'u001'
+      playerId: 'u001',
     }
   },
   methods: {
@@ -45,29 +45,29 @@ export default Vue.extend({
       const token = await this.$auth.getTokenSilently()
       const data = {
         userId: this.playerId,
-        twitterUserId: this.$auth.user.sub
+        twitterUserId: this.$auth.user.sub,
       }
       await axios
         .put(process.env.apiBaseUrl + '/v1/players/auth0', data, {
           headers: {
             Authorization: `Bearer ${token}`,
-            'content-type': 'application/json'
-          }
+            'content-type': 'application/json',
+          },
         })
-        .then(res => {
+        .then((res) => {
           alert(`${res.data.userName}さんに紐づけしました。`)
           this.$store.commit('auth/setLoginUserId', res.data.userId)
           this.$emit('settings-changed')
           this.$router.push('/player')
         })
-        .catch(err => {
+        .catch((err) => {
           const errMsg = 'サーバーとの通信に失敗しました'
           this.$nuxt.error({ statusCode: err.response.status, message: errMsg })
         })
     },
     selectChanged(playerId) {
       this.playerId = playerId
-    }
-  }
+    },
+  },
 })
 </script>

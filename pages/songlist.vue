@@ -31,55 +31,20 @@ import axios from 'axios'
 
 export default Vue.extend({
   components: { SongsTable, SearchWindow, SongInfoModal, SongLoader },
-  data: function() {
+  data: function () {
     return {
       songs: new Array<Songs>(),
       page: 0,
       query: '/songs?page=',
       hasNextPageToLoad: true,
-      isFetchOnProgress: false
+      isFetchOnProgress: false,
     }
   },
-  head() {
-    const BASE_URL: string = process.env.baseUrl || ''
-    return {
-      title: '楽曲一覧 - 大合奏！バンドブラザーズ☆10地力表',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: '登録されている楽曲の一覧です。'
-        },
-        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
-        { hid: 'twitter:site', name: 'twitter:site', content: '@bbp10_jiriki' },
-        {
-          hid: 'og:url',
-          property: 'og:url',
-          content: BASE_URL + '/songlist'
-        },
-        {
-          hid: 'og:title',
-          property: 'og:title',
-          content: '得点一覧 - 大合奏！バンドブラザーズ☆10地力表'
-        },
-        {
-          hid: 'og:description',
-          property: 'og:description',
-          content: '登録されている楽曲の一覧です。'
-        },
-        {
-          hid: 'og:image',
-          property: 'og:image',
-          content: BASE_URL + '/favicon.ico'
-        }
-      ]
-    }
-  },
-  mounted: function() {
+  mounted: function () {
     this.hasNextPageToLoad = true
   },
   methods: {
-    getMore: async function() {
+    getMore: async function () {
       try {
         // 読み込み中フラグを立てておくことで二重通信を防ぐ
         this.isFetchOnProgress = true
@@ -105,7 +70,7 @@ export default Vue.extend({
         let songTable: any = this.$refs.songTable
         songTable
           .loadSongsByQuery(this.query + this.page)
-          .then(numberOfSongsAdded => {
+          .then((numberOfSongsAdded) => {
             if (numberOfSongsAdded < 20) {
               this.hasNextPageToLoad = false
             }
@@ -115,7 +80,42 @@ export default Vue.extend({
     toggleModal(emittedSongId) {
       const modalComp: any = this.$refs.modalSection
       modalComp.toggleModal(emittedSongId)
+    },
+  },
+  head() {
+    const BASE_URL: string = process.env.baseUrl || ''
+    return {
+      title: '楽曲一覧 - 大合奏！バンドブラザーズ☆10地力表',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: '登録されている楽曲の一覧です。',
+        },
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+        { hid: 'twitter:site', name: 'twitter:site', content: '@bbp10_jiriki' },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: BASE_URL + '/songlist',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: '得点一覧 - 大合奏！バンドブラザーズ☆10地力表',
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: '登録されている楽曲の一覧です。',
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: BASE_URL + '/favicon.ico',
+        },
+      ],
     }
-  }
+  },
 })
 </script>

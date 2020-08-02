@@ -18,11 +18,19 @@ import SongShareButton from '../../components/molecules/SongShareButton.vue'
 import axios from 'axios'
 export default Vue.extend({
   components: { SongInfo, SongShareButton },
-  data: function() {
+  data: function () {
     return {
       id: this.$route.params.id,
-      songsIdentifier: ''
+      songsIdentifier: '',
     }
+  },
+  async created() {
+    let id = this.$route.params.id
+  },
+  methods: {
+    loaded(identifierEmitted) {
+      this.songsIdentifier = identifierEmitted
+    },
   },
   head() {
     const BASE_URL: string = process.env.baseUrl || ''
@@ -33,47 +41,39 @@ export default Vue.extend({
         {
           hid: 'description',
           name: 'description',
-          content: this.$data.songsIdentifier + 'の得点一覧、楽曲情報です。'
+          content: this.$data.songsIdentifier + 'の得点一覧、楽曲情報です。',
         },
         { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
         { hid: 'twitter:site', name: 'twitter:site', content: '@bbp10_jiriki' },
         {
           hid: 'og:url',
           property: 'og:url',
-          content: BASE_URL + '/songs/' + this.$route.params.id
+          content: BASE_URL + '/songs/' + this.$route.params.id,
         },
         {
           hid: 'og:title',
           property: 'og:title',
           content:
-            this.$data.songsIdentifier + ' - 大合奏！バンドブラザーズ☆10地力表'
+            this.$data.songsIdentifier + ' - 大合奏！バンドブラザーズ☆10地力表',
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: this.$data.songsIdentifier + 'の得点一覧、楽曲情報です。'
+          content: this.$data.songsIdentifier + 'の得点一覧、楽曲情報です。',
         },
         {
           hid: 'og:image',
           property: 'og:image',
-          content: BASE_URL + '/favicon.ico'
+          content: BASE_URL + '/favicon.ico',
         },
         { name: 'twitter:card', content: 'summary' },
         {
           hid: 'twitter:description',
           name: 'twitter:description',
-          content: this.$data.songsIdentifier + 'の得点一覧、楽曲情報です。'
-        }
-      ]
+          content: this.$data.songsIdentifier + 'の得点一覧、楽曲情報です。',
+        },
+      ],
     }
   },
-  async created() {
-    let id = this.$route.params.id
-  },
-  methods: {
-    loaded(identifierEmitted) {
-      this.songsIdentifier = identifierEmitted
-    }
-  }
 })
 </script>

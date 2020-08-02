@@ -8,14 +8,14 @@ Vue.component('pie-chart', {
   props: {
     options: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     chartData: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
   mounted() {
     this.renderChart(this.chartData, this.options)
-  }
+  },
 })

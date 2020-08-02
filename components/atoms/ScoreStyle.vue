@@ -49,24 +49,24 @@ export default Vue.extend({
   props: {
     score: {
       type: Number,
-      default: 0
+      default: 0,
     },
     decimal: {
       type: Boolean,
-      default: false
+      default: false,
     },
     songId: {
       type: String,
-      default: null
+      default: null,
     },
     playerId: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
-  data: function() {
+  data: function () {
     return {
-      classObject: new ScoreStyleClassObject(this.score)
+      classObject: new ScoreStyleClassObject(this.score),
     }
   },
   computed: {
@@ -82,18 +82,18 @@ export default Vue.extend({
     },
     edit(): boolean {
       return this.playerId === this.$store.state.auth.loginUserId
-    }
+    },
   },
   watch: {
     score() {
       this.classObject = new ScoreStyleClassObject(this.score)
-    }
+    },
   },
   methods: {
     scoreSubmitted(score: Number): void {
       this.classObject = new ScoreStyleClassObject(score)
-    }
-  }
+    },
+  },
 })
 </script>
 

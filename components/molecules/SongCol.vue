@@ -16,16 +16,16 @@ export default Vue.extend({
   name: 'SongCol',
   components: { JirikiRank },
   props: {
-    song: Songs
+    song: Songs,
   },
-  data: function() {
+  data: function () {
     return {}
   },
   methods: {
-    toggleModal: function() {
+    toggleModal: function () {
       this.$emit('toggleModal', this.$props.song.songId)
-    }
-  }
+    },
+  },
 })
 </script>
 

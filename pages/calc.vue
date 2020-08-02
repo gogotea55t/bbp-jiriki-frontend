@@ -67,8 +67,8 @@
           TOTAL NOTES
         </label>
         <input
-          v-model.number="total"
           id="total_notes"
+          v-model.number="total"
           class="field-body input"
           type="number"
           readonly
@@ -158,11 +158,6 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  head() {
-    return {
-      title: '得点計算機 - 大合奏！バンドブラザーズP☆10地力表'
-    }
-  },
   data() {
     return {
       best: 1,
@@ -172,7 +167,7 @@ export default Vue.extend({
       tailMiss: 0,
       actualScore: 0,
       goalScore: 0,
-      furtherOption: false
+      furtherOption: false,
     }
   },
   computed: {
@@ -300,8 +295,13 @@ export default Vue.extend({
           ((this.goalScore - this.score.valueOf()) * this.total.valueOf()) / 100
         ) + 1
       )
+    },
+  },
+  head() {
+    return {
+      title: '得点計算機 - 大合奏！バンドブラザーズP☆10地力表',
     }
-  }
+  },
 })
 </script>
 

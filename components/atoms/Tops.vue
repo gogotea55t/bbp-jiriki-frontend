@@ -45,16 +45,16 @@ export default Vue.extend({
   props: {
     isTooltipShow: {
       type: Boolean,
-      default: false
+      default: false,
     },
     songId: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
-  data: function() {
+  data: function () {
     return {
-      tops: new Tops([], [], [])
+      tops: new Tops([], [], []),
     }
   },
   watch: {
@@ -62,14 +62,14 @@ export default Vue.extend({
       if (val) {
         this.loadInfo(this.songId)
       }
-    }
+    },
   },
   methods: {
     async loadInfo(id) {
       try {
         let topsResponse = await axios
           .get(process.env.apiBaseUrl + '/v2' + '/songs/' + id + '/top')
-          .then(response => {
+          .then((response) => {
             const topData: Tops = response.data
             this.$data.tops = topData
             return
@@ -78,8 +78,8 @@ export default Vue.extend({
         const errMsg = 'サーバーとの通信に失敗しました'
         this.$nuxt.error({ statusCode: 500, message: errMsg })
       }
-    }
-  }
+    },
+  },
 })
 </script>
 <style scoped>
