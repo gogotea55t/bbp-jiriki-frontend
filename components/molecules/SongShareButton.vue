@@ -3,11 +3,11 @@
     <a
       :href="
         'https://twitter.com/intent/tweet?text=' +
-          songIdentifier +
-          '%20-%20大合奏！バンドブラザーズP☆10地力表' +
-          '&url=https://bbp10-jiriki.cf/songs/' +
-          songId +
-          '&via=bbp10_jiriki'
+        songIdentifier +
+        '%20-%20大合奏！バンドブラザーズP☆10地力表' +
+        '&url=https://bbp10-jiriki.cf/songs/' +
+        songId +
+        '&via=bbp10_jiriki'
       "
       target="_blank"
     >
