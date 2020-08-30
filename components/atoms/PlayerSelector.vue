@@ -27,7 +27,6 @@ import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { error } from 'util'
 library.add(faUser)
 export default Vue.extend({
   name: 'PlayerSelector',
