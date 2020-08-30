@@ -10,7 +10,9 @@
             </figure>
           </div>
           <div class="media-content">
-            <p class="title is-4">{{ profile.name }}</p>
+            <p class="title is-4">
+              {{ profile.name }}
+            </p>
           </div>
         </div>
       </div>
@@ -37,9 +39,9 @@ export default Vue.extend({
   components: { PlayerLinkage, UserStats },
   data() {
     return {
-      profile: this.$auth.user
+      profile: this.$auth.user,
     }
   },
-  methods: {}
+  methods: {},
 })
 </script>

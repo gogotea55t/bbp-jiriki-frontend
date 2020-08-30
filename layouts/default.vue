@@ -146,7 +146,7 @@ import {
   faMusic,
   faUsers,
   faTable,
-  faCalculator
+  faCalculator,
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -168,19 +168,19 @@ export default Vue.extend({
   computed: {
     isAuthLoading(): boolean {
       return this.$auth.loading
-    }
+    },
   },
   watch: {
     async isAuthLoading() {
       if (!this.isAuthLoading && this.$auth.isAuthenticated) {
         await this.fetchLoginUser()
       }
-    }
+    },
   },
   mounted() {
     let burger: any = document.querySelector('.burger')
     let menu: any = document.querySelector('#' + burger.dataset.target)
-    burger.addEventListener('click', function() {
+    burger.addEventListener('click', function () {
       burger.classList.toggle('is-active')
       menu.classList.toggle('is-active')
     })
@@ -191,7 +191,7 @@ export default Vue.extend({
     },
     logout() {
       this.$auth.logout({
-        returnTo: window.location.origin
+        returnTo: window.location.origin,
       })
     },
     async fetchLoginUser() {
@@ -200,10 +200,10 @@ export default Vue.extend({
         .get(process.env.apiBaseUrl + '/v1/players/auth0', {
           headers: {
             Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
+            'Content-Type': 'application/json',
+          },
         })
-        .then(res => {
+        .then((res) => {
           if (res.data.userId) {
             this.$store.dispatch('auth/setLoginUserId', res.data.userId)
             this.$router.push('/player')
@@ -213,9 +213,9 @@ export default Vue.extend({
             linkageModal.toggleModal()
           }
         })
-        .catch(err => {})
-    }
-  }
+        .catch((err) => {})
+    },
+  },
 })
 </script>
 

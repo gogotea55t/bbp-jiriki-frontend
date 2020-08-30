@@ -9,10 +9,10 @@
       <div class="column is-half">
         <ScorePieChart
           v-if="graphLoaded"
+          id="user_stats_graph"
           :stats="stats"
           :show-none="showNone"
           :header="'全曲'"
-          id="user_stats_graph"
         />
       </div>
       <div class="column is-quarter"></div>
@@ -23,9 +23,9 @@
     <div v-if="showDetail" class="columns is-multiline">
       <div
         v-for="detail of detailedStats"
+        id="user_stats_detailed_graphs"
         :key="detail.jirikiRank"
         class="column is-half"
-        id="user_stats_detailed_graphs"
       >
         <score-pie-chart
           :stats="detail.stats"
@@ -54,7 +54,7 @@ export default Vue.extend({
       graphLoaded: false,
       detailIsLoading: false,
       showNone: false,
-      showDetail: false
+      showDetail: false,
     }
   },
   async mounted() {
@@ -70,7 +70,7 @@ export default Vue.extend({
               this.$store.state.auth.loginUserId +
               '/stats'
           )
-          .then(response => {
+          .then((response) => {
             const respData: StatsWithJiriki = response.data
             this.stats = respData
             this.graphLoaded = true
@@ -89,7 +89,7 @@ export default Vue.extend({
               this.$store.state.auth.loginUserId +
               '/stats/detail'
           )
-          .then(response => {
+          .then((response) => {
             const respData: Array<StatsWithJiriki> = response.data.detail
             this.detailedStats = respData
             this.detailIsLoading = false
@@ -107,7 +107,7 @@ export default Vue.extend({
       ) {
         this.loadDetailedStats()
       }
-    }
-  }
+    },
+  },
 })
 </script>

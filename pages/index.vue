@@ -158,33 +158,33 @@ export default Vue.extend({
           hid: 'description',
           name: 'description',
           content:
-            '大合奏！バンドブラザーズPにおける☆10の難易度とスコアを管理するページです。'
+            '大合奏！バンドブラザーズPにおける☆10の難易度とスコアを管理するページです。',
         },
         { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
         { hid: 'twitter:site', name: 'twitter:site', content: '@bbp10_jiriki' },
         {
           hid: 'og:url',
           property: 'og:url',
-          content: BASE_URL + '/'
+          content: BASE_URL + '/',
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: '大合奏！バンドブラザーズP☆10地力表'
+          content: '大合奏！バンドブラザーズP☆10地力表',
         },
         {
           hid: 'og:description',
           property: 'og:description',
           content:
-            '大合奏！バンドブラザーズPにおける☆10の難易度とスコアを管理するページです。'
+            '大合奏！バンドブラザーズPにおける☆10の難易度とスコアを管理するページです。',
         },
         {
           hid: 'og:image',
           property: 'og:image',
-          content: BASE_URL + '/favicon.ico'
-        }
-      ]
+          content: BASE_URL + '/favicon.ico',
+        },
+      ],
     }
-  }
+  },
 })
 </script>

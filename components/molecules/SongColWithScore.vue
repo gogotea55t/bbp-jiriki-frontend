@@ -46,27 +46,27 @@ export default Vue.extend({
   props: {
     song: {
       type: SongsWithScore,
-      default: new SongsWithScore('', '', '', '', '', 0, 0, 0)
+      default: new SongsWithScore('', '', '', '', '', 0, 0, 0),
     },
     decimal: {
       type: Boolean,
-      default: false
+      default: false,
     },
     playerId: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
-      isDecimal: this.decimal
+      isDecimal: this.decimal,
     }
   },
   methods: {
-    jumpToInfoPage: function() {
+    jumpToInfoPage: function () {
       this.$emit('toggleModal', this.$props.song.songId)
-    }
-  }
+    },
+  },
 })
 </script>
 <style scoped>

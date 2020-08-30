@@ -69,8 +69,8 @@ import Vue from 'vue'
 export default Vue.extend({
   head() {
     return {
-      title: 'プライバシーポリシー - 大合奏！バンドブラザーズP☆10地力表'
+      title: 'プライバシーポリシー - 大合奏！バンドブラザーズP☆10地力表',
     }
-  }
+  },
 })
 </script>

@@ -20,7 +20,7 @@ export default Vue.extend({
       } else {
         return 20
       }
-    }
-  }
+    },
+  },
 })
 </script>

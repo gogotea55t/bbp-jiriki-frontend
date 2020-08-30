@@ -113,22 +113,22 @@ export default Vue.extend({
   props: {
     jirikiRank: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
-  data: function() {
+  data: function () {
     return {
-      classObj: new JirikiRankStyleClassObject('地力Ｓ＋')
+      classObj: new JirikiRankStyleClassObject('地力Ｓ＋'),
     }
   },
   watch: {
     jirikiRank() {
       this.classObj = new JirikiRankStyleClassObject(this.jirikiRank)
-    }
+    },
   },
   mounted() {
     this.classObj = new JirikiRankStyleClassObject(this.jirikiRank)
-  }
+  },
 })
 </script>
 

@@ -60,15 +60,15 @@ library.add(faSearch)
 export default Vue.extend({
   name: 'SearchWindow',
   components: { JirikiSelector, FontAwesomeIcon },
-  data: function() {
+  data: function () {
     return {
       isJirikiRankSelected: false,
       queryKey: 'name',
-      query: ''
+      query: '',
     }
   },
   methods: {
-    search: function() {
+    search: function () {
       let searchQuery = this.queryKey + '=' + this.query
       if (this.isJirikiRankSelected) {
         let jirikiSel: any = this.$refs.jirikiSelector
@@ -76,9 +76,9 @@ export default Vue.extend({
       }
       this.$emit('search-emit', searchQuery)
     },
-    queryKeySelectChanged: function() {
+    queryKeySelectChanged: function () {
       this.isJirikiRankSelected = this.queryKey === 'jiriki'
-    }
-  }
+    },
+  },
 })
 </script>

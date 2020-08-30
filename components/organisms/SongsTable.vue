@@ -28,12 +28,12 @@ export default Vue.extend({
   props: {
     query: {
       default: '/songs?page=',
-      type: String
-    }
+      type: String,
+    },
   },
   data() {
     return {
-      songs: new Array<Songs>()
+      songs: new Array<Songs>(),
     }
   },
   async created() {
@@ -48,8 +48,8 @@ export default Vue.extend({
       try {
         let songsResponse: Array<Songs> = await axios
           .get<Array<Songs>>(url)
-          .then(response => {
-            return response.data.map(s => {
+          .then((response) => {
+            return response.data.map((s) => {
               return new Songs(
                 s.songId,
                 s.jirikiRank,
@@ -69,9 +69,9 @@ export default Vue.extend({
     async loadMore(query: string) {
       let numberOfSongsAdded: number = await axios
         .get(process.env.apiBaseUrl + '/v1' + query)
-        .then(response => {
+        .then((response) => {
           if (response.data.length > 0) {
-            response.data.forEach(element => {
+            response.data.forEach((element) => {
               this.songs.push(
                 new Songs(
                   element.songId,
@@ -85,11 +85,11 @@ export default Vue.extend({
           }
           return response.data.length
         })
-        .catch(error => {
+        .catch((error) => {
           return 0
         })
       return numberOfSongsAdded
-    }
-  }
+    },
+  },
 })
 </script>

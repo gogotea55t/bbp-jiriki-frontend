@@ -36,11 +36,11 @@ import ModalClassObj from '../atoms/ModalClassObj'
 
 export default Vue.extend({
   components: { SongInfo, SongShareButton },
-  data: function() {
+  data: function () {
     return {
       modalSongId: '',
       modalSongIdentifier: '',
-      modal: new ModalClassObj()
+      modal: new ModalClassObj(),
     }
   },
   methods: {
@@ -56,7 +56,7 @@ export default Vue.extend({
     },
     songLoaded(songIdentifierEmitted) {
       this.modalSongIdentifier = songIdentifierEmitted
-    }
-  }
+    },
+  },
 })
 </script>

@@ -9,8 +9,8 @@ export default Vue.extend({
   props: {
     query: {
       default: '',
-      type: String
-    }
+      type: String,
+    },
   },
   methods: {
     async loadSongsByQuery(query: String) {
@@ -28,7 +28,7 @@ export default Vue.extend({
       } else {
         return 20
       }
-    }
-  }
+    },
+  },
 })
 </script>

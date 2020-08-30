@@ -18,7 +18,7 @@
 import Vue from 'vue'
 export default Vue.extend({
   name: 'JirikiSelector',
-  data: function() {
+  data: function () {
     return {
       jirikiRanks: [
         '地力Ｓ＋',
@@ -42,10 +42,10 @@ export default Vue.extend({
         '地力Ｆ',
         '個人差Ｆ',
         '求90',
-        '未決定'
+        '未決定',
       ],
-      jirikiRankSelected: '未決定'
+      jirikiRankSelected: '未決定',
     }
-  }
+  },
 })
 </script>

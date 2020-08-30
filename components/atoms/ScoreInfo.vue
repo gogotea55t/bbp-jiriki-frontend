@@ -47,31 +47,31 @@ export default Vue.extend({
   props: {
     songId: {
       type: String,
-      default: ''
+      default: '',
     },
     score: {
       type: Number,
-      default: 0
+      default: 0,
     },
     max: {
       type: Number,
-      default: 0
+      default: 0,
     },
     average: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   data() {
     return {
-      isTooltipShow: false
+      isTooltipShow: false,
     }
   },
   methods: {
-    changeTooltip: function(bool) {
+    changeTooltip: function (bool) {
       this.isTooltipShow = bool
-    }
-  }
+    },
+  },
 })
 </script>
 

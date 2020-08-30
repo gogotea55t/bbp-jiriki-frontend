@@ -39,35 +39,35 @@ export default Vue.extend({
      */
     playerOnly: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data: function() {
+  data: function () {
     return {
       players: new Array<Players>(),
-      playerId: 'average'
+      playerId: 'average',
     }
   },
   computed: {
     defaultPlayerId(): string {
       return this.$store.state.auth.loginUserId || 'average'
-    }
+    },
   },
   watch: {
     defaultPlayerId() {
       this.$data.playerId = this.defaultPlayerId
       this.$emit('player-selected', this.playerId)
-    }
+    },
   },
   async created() {
     await axios
       .get(process.env.apiBaseUrl + '/v1' + '/players')
-      .then(response => {
-        this.players = response.data.map(s => {
+      .then((response) => {
+        this.players = response.data.map((s) => {
           return new Players(s.userId, s.userName)
         })
       })
-      .catch(error => {
+      .catch((error) => {
         const errMsg = 'サーバーとの通信に失敗しました'
         this.$nuxt.error({ statusCode: error.response.status, message: errMsg })
       })
@@ -84,7 +84,7 @@ export default Vue.extend({
   methods: {
     selectChanged() {
       this.$emit('player-selected', this.playerId)
-    }
-  }
+    },
+  },
 })
 </script>

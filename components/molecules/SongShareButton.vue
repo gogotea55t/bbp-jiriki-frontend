@@ -3,11 +3,11 @@
     <a
       :href="
         'https://twitter.com/intent/tweet?text=' +
-          songIdentifier +
-          '%20-%20大合奏！バンドブラザーズP☆10地力表' +
-          '&url=https://bbp10-jiriki.cf/songs/' +
-          songId +
-          '&via=bbp10_jiriki'
+        songIdentifier +
+        '%20-%20大合奏！バンドブラザーズP☆10地力表' +
+        '&url=https://bbp10-jiriki.cf/songs/' +
+        songId +
+        '&via=bbp10_jiriki'
       "
       target="_blank"
     >
@@ -30,19 +30,19 @@ export default Vue.extend({
   props: {
     songId: {
       type: String,
-      default: ''
+      default: '',
     },
     songIdentifier: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   computed: {
-    buttonIsVisible: function() {
+    buttonIsVisible: function () {
       // 楽曲情報の読み込みが終わってからボタンを表示したい
       return this.songIdentifier !== ''
-    }
-  }
+    },
+  },
 })
 </script>
 

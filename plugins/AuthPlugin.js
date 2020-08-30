@@ -6,7 +6,7 @@ Vue.use(Auth0Plugin, {
   domain,
   clientId,
   audience,
-  onRedirectCallback: appState => {
+  onRedirectCallback: (appState) => {
     // do nothing
-  }
+  },
 })

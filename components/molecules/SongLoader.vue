@@ -20,37 +20,37 @@ export default Vue.extend({
      */
     hasNextPageToLoad: {
       type: Boolean,
-      default: true
+      default: true,
     },
     /**
      * 読み込み中なときtrue(二重通信を防ぐ目的で導入)
      */
     isFetchOnProgress: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     /**
      * スクロールイベントに応じて曲の読み込みをしてほしいときtrue
      * 読み込むべきページがあって、かつ読み込み中ではないとき
      */
-    scrollEventIsWorking: function(): boolean {
+    scrollEventIsWorking: function (): boolean {
       return this.hasNextPageToLoad && !this.isFetchOnProgress
-    }
+    },
   },
-  mounted: function() {
+  mounted: function () {
     window.addEventListener('scroll', this.handleScroll)
   },
   methods: {
-    handleScroll: function() {
+    handleScroll: function () {
       if (this.scrollEventIsWorking) {
         /**
          * ローディング画像
          * DOMのIDで要素が見つからなかったときはローディングしないようにする
          */
         const loaderImage = document.getElementById('songlist-loader') || {
-          offsetTop: Number.MAX_VALUE
+          offsetTop: Number.MAX_VALUE,
         }
 
         /**
@@ -78,7 +78,7 @@ export default Vue.extend({
           this.$emit('load-more', true)
         }
       }
-    }
-  }
+    },
+  },
 })
 </script>

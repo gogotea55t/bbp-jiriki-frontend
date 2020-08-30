@@ -16,7 +16,7 @@ module.exports = {
   head: {
     title: '大合奏！バンドブラザーズP☆10地力表',
     htmlAttrs: {
-      lang: 'ja'
+      lang: 'ja',
     },
     meta: [
       { charset: 'utf-8' },
@@ -25,38 +25,38 @@ module.exports = {
         hid: 'description',
         name: 'description',
         content:
-          '大合奏！バンドブラザーズPにおける☆10の難易度とスコアを管理するページです。'
+          '大合奏！バンドブラザーズPにおける☆10の難易度とスコアを管理するページです。',
       },
       { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
       { hid: 'twitter:site', name: 'twitter:site', content: '@bbp10_jiriki' },
       {
         hid: 'twitter:creator',
         name: 'twitter:creator',
-        content: '@bbp10_jiriki'
+        content: '@bbp10_jiriki',
       },
       {
         hid: 'og:url',
         property: 'og:url',
-        content: BASE_URL + '/'
+        content: BASE_URL + '/',
       },
       {
         hid: 'og:title',
         property: 'og:title',
-        content: '大合奏！バンドブラザーズP☆10地力表'
+        content: '大合奏！バンドブラザーズP☆10地力表',
       },
       {
         hid: 'og:description',
         property: 'og:description',
         content:
-          '大合奏！バンドブラザーズPにおける☆10の難易度とスコアを管理するページです。'
+          '大合奏！バンドブラザーズPにおける☆10の難易度とスコアを管理するページです。',
       },
       {
         hid: 'og:image',
         property: 'og:image',
-        content: BASE_URL + '/favicon.ico'
-      }
+        content: BASE_URL + '/favicon.ico',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   /*
@@ -82,7 +82,7 @@ module.exports = {
   buildModules: ['@nuxt/typescript-build'],
   typescript: {
     typeCheck: true,
-    ignoreNotFoundWarnings: true
+    ignoreNotFoundWarnings: true,
   },
 
   /*
@@ -93,7 +93,7 @@ module.exports = {
     '@nuxtjs/axios',
     // Doc:https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma',
-    '@nuxtjs/google-adsense'
+    '@nuxtjs/google-adsense',
   ],
   /*
    ** Axios module configuration
@@ -102,7 +102,7 @@ module.exports = {
     // See https://github.com/nuxt-community/axios-module#options
   },
   'google-adsense': {
-    id: 'ca-pub-9420211255933824'
+    id: 'ca-pub-9420211255933824',
   },
 
   /*
@@ -112,9 +112,9 @@ module.exports = {
     postcss: {
       preset: {
         features: {
-          customProperties: false
-        }
-      }
+          customProperties: false,
+        },
+      },
     },
     /*
      ** You can extend webpack config here
@@ -126,9 +126,9 @@ module.exports = {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/
+          exclude: /(node_modules)/,
         })
       }
-    }
-  }
+    },
+  },
 }

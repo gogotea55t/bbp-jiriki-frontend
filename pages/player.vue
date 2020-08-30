@@ -37,7 +37,7 @@ export default Vue.extend({
     SearchWindow,
     SongsTableWithScore,
     SongLoader,
-    SongInfoModal
+    SongInfoModal,
   },
   data() {
     return {
@@ -45,59 +45,18 @@ export default Vue.extend({
       playerId: 'average',
       page: 0,
       hasNextPageToLoad: true,
-      isFetchOnProgress: false
-    }
-  },
-  head() {
-    const BASE_URL: string = process.env.baseUrl || ''
-    return {
-      title: '得点一覧 - 大合奏！バンドブラザーズ☆10地力表',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: '登録されている楽曲の一覧です。'
-        },
-        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
-        { hid: 'twitter:site', name: 'twitter:site', content: '@bbp10_jiriki' },
-        {
-          hid: 'og:url',
-          property: 'og:url',
-          content: BASE_URL + '/player'
-        },
-        {
-          hid: 'og:title',
-          property: 'og:title',
-          content: '得点一覧 - 大合奏！バンドブラザーズ☆10地力表'
-        },
-        {
-          hid: 'og:description',
-          property: 'og:description',
-          content: 'プレイヤーごとの得点一覧です。'
-        },
-        {
-          hid: 'og:image',
-          property: 'og:image',
-          content: BASE_URL + '/favicon.ico'
-        },
-        { name: 'twitter:card', content: 'summary' },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: 'プレイヤーごとの得点一覧です。'
-        }
-      ]
+      isFetchOnProgress: false,
     }
   },
   computed: {
     decimal(): boolean {
       return this.playerId === 'average'
-    }
+    },
   },
   watch: {
     playerId() {
       this.searchByPlayer(this.playerId)
-    }
+    },
   },
   created() {
     if (this.$store.state.auth.loginUserId) {
@@ -123,7 +82,7 @@ export default Vue.extend({
       let songsTable: any = this.$refs.songTable
       songsTable
         .loadSongsByQuery(this.query + this.page)
-        .then(numberOfSongsAdded => {
+        .then((numberOfSongsAdded) => {
           this.isFetchOnProgress = false
           if (numberOfSongsAdded < 20) {
             this.hasNextPageToLoad = false
@@ -138,7 +97,7 @@ export default Vue.extend({
       let songsTable: any = this.$refs.songTable
       await songsTable
         .loadMore(this.query + this.page)
-        .then(numberOfSongsAdded => {
+        .then((numberOfSongsAdded) => {
           this.isFetchOnProgress = false
           if (numberOfSongsAdded < 20) {
             this.hasNextPageToLoad = false
@@ -153,7 +112,48 @@ export default Vue.extend({
     },
     playerIdChanged(playerId) {
       this.playerId = playerId
+    },
+  },
+  head() {
+    const BASE_URL: string = process.env.baseUrl || ''
+    return {
+      title: '得点一覧 - 大合奏！バンドブラザーズ☆10地力表',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: '登録されている楽曲の一覧です。',
+        },
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+        { hid: 'twitter:site', name: 'twitter:site', content: '@bbp10_jiriki' },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: BASE_URL + '/player',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: '得点一覧 - 大合奏！バンドブラザーズ☆10地力表',
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'プレイヤーごとの得点一覧です。',
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: BASE_URL + '/favicon.ico',
+        },
+        { name: 'twitter:card', content: 'summary' },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content: 'プレイヤーごとの得点一覧です。',
+        },
+      ],
     }
-  }
+  },
 })
 </script>

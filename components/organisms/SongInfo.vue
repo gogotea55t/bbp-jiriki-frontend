@@ -47,22 +47,22 @@ export default Vue.extend({
   props: {
     songId: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
-  data: function() {
+  data: function () {
     return {
       song: new Songs(this.songId, '', '', '', ''),
       scores: [],
       graphLoaded: false,
-      stats: new Stats(0, 0, 0, 0, 0, 0)
+      stats: new Stats(0, 0, 0, 0, 0, 0),
     }
   },
   watch: {
-    songId: function() {
+    songId: function () {
       this.resetData()
       this.loadInfo(this.$props.songId)
-    }
+    },
   },
   async created() {
     if (this.songId === '') {
@@ -76,7 +76,7 @@ export default Vue.extend({
       try {
         let songResponse: Songs = await axios
           .get(process.env.apiBaseUrl + '/v1' + '/songs/' + id)
-          .then(response => {
+          .then((response) => {
             let s: any = response.data
             return new Songs(
               s.songId,
@@ -89,13 +89,13 @@ export default Vue.extend({
 
         let scoreResponse = await axios
           .get(process.env.apiBaseUrl + '/v2' + '/songs/' + id + '/scores')
-          .then(response => {
+          .then((response) => {
             return response.data
           })
 
         let scoreStat: Stats = await axios
           .get(process.env.apiBaseUrl + '/v1' + '/songs/' + id + '/stats')
-          .then(response => {
+          .then((response) => {
             const respData: Stats = response.data
             this.stats = respData
             this.graphLoaded = true
@@ -118,10 +118,10 @@ export default Vue.extend({
         this.$nuxt.error({ statusCode: 500, message: errMsg })
       }
     },
-    resetData: function() {
+    resetData: function () {
       this.song = new Songs('', '', '', '', '')
       this.scores = []
-    }
-  }
+    },
+  },
 })
 </script>

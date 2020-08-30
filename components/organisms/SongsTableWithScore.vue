@@ -38,20 +38,20 @@ export default Vue.extend({
   props: {
     query: {
       type: String,
-      default: ''
+      default: '',
     },
     decimal: {
       type: Boolean,
-      default: false
+      default: false,
     },
     playerId: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
-      songs: new Array<SongsWithScore>()
+      songs: new Array<SongsWithScore>(),
     }
   },
   async created() {
@@ -65,8 +65,8 @@ export default Vue.extend({
         process.env.apiBaseUrl || 'http://localhost:8080'
       await axios
         .get(apiBaseUrl + '/v2' + query)
-        .then(response => {
-          this.songs = response.data.map(s => {
+        .then((response) => {
+          this.songs = response.data.map((s) => {
             return new SongsWithScore(
               s.songId,
               s.jirikiRank,
@@ -79,7 +79,7 @@ export default Vue.extend({
             )
           })
         })
-        .catch(err => {
+        .catch((err) => {
           const errMsg = 'サーバーとの通信に失敗しました'
           this.$nuxt.error({ statusCode: 500, message: errMsg })
         })
@@ -92,8 +92,8 @@ export default Vue.extend({
         process.env.apiBaseUrl || 'http://localhost:8080'
       await axios
         .get(apiBaseUrl + '/v2' + query)
-        .then(response => {
-          response.data.forEach(s => {
+        .then((response) => {
+          response.data.forEach((s) => {
             count++
             this.songs.push(
               new SongsWithScore(
@@ -109,7 +109,7 @@ export default Vue.extend({
             )
           })
         })
-        .catch(err => {
+        .catch((err) => {
           const errMsg = 'サーバーとの通信に失敗しました'
           this.$nuxt.error({ statusCode: err.response.status, message: errMsg })
         })
@@ -118,7 +118,7 @@ export default Vue.extend({
     },
     toggleModal(emittedSongId) {
       this.$emit('toggleModal', emittedSongId)
-    }
-  }
+    },
+  },
 })
 </script>
