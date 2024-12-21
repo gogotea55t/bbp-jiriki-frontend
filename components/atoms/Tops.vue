@@ -30,14 +30,14 @@
 <script lang="ts">
 import Vue from 'vue'
 import VTooltip from 'v-tooltip'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library, IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faCrown } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import Tops from '../types/Tops'
 import PlayerScore from '../types/PlayerScore'
 
-library.add(faCrown)
+library.add(faCrown as IconDefinition)
 
 export default Vue.extend({
   name: 'Tops',
