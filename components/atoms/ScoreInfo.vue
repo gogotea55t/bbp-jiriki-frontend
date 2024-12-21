@@ -32,14 +32,14 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library, IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faMedal } from '@fortawesome/free-solid-svg-icons'
 import VTooltip from 'v-tooltip'
 import Tops from '../atoms/Tops.vue'
 import { VPopover } from 'v-tooltip'
 
-library.add(faMedal)
+library.add(faMedal as IconDefinition)
 
 export default Vue.extend({
   name: 'ScoreInfo',

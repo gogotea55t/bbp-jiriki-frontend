@@ -24,10 +24,10 @@
 import Vue from 'vue'
 import Players from '../types/Players'
 import axios from 'axios'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library, IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(faUser)
+library.add(faUser as IconDefinition)
 export default Vue.extend({
   name: 'PlayerSelector',
   components: { FontAwesomeIcon },

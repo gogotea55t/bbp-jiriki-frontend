@@ -3,7 +3,7 @@ import { EventEmitter } from 'events'
 export class AuthServiceStub extends EventEmitter {
   getTokenSilently() {
     return new Promise((resolve, reject) => {
-      resolve()
+      resolve(this.user)
       return 'token'
     })
   }

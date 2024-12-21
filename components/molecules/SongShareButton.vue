@@ -22,9 +22,9 @@
 <script lang="ts">
 import Vue from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library, IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
-library.add(faTwitter)
+library.add(faTwitter as IconDefinition)
 export default Vue.extend({
   components: { FontAwesomeIcon },
   props: {
